@@ -3,14 +3,14 @@
 
   const dispatch = createEventDispatcher();
 
-  export let name;
+  export let country;
   export let points;
   let showControls = false;
 
   const addPoint = () => (points += 1);
   const removePoint = () => (points -= 1);
   const toggleControls = () => (showControls = !showControls);
-  const onDelete = () => dispatch("removeplayer", name);
+   const onDelete = () => dispatch("removeplayer", country);
 </script>
 
 <style>
@@ -25,7 +25,7 @@
 
 <div class="card">
   <h1>
-     {name}
+     {country}
     <button class="btn btn-sm" on:click={toggleControls}>
       {#if showControls}-{:else}+{/if}
     </button>
