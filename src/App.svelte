@@ -3,6 +3,7 @@
   import Player from "./Player.svelte";
   import AddPlayer from "./AddPlayer.svelte";
   import points from "../voting/points";
+  import countryFlagEmoji from "country-flag-emoji";
 
   let players =  points;
   console.log(players);
@@ -13,6 +14,7 @@
   console.log(newPlayer);
   };
 
+  console.log(countryFlagEmoji.data);
 </script>
 
 <Navbar />
@@ -23,6 +25,7 @@
   {:else}
     {#each players as player}
       <Player
+        flag={countryFlagEmoji.get(player.country_code).emoji}
         country={player.country}
         points={player.id}/>
     {/each}
