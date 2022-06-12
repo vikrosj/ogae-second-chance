@@ -5,6 +5,7 @@
 
   export let country;
   export let points;
+  export let flag;
   let showControls = false;
 
   const addPoint = () => (points += 1);
@@ -25,7 +26,7 @@
 
 <div class="card">
   <h1>
-     {country}
+    {flag} {country}
     <button class="btn btn-sm" on:click={toggleControls}>
       {#if showControls}-{:else}+{/if}
     </button>
