@@ -1,6 +1,6 @@
 # Eurovision Scoreboard
-Missing the Eurovision? here's a little reminder...  
-![Image of Scoreboard](https://github.com/BambiHaber/EurovisionScoreboard/blob/EurovisionScoreboard/Sample.png)
+ 
+Initially based on [BambiHaber's repo](https://github.com/BambiHaber/EurovisionScoreboard) and further developed.
 #
 #
 #
