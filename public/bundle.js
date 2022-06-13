@@ -24,6 +24,17 @@ var app = (function () {
     function safe_not_equal(a, b) {
         return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
     }
+    function validate_store(store, name) {
+        if (!store || typeof store.subscribe !== 'function') {
+            throw new Error(`'${name}' is not a store with a 'subscribe' method`);
+        }
+    }
+    function subscribe(component, store, callback) {
+        const unsub = store.subscribe(callback);
+        component.$$.on_destroy.push(unsub.unsubscribe
+            ? () => unsub.unsubscribe()
+            : unsub);
+    }
 
     function append(target, node) {
         target.appendChild(node);
@@ -337,115 +348,8 @@ var app = (function () {
 
     const file$1 = "src/Player.svelte";
 
-    // (31:25) {:else}
-    function create_else_block(ctx) {
-    	var t;
-
-    	return {
-    		c: function create() {
-    			t = text("+");
-    		},
-
-    		m: function mount(target, anchor) {
-    			insert(target, t, anchor);
-    		},
-
-    		d: function destroy(detaching) {
-    			if (detaching) {
-    				detach(t);
-    			}
-    		}
-    	};
-    }
-
-    // (31:6) {#if showControls}
-    function create_if_block_1(ctx) {
-    	var t;
-
-    	return {
-    		c: function create() {
-    			t = text("-");
-    		},
-
-    		m: function mount(target, anchor) {
-    			insert(target, t, anchor);
-    		},
-
-    		d: function destroy(detaching) {
-    			if (detaching) {
-    				detach(t);
-    			}
-    		}
-    	};
-    }
-
-    // (36:2) {#if showControls}
-    function create_if_block(ctx) {
-    	var button0, t1, button1, t3, input, dispose;
-
-    	return {
-    		c: function create() {
-    			button0 = element("button");
-    			button0.textContent = "+1";
-    			t1 = space();
-    			button1 = element("button");
-    			button1.textContent = "-1";
-    			t3 = space();
-    			input = element("input");
-    			button0.className = "btn";
-    			add_location(button0, file$1, 36, 4, 792);
-    			button1.className = "btn btn-dark";
-    			add_location(button1, file$1, 37, 4, 848);
-    			attr(input, "type", "number");
-    			add_location(input, file$1, 38, 4, 916);
-
-    			dispose = [
-    				listen(button0, "click", ctx.addPoint),
-    				listen(button1, "click", ctx.removePoint),
-    				listen(input, "input", ctx.input_input_handler)
-    			];
-    		},
-
-    		m: function mount(target, anchor) {
-    			insert(target, button0, anchor);
-    			insert(target, t1, anchor);
-    			insert(target, button1, anchor);
-    			insert(target, t3, anchor);
-    			insert(target, input, anchor);
-
-    			input.value = ctx.points;
-    		},
-
-    		p: function update(changed, ctx) {
-    			if (changed.points) input.value = ctx.points;
-    		},
-
-    		d: function destroy(detaching) {
-    			if (detaching) {
-    				detach(button0);
-    				detach(t1);
-    				detach(button1);
-    				detach(t3);
-    				detach(input);
-    			}
-
-    			run_all(dispose);
-    		}
-    	};
-    }
-
     function create_fragment$1(ctx) {
-    	var div, h1, t0, t1, t2, t3, button0, t4, button1, t6, h3, t7, t8, t9, dispose;
-
-    	function select_block_type(ctx) {
-    		if (ctx.showControls) return create_if_block_1;
-    		return create_else_block;
-    	}
-
-    	var current_block_type = select_block_type(ctx);
-    	var if_block0 = current_block_type(ctx);
-
-    	var if_block1 = (ctx.showControls) && create_if_block(ctx);
+    	var div, h1, t0, t1, t2, t3, h3, t4, t5;
 
     	return {
     		c: function create() {
@@ -455,32 +359,15 @@ var app = (function () {
     			t1 = space();
     			t2 = text(ctx.country);
     			t3 = space();
-    			button0 = element("button");
-    			if_block0.c();
-    			t4 = space();
-    			button1 = element("button");
-    			button1.textContent = "x";
-    			t6 = space();
     			h3 = element("h3");
-    			t7 = text("Points: ");
-    			t8 = text(ctx.points);
-    			t9 = space();
-    			if (if_block1) if_block1.c();
-    			button0.className = "btn btn-sm";
-    			add_location(button0, file$1, 29, 4, 551);
-    			button1.className = "btn btn-danger btn-sm";
-    			add_location(button1, file$1, 32, 4, 662);
+    			t4 = text("Points: ");
+    			t5 = text(ctx.points);
     			h1.className = "svelte-1ekm9jl";
-    			add_location(h1, file$1, 27, 2, 521);
+    			add_location(h1, file$1, 25, 2, 397);
     			h3.className = "svelte-1ekm9jl";
-    			add_location(h3, file$1, 34, 2, 741);
+    			add_location(h3, file$1, 28, 2, 433);
     			div.className = "card";
-    			add_location(div, file$1, 26, 0, 500);
-
-    			dispose = [
-    				listen(button0, "click", ctx.toggleControls),
-    				listen(button1, "click", ctx.onDelete)
-    			];
+    			add_location(div, file$1, 24, 0, 376);
     		},
 
     		l: function claim(nodes) {
@@ -493,17 +380,10 @@ var app = (function () {
     			append(h1, t0);
     			append(h1, t1);
     			append(h1, t2);
-    			append(h1, t3);
-    			append(h1, button0);
-    			if_block0.m(button0, null);
-    			append(h1, t4);
-    			append(h1, button1);
-    			append(div, t6);
+    			append(div, t3);
     			append(div, h3);
-    			append(h3, t7);
-    			append(h3, t8);
-    			append(div, t9);
-    			if (if_block1) if_block1.m(div, null);
+    			append(h3, t4);
+    			append(h3, t5);
     		},
 
     		p: function update(changed, ctx) {
@@ -515,30 +395,8 @@ var app = (function () {
     				set_data(t2, ctx.country);
     			}
 
-    			if (current_block_type !== (current_block_type = select_block_type(ctx))) {
-    				if_block0.d(1);
-    				if_block0 = current_block_type(ctx);
-    				if (if_block0) {
-    					if_block0.c();
-    					if_block0.m(button0, null);
-    				}
-    			}
-
     			if (changed.points) {
-    				set_data(t8, ctx.points);
-    			}
-
-    			if (ctx.showControls) {
-    				if (if_block1) {
-    					if_block1.p(changed, ctx);
-    				} else {
-    					if_block1 = create_if_block(ctx);
-    					if_block1.c();
-    					if_block1.m(div, null);
-    				}
-    			} else if (if_block1) {
-    				if_block1.d(1);
-    				if_block1 = null;
+    				set_data(t5, ctx.points);
     			}
     		},
 
@@ -549,34 +407,18 @@ var app = (function () {
     			if (detaching) {
     				detach(div);
     			}
-
-    			if_block0.d();
-    			if (if_block1) if_block1.d();
-    			run_all(dispose);
     		}
     	};
     }
 
     function instance($$self, $$props, $$invalidate) {
-    	const dispatch = createEventDispatcher();
 
       let { country, points, flag } = $$props;
-      let showControls = false;
-
-      const addPoint = () => { const $$result = (points += 1); $$invalidate('points', points); return $$result; };
-      const removePoint = () => { const $$result = (points -= 1); $$invalidate('points', points); return $$result; };
-      const toggleControls = () => { const $$result = (showControls = !showControls); $$invalidate('showControls', showControls); return $$result; };
-       const onDelete = () => dispatch("removeplayer", country);
 
     	const writable_props = ['country', 'points', 'flag'];
     	Object.keys($$props).forEach(key => {
     		if (!writable_props.includes(key) && !key.startsWith('$$')) console.warn(`<Player> was created with unknown prop '${key}'`);
     	});
-
-    	function input_input_handler() {
-    		points = to_number(this.value);
-    		$$invalidate('points', points);
-    	}
 
     	$$self.$set = $$props => {
     		if ('country' in $$props) $$invalidate('country', country = $$props.country);
@@ -584,17 +426,7 @@ var app = (function () {
     		if ('flag' in $$props) $$invalidate('flag', flag = $$props.flag);
     	};
 
-    	return {
-    		country,
-    		points,
-    		flag,
-    		showControls,
-    		addPoint,
-    		removePoint,
-    		toggleControls,
-    		onDelete,
-    		input_input_handler
-    	};
+    	return { country, points, flag };
     }
 
     class Player extends SvelteComponentDev {
@@ -759,6 +591,239 @@ var app = (function () {
         {id:2, country:'Sweden', country_code: 'SE', points: {'Norway' : 1, 'Denmark' : 12}},
         {id:3, country:'Denmark', country_code: 'DK', points: {'Sweden' : 1, 'Norway' : 12}}
        ];
+
+    /* src/PointsTable.svelte generated by Svelte v3.4.4 */
+
+    const file$3 = "src/PointsTable.svelte";
+
+    function get_each_context_1(ctx, list, i) {
+    	const child_ctx = Object.create(ctx);
+    	child_ctx.cell = list[i];
+    	return child_ctx;
+    }
+
+    function get_each_context(ctx, list, i) {
+    	const child_ctx = Object.create(ctx);
+    	child_ctx.row = list[i];
+    	return child_ctx;
+    }
+
+    // (27:4) {#each Object.values(row) as cell}
+    function create_each_block_1(ctx) {
+    	var td, t_value = ctx.cell, t;
+
+    	return {
+    		c: function create() {
+    			td = element("td");
+    			t = text(t_value);
+    			td.className = "svelte-194uaoo";
+    			add_location(td, file$3, 27, 5, 461);
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert(target, td, anchor);
+    			append(td, t);
+    		},
+
+    		p: function update(changed, ctx) {
+    			if ((changed.tableData) && t_value !== (t_value = ctx.cell)) {
+    				set_data(t, t_value);
+    			}
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach(td);
+    			}
+    		}
+    	};
+    }
+
+    // (25:2) {#each Object.values(tableData) as row}
+    function create_each_block(ctx) {
+    	var tr, t;
+
+    	var each_value_1 = Object.values(ctx.row);
+
+    	var each_blocks = [];
+
+    	for (var i = 0; i < each_value_1.length; i += 1) {
+    		each_blocks[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
+    	}
+
+    	return {
+    		c: function create() {
+    			tr = element("tr");
+
+    			for (var i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			t = space();
+    			add_location(tr, file$3, 25, 3, 412);
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert(target, tr, anchor);
+
+    			for (var i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(tr, null);
+    			}
+
+    			append(tr, t);
+    		},
+
+    		p: function update(changed, ctx) {
+    			if (changed.tableData) {
+    				each_value_1 = Object.values(ctx.row);
+
+    				for (var i = 0; i < each_value_1.length; i += 1) {
+    					const child_ctx = get_each_context_1(ctx, each_value_1, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(changed, child_ctx);
+    					} else {
+    						each_blocks[i] = create_each_block_1(child_ctx);
+    						each_blocks[i].c();
+    						each_blocks[i].m(tr, t);
+    					}
+    				}
+
+    				for (; i < each_blocks.length; i += 1) {
+    					each_blocks[i].d(1);
+    				}
+    				each_blocks.length = each_value_1.length;
+    			}
+    		},
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach(tr);
+    			}
+
+    			destroy_each(each_blocks, detaching);
+    		}
+    	};
+    }
+
+    function create_fragment$3(ctx) {
+    	var table, thead, t, tbody;
+
+    	var each_value = Object.values(ctx.tableData);
+
+    	var each_blocks = [];
+
+    	for (var i = 0; i < each_value.length; i += 1) {
+    		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+    	}
+
+    	return {
+    		c: function create() {
+    			table = element("table");
+    			thead = element("thead");
+    			t = space();
+    			tbody = element("tbody");
+
+    			for (var i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+    			add_location(thead, file$3, 16, 1, 222);
+    			add_location(tbody, file$3, 23, 1, 359);
+    			table.className = "svelte-194uaoo";
+    			add_location(table, file$3, 15, 0, 213);
+    		},
+
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			insert(target, table, anchor);
+    			append(table, thead);
+    			append(table, t);
+    			append(table, tbody);
+
+    			for (var i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(tbody, null);
+    			}
+    		},
+
+    		p: function update(changed, ctx) {
+    			if (changed.tableData) {
+    				each_value = Object.values(ctx.tableData);
+
+    				for (var i = 0; i < each_value.length; i += 1) {
+    					const child_ctx = get_each_context(ctx, each_value, i);
+
+    					if (each_blocks[i]) {
+    						each_blocks[i].p(changed, child_ctx);
+    					} else {
+    						each_blocks[i] = create_each_block(child_ctx);
+    						each_blocks[i].c();
+    						each_blocks[i].m(tbody, null);
+    					}
+    				}
+
+    				for (; i < each_blocks.length; i += 1) {
+    					each_blocks[i].d(1);
+    				}
+    				each_blocks.length = each_value.length;
+    			}
+    		},
+
+    		i: noop,
+    		o: noop,
+
+    		d: function destroy(detaching) {
+    			if (detaching) {
+    				detach(table);
+    			}
+
+    			destroy_each(each_blocks, detaching);
+    		}
+    	};
+    }
+
+    function instance$2($$self, $$props, $$invalidate) {
+    	let { tableData = [
+    			{
+    				vitae : "dolorem",
+    				lectus : "ipsum",
+    				quisquam : "quia"
+    			},
+    			{
+    				vitae : "amet",
+    				lectus : "consectetur",
+    				quisquam : "adipisci"
+    			}
+    		] } = $$props;
+
+    	const writable_props = ['tableData'];
+    	Object.keys($$props).forEach(key => {
+    		if (!writable_props.includes(key) && !key.startsWith('$$')) console.warn(`<PointsTable> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$set = $$props => {
+    		if ('tableData' in $$props) $$invalidate('tableData', tableData = $$props.tableData);
+    	};
+
+    	return { tableData };
+    }
+
+    class PointsTable extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$2, create_fragment$3, safe_not_equal, ["tableData"]);
+    	}
+
+    	get tableData() {
+    		throw new Error("<PointsTable>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set tableData(value) {
+    		throw new Error("<PointsTable>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+    }
 
     var data = {
       AC: {
@@ -2342,18 +2407,72 @@ var app = (function () {
 
     var countryFlagEmoji_cjs = index;
 
+    /**
+     * Create a `Writable` store that allows both updating and reading by subscription.
+     * @param {*=}value initial value
+     * @param {StartStopNotifier=}start start and stop notifications for subscriptions
+     */
+    function writable(value, start = noop) {
+        let stop;
+        const subscribers = [];
+        function set(new_value) {
+            if (safe_not_equal(value, new_value)) {
+                value = new_value;
+                if (!stop) {
+                    return; // not ready
+                }
+                subscribers.forEach((s) => s[1]());
+                subscribers.forEach((s) => s[0](value));
+            }
+        }
+        function update(fn) {
+            set(fn(value));
+        }
+        function subscribe(run, invalidate = noop) {
+            const subscriber = [run, invalidate];
+            subscribers.push(subscriber);
+            if (subscribers.length === 1) {
+                stop = start(set) || noop;
+            }
+            run(value);
+            return () => {
+                const index = subscribers.indexOf(subscriber);
+                if (index !== -1) {
+                    subscribers.splice(index, 1);
+                }
+                if (subscribers.length === 0) {
+                    stop();
+                }
+            };
+        }
+        return { set, update, subscribe };
+    }
+
+    let studentsArray = writable([
+        {
+          "Rank" : 1,
+          "Name" : "Norway",
+          "Points" : 14
+        },
+        {
+          "Rank" : 2,
+          "Name" : "Sweden",
+          "Points" : 13
+        },
+      ]);
+
     /* src/App.svelte generated by Svelte v3.4.4 */
 
-    const file$3 = "src/App.svelte";
+    const file$4 = "src/App.svelte";
 
-    function get_each_context(ctx, list, i) {
+    function get_each_context$1(ctx, list, i) {
     	const child_ctx = Object.create(ctx);
     	child_ctx.player = list[i];
     	return child_ctx;
     }
 
-    // (25:2) {:else}
-    function create_else_block$1(ctx) {
+    // (28:2) {:else}
+    function create_else_block(ctx) {
     	var each_1_anchor, current;
 
     	var each_value = ctx.players;
@@ -2361,7 +2480,7 @@ var app = (function () {
     	var each_blocks = [];
 
     	for (var i = 0; i < each_value.length; i += 1) {
-    		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+    		each_blocks[i] = create_each_block$1(get_each_context$1(ctx, each_value, i));
     	}
 
     	function outro_block(i, detaching, local) {
@@ -2400,13 +2519,13 @@ var app = (function () {
     				each_value = ctx.players;
 
     				for (var i = 0; i < each_value.length; i += 1) {
-    					const child_ctx = get_each_context(ctx, each_value, i);
+    					const child_ctx = get_each_context$1(ctx, each_value, i);
 
     					if (each_blocks[i]) {
     						each_blocks[i].p(changed, child_ctx);
     						each_blocks[i].i(1);
     					} else {
-    						each_blocks[i] = create_each_block(child_ctx);
+    						each_blocks[i] = create_each_block$1(child_ctx);
     						each_blocks[i].c();
     						each_blocks[i].i(1);
     						each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
@@ -2443,15 +2562,15 @@ var app = (function () {
     	};
     }
 
-    // (23:2) {#if players.length === 0}
-    function create_if_block$1(ctx) {
+    // (26:2) {#if players.length === 0}
+    function create_if_block(ctx) {
     	var p;
 
     	return {
     		c: function create() {
     			p = element("p");
     			p.textContent = "No Players";
-    			add_location(p, file$3, 23, 4, 573);
+    			add_location(p, file$4, 26, 4, 726);
     		},
 
     		m: function mount(target, anchor) {
@@ -2470,8 +2589,8 @@ var app = (function () {
     	};
     }
 
-    // (26:4) {#each players as player}
-    function create_each_block(ctx) {
+    // (29:4) {#each players as player}
+    function create_each_block$1(ctx) {
     	var current;
 
     	var player = new Player({
@@ -2519,17 +2638,19 @@ var app = (function () {
     	};
     }
 
-    function create_fragment$3(ctx) {
-    	var t0, div, t1, current_block_type_index, if_block, current;
+    function create_fragment$4(ctx) {
+    	var t0, t1, div, current_block_type_index, if_block, t2, current;
 
     	var navbar = new Navbar({ $$inline: true });
 
-    	var addplayer = new AddPlayer({ $$inline: true });
-    	addplayer.$on("addplayer", ctx.addPlayer);
+    	var pointstable = new PointsTable({
+    		props: { tableData: ctx.$studentsArray },
+    		$$inline: true
+    	});
 
     	var if_block_creators = [
-    		create_if_block$1,
-    		create_else_block$1
+    		create_if_block,
+    		create_else_block
     	];
 
     	var if_blocks = [];
@@ -2542,16 +2663,21 @@ var app = (function () {
     	current_block_type_index = select_block_type(ctx);
     	if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
 
+    	var addplayer = new AddPlayer({ $$inline: true });
+    	addplayer.$on("addplayer", ctx.addPlayer);
+
     	return {
     		c: function create() {
     			navbar.$$.fragment.c();
     			t0 = space();
-    			div = element("div");
-    			addplayer.$$.fragment.c();
+    			pointstable.$$.fragment.c();
     			t1 = space();
+    			div = element("div");
     			if_block.c();
+    			t2 = space();
+    			addplayer.$$.fragment.c();
     			div.className = "container";
-    			add_location(div, file$3, 20, 0, 475);
+    			add_location(div, file$4, 24, 0, 669);
     		},
 
     		l: function claim(nodes) {
@@ -2561,14 +2687,20 @@ var app = (function () {
     		m: function mount(target, anchor) {
     			mount_component(navbar, target, anchor);
     			insert(target, t0, anchor);
+    			mount_component(pointstable, target, anchor);
+    			insert(target, t1, anchor);
     			insert(target, div, anchor);
-    			mount_component(addplayer, div, null);
-    			append(div, t1);
     			if_blocks[current_block_type_index].m(div, null);
+    			insert(target, t2, anchor);
+    			mount_component(addplayer, target, anchor);
     			current = true;
     		},
 
     		p: function update(changed, ctx) {
+    			var pointstable_changes = {};
+    			if (changed.$studentsArray) pointstable_changes.tableData = ctx.$studentsArray;
+    			pointstable.$set(pointstable_changes);
+
     			var previous_block_index = current_block_type_index;
     			current_block_type_index = select_block_type(ctx);
     			if (current_block_type_index === previous_block_index) {
@@ -2596,16 +2728,20 @@ var app = (function () {
     			if (current) return;
     			navbar.$$.fragment.i(local);
 
-    			addplayer.$$.fragment.i(local);
+    			pointstable.$$.fragment.i(local);
 
     			if (if_block) if_block.i();
+
+    			addplayer.$$.fragment.i(local);
+
     			current = true;
     		},
 
     		o: function outro(local) {
     			navbar.$$.fragment.o(local);
-    			addplayer.$$.fragment.o(local);
+    			pointstable.$$.fragment.o(local);
     			if (if_block) if_block.o();
+    			addplayer.$$.fragment.o(local);
     			current = false;
     		},
 
@@ -2614,37 +2750,52 @@ var app = (function () {
 
     			if (detaching) {
     				detach(t0);
+    			}
+
+    			pointstable.$destroy(detaching);
+
+    			if (detaching) {
+    				detach(t1);
     				detach(div);
     			}
 
-    			addplayer.$destroy();
-
     			if_blocks[current_block_type_index].d();
+
+    			if (detaching) {
+    				detach(t2);
+    			}
+
+    			addplayer.$destroy(detaching);
     		}
     	};
     }
 
-    function instance$2($$self) {
+    function instance$3($$self, $$props, $$invalidate) {
+    	let $studentsArray;
+
+    	validate_store(studentsArray, 'studentsArray');
+    	subscribe($$self, studentsArray, $$value => { $studentsArray = $$value; $$invalidate('$studentsArray', $studentsArray); });
+
     	
 
       let players =  points;
-      console.log(players);
+      let slicedArray = Object.values(studentsArray);
+      console.log("slicedarray", slicedArray);
 
        const addPlayer = e => {
          const newPlayer = e.detail;
       //   players = [...players, newPlayer];
-      console.log(newPlayer);
       };
 
       console.log(countryFlagEmoji_cjs.data);
 
-    	return { players, addPlayer };
+    	return { players, addPlayer, $studentsArray };
     }
 
     class App extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$2, create_fragment$3, safe_not_equal, []);
+    		init(this, options, instance$3, create_fragment$4, safe_not_equal, []);
     	}
     }
 
