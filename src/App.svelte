@@ -3,23 +3,26 @@
   import Player from "./Player.svelte";
   import AddPlayer from "./AddPlayer.svelte";
   import points from "../voting/points";
+  import PointsTable from "./PointsTable.svelte";
   import countryFlagEmoji from "country-flag-emoji";
+  import { studentsArray } from '../voting/points-store';
 
   let players =  points;
-  console.log(players);
+  let slicedArray = Object.values(studentsArray);
+  console.log("slicedarray", slicedArray);
 
    const addPlayer = e => {
      const newPlayer = e.detail;
   //   players = [...players, newPlayer];
-  console.log(newPlayer);
   };
 
   console.log(countryFlagEmoji.data);
 </script>
 
+
 <Navbar />
+<PointsTable tableData={$studentsArray}/>
 <div class="container">
-  <AddPlayer on:addplayer={addPlayer} />
   {#if players.length === 0}
     <p>No Players</p>
   {:else}
@@ -31,3 +34,5 @@
     {/each}
   {/if}
 </div>
+<AddPlayer on:addplayer={addPlayer} />
+
