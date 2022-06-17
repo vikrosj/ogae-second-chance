@@ -39,6 +39,8 @@
       }
 
   }
+
+  console.log(participants, pointFrom, countryFlagEmoji.data);
 </script>
 
 <Navbar />
