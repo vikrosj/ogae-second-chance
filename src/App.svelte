@@ -1,38 +1,46 @@
 <script>
-  import Navbar from "./Navbar.svelte";
-  import Player from "./Player.svelte";
-  import AddPlayer from "./AddPlayer.svelte";
-  import points from "../voting/points";
-  import PointsTable from "./PointsTable.svelte";
+	import { receivedPointsArray } from './../voting/received-points.js';
+	import { get } from 'svelte/store';
+	import Navbar from "./Navbar.svelte";
   import countryFlagEmoji from "country-flag-emoji";
-  import { studentsArray } from '../voting/points-store';
+  import lodash from "lodash";
 
-  let players =  points;
-  let slicedArray = Object.values(studentsArray);
-  console.log("slicedarray", slicedArray);
 
-   const addPlayer = e => {
-     const newPlayer = e.detail;
-  //   players = [...players, newPlayer];
-  };
+  const receivedPoints = get(receivedPointsArray);
+  let country_code = [];
+  let name = [];
+  let points = [];
 
-  console.log(countryFlagEmoji.data);
+  function updatePoints(array) {
+		array.forEach(el => {
+		el.value ++;
+		country_code.push(el.CountryCode);
+    name.push(el.Name);
+    points.push(lodash.sum(el.Points));
+	})
+	}
+
+  updatePoints(receivedPoints);
 </script>
 
-
 <Navbar />
-<PointsTable tableData={$studentsArray}/>
-<div class="container">
-  {#if players.length === 0}
-    <p>No Players</p>
-  {:else}
-    {#each players as player}
-      <Player
-        flag={countryFlagEmoji.get(player.country_code).emoji}
-        country={player.country}
-        points={player.id}/>
+<table>
+  <tbody>
+    {#each country_code as c, i}
+    <tr>
+      <td>{countryFlagEmoji.get(country_code[i]).emoji}</td>
+      <td>{name[i]}</td>
+      <td>{points[i]}</td>
+    </tr>
     {/each}
-  {/if}
-</div>
-<AddPlayer on:addplayer={addPlayer} />
+  </tbody>
+</table>
+<!-- <AddPlayer on:addplayer={addPlayer} /> -->
 
+<style>
+  table, td {
+    border: 1px solid;
+    border-collapse: collapse;
+    margin: 10px;
+  }
+</style>
