@@ -15,5 +15,10 @@ export let participantsArray = writable([
         "Name" : "Denmark",
         "Points" : [],
         "CountryCode" : "DK"
+    },
+    {
+        "Name" : "United Kingdom",
+        "Points" : [],
+        "CountryCode" : "GB"
     }
   ]);
