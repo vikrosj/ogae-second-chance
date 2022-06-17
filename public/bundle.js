@@ -19180,11 +19180,11 @@ var app = (function () {
     			t3 = space();
     			td2 = element("td");
     			t4 = text(t4_value);
-    			td0.className = "svelte-3lnqwo";
+    			td0.className = "svelte-1fioovf";
     			add_location(td0, file$1, 50, 10, 1291);
-    			td1.className = "svelte-3lnqwo";
+    			td1.className = "svelte-1fioovf";
     			add_location(td1, file$1, 51, 10, 1356);
-    			td2.className = "svelte-3lnqwo";
+    			td2.className = "svelte-1fioovf";
     			add_location(td2, file$1, 52, 10, 1385);
     			add_location(tr, file$1, 49, 8, 1276);
     		},
@@ -19216,7 +19216,7 @@ var app = (function () {
     }
 
     function create_fragment$1(ctx) {
-    	var t0, div3, div0, table, tbody, t1, div1, p, t2, t3, t4, div2, button, current, dispose;
+    	var t0, div2, div0, table, tbody, t1, div1, p, t2, t3, t4, div3, button, current, dispose;
 
     	var navbar = new Navbar({ $$inline: true });
 
@@ -19232,7 +19232,7 @@ var app = (function () {
     		c: function create() {
     			navbar.$$.fragment.c();
     			t0 = space();
-    			div3 = element("div");
+    			div2 = element("div");
     			div0 = element("div");
     			table = element("table");
     			tbody = element("tbody");
@@ -19247,22 +19247,22 @@ var app = (function () {
     			t2 = text("Points from ");
     			t3 = text(ctx.givesPoints);
     			t4 = space();
-    			div2 = element("div");
+    			div3 = element("div");
     			button = element("button");
     			button.textContent = "Give points";
     			add_location(tbody, file$1, 47, 6, 1223);
-    			table.className = "svelte-3lnqwo";
+    			table.className = "svelte-1fioovf";
     			add_location(table, file$1, 46, 4, 1209);
-    			div0.className = "card svelte-3lnqwo";
+    			div0.className = "card";
     			add_location(div0, file$1, 45, 2, 1186);
-    			add_location(p, file$1, 59, 4, 1498);
-    			div1.className = "card svelte-3lnqwo";
+    			add_location(p, file$1, 59, 4, 1505);
+    			div1.className = "points-text svelte-1fioovf";
     			add_location(div1, file$1, 58, 2, 1475);
-    			add_location(button, file$1, 62, 4, 1565);
-    			div2.className = "card svelte-3lnqwo";
-    			add_location(div2, file$1, 61, 2, 1542);
-    			div3.className = "container svelte-3lnqwo";
-    			add_location(div3, file$1, 44, 0, 1160);
+    			div2.className = "container svelte-1fioovf";
+    			add_location(div2, file$1, 44, 0, 1160);
+    			add_location(button, file$1, 63, 2, 1579);
+    			div3.className = "div-down svelte-1fioovf";
+    			add_location(div3, file$1, 62, 0, 1554);
     			dispose = listen(button, "click", ctx.click_handler);
     		},
 
@@ -19273,8 +19273,8 @@ var app = (function () {
     		m: function mount(target, anchor) {
     			mount_component(navbar, target, anchor);
     			insert(target, t0, anchor);
-    			insert(target, div3, anchor);
-    			append(div3, div0);
+    			insert(target, div2, anchor);
+    			append(div2, div0);
     			append(div0, table);
     			append(table, tbody);
 
@@ -19282,14 +19282,14 @@ var app = (function () {
     				each_blocks[i].m(tbody, null);
     			}
 
-    			append(div3, t1);
-    			append(div3, div1);
+    			append(div2, t1);
+    			append(div2, div1);
     			append(div1, p);
     			append(p, t2);
     			append(p, t3);
-    			append(div3, t4);
-    			append(div3, div2);
-    			append(div2, button);
+    			insert(target, t4, anchor);
+    			insert(target, div3, anchor);
+    			append(div3, button);
     			current = true;
     		},
 
@@ -19337,10 +19337,15 @@ var app = (function () {
 
     			if (detaching) {
     				detach(t0);
-    				detach(div3);
+    				detach(div2);
     			}
 
     			destroy_each(each_blocks, detaching);
+
+    			if (detaching) {
+    				detach(t4);
+    				detach(div3);
+    			}
 
     			dispose();
     		}

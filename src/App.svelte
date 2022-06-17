@@ -1,5 +1,5 @@
 <script>
-	import { receivedPointsArray } from './../voting/received-points.js';
+	import { participantsArray } from './../voting/participants';
   import { pointFromArray } from './../voting/points-from';
 	import { get } from 'svelte/store';
 	import Navbar from "./Navbar.svelte";
@@ -7,7 +7,7 @@
   import lodash from "lodash";
 
 
-  const receivedPoints = get(receivedPointsArray);
+  const participants = get(participantsArray);
   const pointFrom = get(pointFromArray);
   const votingLength = [...Array(pointFrom.length).keys()];
   let country_code = [];
@@ -15,7 +15,7 @@
   let points = [];
   let givesPoints = ""
 
-  function updatePoints(array) {
+  function initalizeParticipants(array) {
 		array.forEach(el => {
 		el.value ++;
 		country_code.push(el.CountryCode);
@@ -23,6 +23,8 @@
     points.push(lodash.sum(el.Points));
 	})
 	}
+
+  initalizeParticipants(participants);
 
   function andThePointsGoTo(array, index){
       const row = array[index];
@@ -37,8 +39,6 @@
       }
 
   }
-  
-  updatePoints(receivedPoints);
 </script>
 
 <Navbar />
@@ -56,14 +56,13 @@
       </tbody>
     </table>
   </div>
-  <div class="card">
+  <div class="points-text">
     <p>Points from {givesPoints}</p>
   </div>
-  <div class="card">
-    <button on:click={() => andThePointsGoTo(pointFrom, votingLength.pop()) }>Give points</button>
-  </div>
 </div>
-
+<div class="div-down">
+  <button on:click={() => andThePointsGoTo(pointFrom, votingLength.pop()) }>Give points</button>
+</div>
 
 <style>
   table, td {
@@ -77,12 +76,15 @@
   column-gap: 20px;
 }
 
-.card {
-  background-color: white;
-  border: 2px solid white;
-  padding: 10px;
-  margin: 0 0 1em 0;
+.points-text {
+  position: absolute;
+  right: 300px;
+  bottom: 50px;;
 }
 
-
+.div-down {
+  position: absolute;
+  right: 100px;
+  bottom: 50px;;
+}
 </style>
