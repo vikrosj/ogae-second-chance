@@ -1,5 +1,6 @@
 <script>
 	import { receivedPointsArray } from './../voting/received-points.js';
+  import { pointFromArray } from './../voting/points-from';
 	import { get } from 'svelte/store';
 	import Navbar from "./Navbar.svelte";
   import countryFlagEmoji from "country-flag-emoji";
@@ -7,6 +8,7 @@
 
 
   const receivedPoints = get(receivedPointsArray);
+  const pointFrom = get(pointFromArray);
   let country_code = [];
   let name = [];
   let points = [];
@@ -20,10 +22,26 @@
 	})
 	}
 
+  function andThePointsGoTo(array){
+    array.forEach(el => {
+      el.value ++;
+      console.log("Points from", el.Name);
+      const object = el.Points
+      for (const property in object) {
+        console.log(`${object[property]} points go to ${property}`);
+
+        points[name.indexOf(property)] = points[name.indexOf(property)] + object[property];
+        console.log(points);
+      }
+    
+    })
+  }
   updatePoints(receivedPoints);
+  andThePointsGoTo(pointFrom);
 </script>
 
 <Navbar />
+<!-- <button on:click={() => receivedPointsArray.set({}) }>Set c to 4</button> -->
 <table>
   <tbody>
     {#each country_code as c, i}
