@@ -20,6 +20,7 @@
     "start:dev": "sirv public --dev"
   },
   "dependencies": {
-    "country-flag-emoji": "^1.0.3"
+    "country-flag-emoji": "^1.0.3",
+    "lodash": "^4.17.21"
   }
 }
