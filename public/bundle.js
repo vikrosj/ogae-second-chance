@@ -307,25 +307,35 @@ var app = (function () {
             "Name" : "Denmark",
             "Points" : [],
             "CountryCode" : "DK"
+        },
+        {
+            "Name" : "United Kingdom",
+            "Points" : [],
+            "CountryCode" : "GB"
         }
       ]);
 
     let pointFromArray = writable([
       {
         "Name" : "Norway",
-        "Points" : {"Sweden": 1, "Denmark": 10},
+        "Points" : {"Sweden": 1, "Denmark": 10, "United Kingdom" : 8},
         "CountryCode" : "NO"
       },
 
       {
         "Name" : "Sweden",
-        "Points" :  {"Norway": 1, "Denmark": 10},
+        "Points" :  {"Norway": 1, "Denmark": 10, "United Kingdom" : 8},
         "CountryCode": "SE"
       },
       {
         "Name" : "Denmark",
-        "Points" :  {"Norway": 10, "Sweden": 10},
+        "Points" :  {"Norway": 10, "Sweden": 10, "United Kingdom" : 8},
         "CountryCode": "DK"
+      },
+      {
+        "Name" : "United Kingdom",
+        "Points" :  {"Norway": 10, "Sweden": 6, "Denmark" : 8},
+        "CountryCode" : "GB"
       }
     ]
 
@@ -19165,7 +19175,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (49:8) {#each country_code as c, i}
+    // (51:8) {#each country_code as c, i}
     function create_each_block(ctx) {
     	var tr, td0, t0_value = countryFlagEmoji_cjs.get(ctx.country_code[ctx.i]).emoji, t0, t1, td1, t2_value = ctx.name[ctx.i], t2, t3, td2, t4_value = ctx.points[ctx.i], t4;
 
@@ -19181,12 +19191,12 @@ var app = (function () {
     			td2 = element("td");
     			t4 = text(t4_value);
     			td0.className = "svelte-1fioovf";
-    			add_location(td0, file$1, 50, 10, 1291);
+    			add_location(td0, file$1, 52, 10, 1355);
     			td1.className = "svelte-1fioovf";
-    			add_location(td1, file$1, 51, 10, 1356);
+    			add_location(td1, file$1, 53, 10, 1420);
     			td2.className = "svelte-1fioovf";
-    			add_location(td2, file$1, 52, 10, 1385);
-    			add_location(tr, file$1, 49, 8, 1276);
+    			add_location(td2, file$1, 54, 10, 1449);
+    			add_location(tr, file$1, 51, 8, 1340);
     		},
 
     		m: function mount(target, anchor) {
@@ -19250,19 +19260,19 @@ var app = (function () {
     			div3 = element("div");
     			button = element("button");
     			button.textContent = "Give points";
-    			add_location(tbody, file$1, 47, 6, 1223);
+    			add_location(tbody, file$1, 49, 6, 1287);
     			table.className = "svelte-1fioovf";
-    			add_location(table, file$1, 46, 4, 1209);
+    			add_location(table, file$1, 48, 4, 1273);
     			div0.className = "card";
-    			add_location(div0, file$1, 45, 2, 1186);
-    			add_location(p, file$1, 59, 4, 1505);
+    			add_location(div0, file$1, 47, 2, 1250);
+    			add_location(p, file$1, 61, 4, 1569);
     			div1.className = "points-text svelte-1fioovf";
-    			add_location(div1, file$1, 58, 2, 1475);
+    			add_location(div1, file$1, 60, 2, 1539);
     			div2.className = "container svelte-1fioovf";
-    			add_location(div2, file$1, 44, 0, 1160);
-    			add_location(button, file$1, 63, 2, 1579);
+    			add_location(div2, file$1, 46, 0, 1224);
+    			add_location(button, file$1, 65, 2, 1643);
     			div3.className = "div-down svelte-1fioovf";
-    			add_location(div3, file$1, 62, 0, 1554);
+    			add_location(div3, file$1, 64, 0, 1618);
     			dispose = listen(button, "click", ctx.click_handler);
     		},
 
@@ -19388,6 +19398,8 @@ var app = (function () {
           }
 
       }
+
+      console.log(participants, pointFrom, countryFlagEmoji_cjs.data);
 
     	function click_handler() {
     		return andThePointsGoTo(pointFrom, votingLength.pop());
