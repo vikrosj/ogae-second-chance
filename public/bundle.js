@@ -49,6 +49,10 @@ var app = (function () {
     function space() {
         return text(' ');
     }
+    function listen(node, event, handler, options) {
+        node.addEventListener(event, handler, options);
+        return () => node.removeEventListener(event, handler, options);
+    }
     function children(element) {
         return Array.from(element.childNodes);
     }
@@ -288,7 +292,7 @@ var app = (function () {
         return value;
     }
 
-    let receivedPointsArray = writable([
+    let participantsArray = writable([
         {
             "Name" : "Norway",
             "Points" : [],
@@ -338,7 +342,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			h1 = element("h1");
-    			h1.textContent = "Player Scoreboard";
+    			h1.textContent = "ESC Voting";
     			add_location(h1, file, 1, 2, 34);
     			div.className = "navbar bg-primary";
     			add_location(div, file, 0, 0, 0);
@@ -19161,9 +19165,9 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (47:4) {#each country_code as c, i}
+    // (49:8) {#each country_code as c, i}
     function create_each_block(ctx) {
-    	var tr, td0, t0_value = countryFlagEmoji_cjs.get(ctx.country_code[ctx.i]).emoji, t0, t1, td1, t2_value = ctx.name[ctx.i], t2, t3, td2, t4_value = ctx.points[ctx.i], t4, t5;
+    	var tr, td0, t0_value = countryFlagEmoji_cjs.get(ctx.country_code[ctx.i]).emoji, t0, t1, td1, t2_value = ctx.name[ctx.i], t2, t3, td2, t4_value = ctx.points[ctx.i], t4;
 
     	return {
     		c: function create() {
@@ -19176,14 +19180,13 @@ var app = (function () {
     			t3 = space();
     			td2 = element("td");
     			t4 = text(t4_value);
-    			t5 = space();
-    			td0.className = "svelte-194uaoo";
-    			add_location(td0, file$1, 48, 6, 1280);
-    			td1.className = "svelte-194uaoo";
-    			add_location(td1, file$1, 49, 6, 1341);
-    			td2.className = "svelte-194uaoo";
-    			add_location(td2, file$1, 50, 6, 1366);
-    			add_location(tr, file$1, 47, 4, 1269);
+    			td0.className = "svelte-3lnqwo";
+    			add_location(td0, file$1, 50, 10, 1291);
+    			td1.className = "svelte-3lnqwo";
+    			add_location(td1, file$1, 51, 10, 1356);
+    			td2.className = "svelte-3lnqwo";
+    			add_location(td2, file$1, 52, 10, 1385);
+    			add_location(tr, file$1, 49, 8, 1276);
     		},
 
     		m: function mount(target, anchor) {
@@ -19196,7 +19199,6 @@ var app = (function () {
     			append(tr, t3);
     			append(tr, td2);
     			append(td2, t4);
-    			append(tr, t5);
     		},
 
     		p: function update(changed, ctx) {
@@ -19214,7 +19216,7 @@ var app = (function () {
     }
 
     function create_fragment$1(ctx) {
-    	var t, table, tbody, current;
+    	var t0, div3, div0, table, tbody, t1, div1, p, t2, t3, t4, div2, button, current, dispose;
 
     	var navbar = new Navbar({ $$inline: true });
 
@@ -19229,16 +19231,39 @@ var app = (function () {
     	return {
     		c: function create() {
     			navbar.$$.fragment.c();
-    			t = space();
+    			t0 = space();
+    			div3 = element("div");
+    			div0 = element("div");
     			table = element("table");
     			tbody = element("tbody");
 
     			for (var i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
-    			add_location(tbody, file$1, 45, 2, 1224);
-    			table.className = "svelte-194uaoo";
-    			add_location(table, file$1, 44, 0, 1214);
+
+    			t1 = space();
+    			div1 = element("div");
+    			p = element("p");
+    			t2 = text("Points from ");
+    			t3 = text(ctx.givesPoints);
+    			t4 = space();
+    			div2 = element("div");
+    			button = element("button");
+    			button.textContent = "Give points";
+    			add_location(tbody, file$1, 47, 6, 1223);
+    			table.className = "svelte-3lnqwo";
+    			add_location(table, file$1, 46, 4, 1209);
+    			div0.className = "card svelte-3lnqwo";
+    			add_location(div0, file$1, 45, 2, 1186);
+    			add_location(p, file$1, 59, 4, 1498);
+    			div1.className = "card svelte-3lnqwo";
+    			add_location(div1, file$1, 58, 2, 1475);
+    			add_location(button, file$1, 62, 4, 1565);
+    			div2.className = "card svelte-3lnqwo";
+    			add_location(div2, file$1, 61, 2, 1542);
+    			div3.className = "container svelte-3lnqwo";
+    			add_location(div3, file$1, 44, 0, 1160);
+    			dispose = listen(button, "click", ctx.click_handler);
     		},
 
     		l: function claim(nodes) {
@@ -19247,14 +19272,24 @@ var app = (function () {
 
     		m: function mount(target, anchor) {
     			mount_component(navbar, target, anchor);
-    			insert(target, t, anchor);
-    			insert(target, table, anchor);
+    			insert(target, t0, anchor);
+    			insert(target, div3, anchor);
+    			append(div3, div0);
+    			append(div0, table);
     			append(table, tbody);
 
     			for (var i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].m(tbody, null);
     			}
 
+    			append(div3, t1);
+    			append(div3, div1);
+    			append(div1, p);
+    			append(p, t2);
+    			append(p, t3);
+    			append(div3, t4);
+    			append(div3, div2);
+    			append(div2, button);
     			current = true;
     		},
 
@@ -19279,6 +19314,10 @@ var app = (function () {
     				}
     				each_blocks.length = each_value.length;
     			}
+
+    			if (!current || changed.givesPoints) {
+    				set_data(t3, ctx.givesPoints);
+    			}
     		},
 
     		i: function intro(local) {
@@ -19297,11 +19336,13 @@ var app = (function () {
     			navbar.$destroy(detaching);
 
     			if (detaching) {
-    				detach(t);
-    				detach(table);
+    				detach(t0);
+    				detach(div3);
     			}
 
     			destroy_each(each_blocks, detaching);
+
+    			dispose();
     		}
     	};
     }
@@ -19310,13 +19351,15 @@ var app = (function () {
     	
 
 
-      const receivedPoints = get(receivedPointsArray);
+      const participants = get(participantsArray);
       const pointFrom = get(pointFromArray);
+      const votingLength = [...Array(pointFrom.length).keys()];
       let country_code = [];
       let name = [];
       let points = [];
+      let givesPoints = "";
 
-      function updatePoints(array) {
+      function initalizeParticipants(array) {
     		array.forEach(el => {
     		el.value ++;
     		country_code.push(el.CountryCode);
@@ -19325,24 +19368,36 @@ var app = (function () {
     	});
     	}
 
-      function andThePointsGoTo(array){
-        array.forEach(el => {
-          el.value ++;
-          console.log("Points from", el.Name);
-          const object = el.Points;
+      initalizeParticipants(participants);
+
+      function andThePointsGoTo(array, index){
+          const row = array[index];
+
+          $$invalidate('givesPoints', givesPoints = row.Name);
+          const object = row.Points;
           for (const property in object) {
             console.log(`${object[property]} points go to ${property}`);
 
             points[name.indexOf(property)] = points[name.indexOf(property)] + object[property]; $$invalidate('points', points);
             console.log(points);
           }
-        
-        });
-      }
-      updatePoints(receivedPoints);
-      andThePointsGoTo(pointFrom);
 
-    	return { country_code, name, points };
+      }
+
+    	function click_handler() {
+    		return andThePointsGoTo(pointFrom, votingLength.pop());
+    	}
+
+    	return {
+    		pointFrom,
+    		votingLength,
+    		country_code,
+    		name,
+    		points,
+    		givesPoints,
+    		andThePointsGoTo,
+    		click_handler
+    	};
     }
 
     class App extends SvelteComponentDev {
