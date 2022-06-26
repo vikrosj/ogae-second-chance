@@ -70,7 +70,7 @@
   </div>
   <div class="column">
     <table>
-        {#each range(31, 39) as i}
+        {#each range(31, 40) as i}
         <tr>
           <td> {countryFlagEmoji.get(country_code[i]).emoji}</td>
           <td>{name[i]}</td>
@@ -97,8 +97,8 @@
 }
 
 .row {
-  margin-left:-5px;
-  margin-right:-5px;
+  margin-left:5px;
+  margin-right:5px;
 }
   
 .column {
@@ -117,7 +117,7 @@
 table {
   border-collapse: collapse;
   border-spacing: 0;
-  width: 100%;
+  width: 80%;
   border: 1px solid black;
   background-color: white;
 }
