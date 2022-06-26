@@ -4,77 +4,130 @@
 	import { get } from 'svelte/store';
 	import Navbar from "./Navbar.svelte";
   import countryFlagEmoji from "country-flag-emoji";
-  import lodash from "lodash";
-
+  import range from "../utils/range";
+  import initalizeParticipants from "../utils/initalizeParticipants"
 
   const participants = get(participantsArray);
   const pointFrom = get(pointFromArray);
   const votingLength = [...Array(pointFrom.length).keys()];
+
   let country_code = [];
   let name = [];
   let points = new Array(pointFrom.length).fill(0);
   let givesPoints = ""
 
-  function initalizeParticipants(array) {
-		array.forEach(el => {
-		el.value ++;
-		country_code.push(el.Alpha2Code);
-    name.push(el.Name);
-	})
-	}
 
-  initalizeParticipants(participants);
+  initalizeParticipants(participants, country_code, name);
 
-  function andThePointsGoTo(array, index){
-      const row = array[index];
+  function andThePointsGoTo(array, index, name){
+    const row = array[index];
+    const object = row.Points
 
-      givesPoints = row.Name;
-      const object = row.Points
-      for (const property in object) {
-        console.log(`${object[property]} points go to ${property}`);
+    givesPoints = row.Name
+    for (const property in object) {
+      console.log(`${object[property]} points go to ${property}`);
 
-        points[name.indexOf(property)] = points[name.indexOf(property)] + object[property];
-        console.log(points);
-      }
+      points[name.indexOf(property)] = points[name.indexOf(property)] + object[property];
+    }
 
-  }
-
-  console.log(participants, pointFrom, countryFlagEmoji.data);
+}
 </script>
 
 <Navbar />
-<div class="container">
-  <div class="card">
+<div class="row">
+  <div class="column">
     <table>
-      <tbody>
-        {#each country_code as c, i}
+        {#each Array.from({length: 10}, (_, i) => i + 1)  as i}
         <tr>
-          <td>{countryFlagEmoji.get(country_code[i]).emoji}</td>
+          <td> {countryFlagEmoji.get(country_code[i]).emoji}</td>
           <td>{name[i]}</td>
           <td>{points[i]}</td>
         </tr>
         {/each}
-      </tbody>
     </table>
   </div>
-  <div class="points-text">
-    <p>Points from {givesPoints}</p>
+  <div class="column">
+    <table>
+        {#each range(11, 20) as i}
+        <tr>
+          <td> {countryFlagEmoji.get(country_code[i]).emoji}</td>
+          <td>{name[i]}</td>
+          <td>{points[i]}</td>
+        </tr>
+        {/each}
+    </table>
+  </div>
+  <div class="column">
+    <table>
+        {#each range(21, 30) as i}
+        <tr>
+          <td> {countryFlagEmoji.get(country_code[i]).emoji}</td>
+          <td>{name[i]}</td>
+          <td>{points[i]}</td>
+        </tr>
+        {/each}
+    </table>
+  </div>
+  <div class="column">
+    <table>
+        {#each range(31, 39) as i}
+        <tr>
+          <td> {countryFlagEmoji.get(country_code[i]).emoji}</td>
+          <td>{name[i]}</td>
+          <td>{points[i]}</td>
+        </tr>
+        {/each}
+    </table>
   </div>
 </div>
-<div class="div-down">
-  <button on:click={() => andThePointsGoTo(pointFrom, votingLength.pop()) }>Give points</button>
+
+<div class="points-text">
+  <p>Points from {givesPoints}</p>
 </div>
 
-<style>
-  table, td {
-    border: 1px solid;
-    border-collapse: collapse;
-    margin: 10px;
-  }
+<div class="div-down">
+  <button on:click={() => andThePointsGoTo(pointFrom, votingLength.pop(), name)}>Give points</button>
+</div>
 
-  .container {
-  column-width: 250px;
-  column-gap: 20px;
+
+<style>
+  
+  * {
+  box-sizing: border-box;
+}
+
+.row {
+  margin-left:-5px;
+  margin-right:-5px;
+}
+  
+.column {
+  float: left;
+  width: 20%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+td {
+  text-align: left;
+  padding: 16px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
 }
 
 .points-text {
