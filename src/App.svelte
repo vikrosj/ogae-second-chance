@@ -12,15 +12,14 @@
   const votingLength = [...Array(pointFrom.length).keys()];
   let country_code = [];
   let name = [];
-  let points = [];
+  let points = new Array(pointFrom.length).fill(0);
   let givesPoints = ""
 
   function initalizeParticipants(array) {
 		array.forEach(el => {
 		el.value ++;
-		country_code.push(el.CountryCode);
+		country_code.push(el.Alpha2Code);
     name.push(el.Name);
-    points.push(lodash.sum(el.Points));
 	})
 	}
 
