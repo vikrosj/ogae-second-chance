@@ -159,6 +159,6 @@ export let participantsArray = writable([
     },
     {
         Name: "United Kingdom",
-        Alpha2Code: "UK"
+        Alpha2Code: "GB"
     },
   ]);
