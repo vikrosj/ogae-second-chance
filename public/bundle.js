@@ -2342,13 +2342,13 @@ var app = (function () {
     			t3 = space();
     			td2 = element("td");
     			t4 = text(t4_value);
-    			td0.className = "svelte-ao9y8a";
+    			td0.className = "svelte-cctczq";
     			add_location(td0, file$1, 41, 10, 1200);
-    			td1.className = "svelte-ao9y8a";
+    			td1.className = "svelte-cctczq";
     			add_location(td1, file$1, 42, 10, 1266);
-    			td2.className = "svelte-ao9y8a";
+    			td2.className = "svelte-cctczq";
     			add_location(td2, file$1, 43, 10, 1295);
-    			tr.className = "svelte-ao9y8a";
+    			tr.className = "svelte-cctczq";
     			add_location(tr, file$1, 40, 8, 1185);
     		},
 
@@ -2393,13 +2393,13 @@ var app = (function () {
     			t3 = space();
     			td2 = element("td");
     			t4 = text(t4_value);
-    			td0.className = "svelte-ao9y8a";
+    			td0.className = "svelte-cctczq";
     			add_location(td0, file$1, 52, 10, 1461);
-    			td1.className = "svelte-ao9y8a";
+    			td1.className = "svelte-cctczq";
     			add_location(td1, file$1, 53, 10, 1527);
-    			td2.className = "svelte-ao9y8a";
+    			td2.className = "svelte-cctczq";
     			add_location(td2, file$1, 54, 10, 1556);
-    			tr.className = "svelte-ao9y8a";
+    			tr.className = "svelte-cctczq";
     			add_location(tr, file$1, 51, 8, 1446);
     		},
 
@@ -2444,13 +2444,13 @@ var app = (function () {
     			t3 = space();
     			td2 = element("td");
     			t4 = text(t4_value);
-    			td0.className = "svelte-ao9y8a";
+    			td0.className = "svelte-cctczq";
     			add_location(td0, file$1, 63, 10, 1722);
-    			td1.className = "svelte-ao9y8a";
+    			td1.className = "svelte-cctczq";
     			add_location(td1, file$1, 64, 10, 1788);
-    			td2.className = "svelte-ao9y8a";
+    			td2.className = "svelte-cctczq";
     			add_location(td2, file$1, 65, 10, 1817);
-    			tr.className = "svelte-ao9y8a";
+    			tr.className = "svelte-cctczq";
     			add_location(tr, file$1, 62, 8, 1707);
     		},
 
@@ -2495,13 +2495,13 @@ var app = (function () {
     			t3 = space();
     			td2 = element("td");
     			t4 = text(t4_value);
-    			td0.className = "svelte-ao9y8a";
+    			td0.className = "svelte-cctczq";
     			add_location(td0, file$1, 74, 10, 1983);
-    			td1.className = "svelte-ao9y8a";
+    			td1.className = "svelte-cctczq";
     			add_location(td1, file$1, 75, 10, 2049);
-    			td2.className = "svelte-ao9y8a";
+    			td2.className = "svelte-cctczq";
     			add_location(td2, file$1, 76, 10, 2078);
-    			tr.className = "svelte-ao9y8a";
+    			tr.className = "svelte-cctczq";
     			add_location(tr, file$1, 73, 8, 1968);
     		},
 
@@ -2613,31 +2613,31 @@ var app = (function () {
     			div6 = element("div");
     			button = element("button");
     			button.textContent = "Give points";
-    			table0.className = "svelte-ao9y8a";
+    			table0.className = "svelte-cctczq";
     			add_location(table0, file$1, 38, 4, 1105);
-    			div0.className = "column svelte-ao9y8a";
+    			div0.className = "column svelte-cctczq";
     			add_location(div0, file$1, 37, 2, 1080);
-    			table1.className = "svelte-ao9y8a";
+    			table1.className = "svelte-cctczq";
     			add_location(table1, file$1, 49, 4, 1395);
-    			div1.className = "column svelte-ao9y8a";
+    			div1.className = "column svelte-cctczq";
     			add_location(div1, file$1, 48, 2, 1370);
-    			table2.className = "svelte-ao9y8a";
+    			table2.className = "svelte-cctczq";
     			add_location(table2, file$1, 60, 4, 1656);
-    			div2.className = "column svelte-ao9y8a";
+    			div2.className = "column svelte-cctczq";
     			add_location(div2, file$1, 59, 2, 1631);
-    			table3.className = "svelte-ao9y8a";
+    			table3.className = "svelte-cctczq";
     			add_location(table3, file$1, 71, 4, 1917);
-    			div3.className = "column svelte-ao9y8a";
+    			div3.className = "column svelte-cctczq";
     			add_location(div3, file$1, 70, 2, 1892);
-    			div4.className = "row svelte-ao9y8a";
+    			div4.className = "row svelte-cctczq";
     			add_location(div4, file$1, 36, 0, 1060);
-    			p.className = "svelte-ao9y8a";
+    			p.className = "svelte-cctczq";
     			add_location(p, file$1, 84, 2, 2187);
-    			div5.className = "points-text svelte-ao9y8a";
+    			div5.className = "points-text svelte-cctczq";
     			add_location(div5, file$1, 83, 0, 2159);
-    			button.className = "svelte-ao9y8a";
+    			button.className = "svelte-cctczq";
     			add_location(button, file$1, 88, 2, 2253);
-    			div6.className = "div-down svelte-ao9y8a";
+    			div6.className = "div-down svelte-cctczq";
     			add_location(div6, file$1, 87, 0, 2228);
     			dispose = listen(button, "click", ctx.click_handler);
     		},
