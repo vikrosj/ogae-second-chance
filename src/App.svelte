@@ -96,6 +96,10 @@
   box-sizing: border-box;
 }
 
+  :global(body){
+    background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+  }
+
 .row {
   margin-left:10px;
   margin-right:-20px;
@@ -104,6 +108,7 @@
 .column {
   float: left;
   width: 20%;
+  margin-top: 100px;
   margin-right: -75px;
 }
 
