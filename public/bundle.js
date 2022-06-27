@@ -2342,14 +2342,14 @@ var app = (function () {
     			t3 = space();
     			td2 = element("td");
     			t4 = text(t4_value);
-    			td0.className = "svelte-15au45l";
-    			add_location(td0, file$1, 41, 10, 1200);
-    			td1.className = "svelte-15au45l";
-    			add_location(td1, file$1, 42, 10, 1266);
-    			td2.className = "svelte-15au45l";
-    			add_location(td2, file$1, 43, 10, 1295);
-    			tr.className = "svelte-15au45l";
-    			add_location(tr, file$1, 40, 8, 1185);
+    			td0.className = "svelte-98adwb";
+    			add_location(td0, file$1, 41, 10, 1227);
+    			td1.className = "svelte-98adwb";
+    			add_location(td1, file$1, 42, 10, 1293);
+    			td2.className = "svelte-98adwb";
+    			add_location(td2, file$1, 43, 10, 1322);
+    			tr.className = "svelte-98adwb";
+    			add_location(tr, file$1, 40, 8, 1212);
     		},
 
     		m: function mount(target, anchor) {
@@ -2393,14 +2393,14 @@ var app = (function () {
     			t3 = space();
     			td2 = element("td");
     			t4 = text(t4_value);
-    			td0.className = "svelte-15au45l";
-    			add_location(td0, file$1, 52, 10, 1461);
-    			td1.className = "svelte-15au45l";
-    			add_location(td1, file$1, 53, 10, 1527);
-    			td2.className = "svelte-15au45l";
-    			add_location(td2, file$1, 54, 10, 1556);
-    			tr.className = "svelte-15au45l";
-    			add_location(tr, file$1, 51, 8, 1446);
+    			td0.className = "svelte-98adwb";
+    			add_location(td0, file$1, 52, 10, 1488);
+    			td1.className = "svelte-98adwb";
+    			add_location(td1, file$1, 53, 10, 1554);
+    			td2.className = "svelte-98adwb";
+    			add_location(td2, file$1, 54, 10, 1583);
+    			tr.className = "svelte-98adwb";
+    			add_location(tr, file$1, 51, 8, 1473);
     		},
 
     		m: function mount(target, anchor) {
@@ -2444,14 +2444,14 @@ var app = (function () {
     			t3 = space();
     			td2 = element("td");
     			t4 = text(t4_value);
-    			td0.className = "svelte-15au45l";
-    			add_location(td0, file$1, 63, 10, 1722);
-    			td1.className = "svelte-15au45l";
-    			add_location(td1, file$1, 64, 10, 1788);
-    			td2.className = "svelte-15au45l";
-    			add_location(td2, file$1, 65, 10, 1817);
-    			tr.className = "svelte-15au45l";
-    			add_location(tr, file$1, 62, 8, 1707);
+    			td0.className = "svelte-98adwb";
+    			add_location(td0, file$1, 63, 10, 1749);
+    			td1.className = "svelte-98adwb";
+    			add_location(td1, file$1, 64, 10, 1815);
+    			td2.className = "svelte-98adwb";
+    			add_location(td2, file$1, 65, 10, 1844);
+    			tr.className = "svelte-98adwb";
+    			add_location(tr, file$1, 62, 8, 1734);
     		},
 
     		m: function mount(target, anchor) {
@@ -2495,14 +2495,14 @@ var app = (function () {
     			t3 = space();
     			td2 = element("td");
     			t4 = text(t4_value);
-    			td0.className = "svelte-15au45l";
-    			add_location(td0, file$1, 74, 10, 1983);
-    			td1.className = "svelte-15au45l";
-    			add_location(td1, file$1, 75, 10, 2049);
-    			td2.className = "svelte-15au45l";
-    			add_location(td2, file$1, 76, 10, 2078);
-    			tr.className = "svelte-15au45l";
-    			add_location(tr, file$1, 73, 8, 1968);
+    			td0.className = "svelte-98adwb";
+    			add_location(td0, file$1, 74, 10, 2010);
+    			td1.className = "svelte-98adwb";
+    			add_location(td1, file$1, 75, 10, 2076);
+    			td2.className = "svelte-98adwb";
+    			add_location(td2, file$1, 76, 10, 2105);
+    			tr.className = "svelte-98adwb";
+    			add_location(tr, file$1, 73, 8, 1995);
     		},
 
     		m: function mount(target, anchor) {
@@ -2532,7 +2532,7 @@ var app = (function () {
     }
 
     function create_fragment$1(ctx) {
-    	var t0, div4, div0, table0, t1, div1, table1, t2, div2, table2, t3, div3, table3, t4, div5, p, t5, t6, t7, div6, button, current, dispose;
+    	var t0, div4, div0, table0, t1, div1, table1, t2, div2, table2, t3, div3, table3, t4, div5, p, t5, t6, div6, button, current, dispose;
 
     	var navbar = new Navbar({ $$inline: true });
 
@@ -2607,38 +2607,37 @@ var app = (function () {
     			t4 = space();
     			div5 = element("div");
     			p = element("p");
-    			t5 = text("Points from ");
-    			t6 = text(ctx.givesPoints);
-    			t7 = space();
+    			t5 = text(ctx.givesPoints);
+    			t6 = space();
     			div6 = element("div");
     			button = element("button");
     			button.textContent = "Give points";
-    			table0.className = "svelte-15au45l";
-    			add_location(table0, file$1, 38, 4, 1105);
-    			div0.className = "column svelte-15au45l";
-    			add_location(div0, file$1, 37, 2, 1080);
-    			table1.className = "svelte-15au45l";
-    			add_location(table1, file$1, 49, 4, 1395);
-    			div1.className = "column svelte-15au45l";
-    			add_location(div1, file$1, 48, 2, 1370);
-    			table2.className = "svelte-15au45l";
-    			add_location(table2, file$1, 60, 4, 1656);
-    			div2.className = "column svelte-15au45l";
-    			add_location(div2, file$1, 59, 2, 1631);
-    			table3.className = "svelte-15au45l";
-    			add_location(table3, file$1, 71, 4, 1917);
-    			div3.className = "column svelte-15au45l";
-    			add_location(div3, file$1, 70, 2, 1892);
-    			div4.className = "row svelte-15au45l";
-    			add_location(div4, file$1, 36, 0, 1060);
-    			p.className = "svelte-15au45l";
-    			add_location(p, file$1, 84, 2, 2187);
-    			div5.className = "points-text svelte-15au45l";
-    			add_location(div5, file$1, 83, 0, 2159);
-    			button.className = "svelte-15au45l";
-    			add_location(button, file$1, 88, 2, 2253);
-    			div6.className = "div-down svelte-15au45l";
-    			add_location(div6, file$1, 87, 0, 2228);
+    			table0.className = "svelte-98adwb";
+    			add_location(table0, file$1, 38, 4, 1132);
+    			div0.className = "column svelte-98adwb";
+    			add_location(div0, file$1, 37, 2, 1107);
+    			table1.className = "svelte-98adwb";
+    			add_location(table1, file$1, 49, 4, 1422);
+    			div1.className = "column svelte-98adwb";
+    			add_location(div1, file$1, 48, 2, 1397);
+    			table2.className = "svelte-98adwb";
+    			add_location(table2, file$1, 60, 4, 1683);
+    			div2.className = "column svelte-98adwb";
+    			add_location(div2, file$1, 59, 2, 1658);
+    			table3.className = "svelte-98adwb";
+    			add_location(table3, file$1, 71, 4, 1944);
+    			div3.className = "column svelte-98adwb";
+    			add_location(div3, file$1, 70, 2, 1919);
+    			div4.className = "row svelte-98adwb";
+    			add_location(div4, file$1, 36, 0, 1087);
+    			p.className = "svelte-98adwb";
+    			add_location(p, file$1, 84, 2, 2214);
+    			div5.className = "points-text svelte-98adwb";
+    			add_location(div5, file$1, 83, 0, 2186);
+    			button.className = "svelte-98adwb";
+    			add_location(button, file$1, 88, 2, 2268);
+    			div6.className = "div-down svelte-98adwb";
+    			add_location(div6, file$1, 87, 0, 2243);
     			dispose = listen(button, "click", ctx.click_handler);
     		},
 
@@ -2685,8 +2684,7 @@ var app = (function () {
     			insert(target, div5, anchor);
     			append(div5, p);
     			append(p, t5);
-    			append(p, t6);
-    			insert(target, t7, anchor);
+    			insert(target, t6, anchor);
     			insert(target, div6, anchor);
     			append(div6, button);
     			current = true;
@@ -2778,7 +2776,7 @@ var app = (function () {
     			}
 
     			if (!current || changed.givesPoints) {
-    				set_data(t6, ctx.givesPoints);
+    				set_data(t5, ctx.givesPoints);
     			}
     		},
 
@@ -2813,7 +2811,7 @@ var app = (function () {
     			if (detaching) {
     				detach(t4);
     				detach(div5);
-    				detach(t7);
+    				detach(t6);
     				detach(div6);
     			}
 
@@ -2836,7 +2834,7 @@ var app = (function () {
       let country_code = [];
       let name = [];
       let points = new Array(pointFrom.length).fill(0);
-      let givesPoints = "";
+      let givesPoints = ""; 
 
 
       initalizeParticipants(participants, country_code, name);
@@ -2845,7 +2843,7 @@ var app = (function () {
         const row = array[index];
         const object = row.Points;
 
-        $$invalidate('givesPoints', givesPoints = row.Name);
+        $$invalidate('givesPoints', givesPoints = "Points from ".concat(row.Name));
         for (const property in object) {
           console.log(`${object[property]} points go to ${property}`);
 
