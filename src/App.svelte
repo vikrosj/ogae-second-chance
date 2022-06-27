@@ -14,16 +14,16 @@
   let country_code = [];
   let name = [];
   let points = new Array(pointFrom.length).fill(0);
-  let givesPoints = ""
+  let givesPoints = ""; 
 
 
   initalizeParticipants(participants, country_code, name);
 
   function andThePointsGoTo(array, index, name){
     const row = array[index];
-    const object = row.Points
+    const object = row.Points;
 
-    givesPoints = row.Name
+    givesPoints = "Points from ".concat(row.Name);
     for (const property in object) {
       console.log(`${object[property]} points go to ${property}`);
 
@@ -82,7 +82,7 @@
 </div>
 
 <div class="points-text">
-  <p>Points from {givesPoints}</p>
+  <p>{givesPoints}</p>
 </div>
 
 <div class="div-down">
@@ -97,14 +97,14 @@
 }
 
 .row {
-  margin-left:5px;
-  margin-right:5px;
+  margin-left:10px;
+  margin-right:-20px;
 }
   
 .column {
   float: left;
   width: 20%;
-  padding: 5px;
+  margin-right: -75px;
 }
 
 /* Clearfix (clear floats) */
