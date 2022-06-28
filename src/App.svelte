@@ -91,10 +91,6 @@
 
 
 <style>
-  
-  /* * {
-  box-sizing: border-box;
-} */
 
   :global(body){
     background: rgb(63,94,251);
@@ -137,10 +133,6 @@ td {
   font-size: large;
   font-weight: bold;
 }
-
-/* .table-color {
-
-} */
 
 .points-text {
   position: absolute;
