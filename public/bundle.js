@@ -2344,11 +2344,11 @@ var app = (function () {
     			t3 = space();
     			td2 = element("td");
     			t4 = text(t4_value);
-    			td0.className = "svelte-hdete1";
+    			td0.className = "svelte-13lxdna";
     			add_location(td0, file$1, 41, 10, 1227);
-    			td1.className = "svelte-hdete1";
+    			td1.className = "svelte-13lxdna";
     			add_location(td1, file$1, 42, 10, 1293);
-    			td2.className = "svelte-hdete1";
+    			td2.className = "svelte-13lxdna";
     			add_location(td2, file$1, 43, 10, 1322);
     			add_location(tr, file$1, 40, 8, 1212);
     		},
@@ -2394,11 +2394,11 @@ var app = (function () {
     			t3 = space();
     			td2 = element("td");
     			t4 = text(t4_value);
-    			td0.className = "svelte-hdete1";
+    			td0.className = "svelte-13lxdna";
     			add_location(td0, file$1, 52, 10, 1488);
-    			td1.className = "svelte-hdete1";
+    			td1.className = "svelte-13lxdna";
     			add_location(td1, file$1, 53, 10, 1554);
-    			td2.className = "svelte-hdete1";
+    			td2.className = "svelte-13lxdna";
     			add_location(td2, file$1, 54, 10, 1583);
     			add_location(tr, file$1, 51, 8, 1473);
     		},
@@ -2444,11 +2444,11 @@ var app = (function () {
     			t3 = space();
     			td2 = element("td");
     			t4 = text(t4_value);
-    			td0.className = "svelte-hdete1";
+    			td0.className = "svelte-13lxdna";
     			add_location(td0, file$1, 63, 10, 1749);
-    			td1.className = "svelte-hdete1";
+    			td1.className = "svelte-13lxdna";
     			add_location(td1, file$1, 64, 10, 1815);
-    			td2.className = "svelte-hdete1";
+    			td2.className = "svelte-13lxdna";
     			add_location(td2, file$1, 65, 10, 1844);
     			add_location(tr, file$1, 62, 8, 1734);
     		},
@@ -2494,11 +2494,11 @@ var app = (function () {
     			t3 = space();
     			td2 = element("td");
     			t4 = text(t4_value);
-    			td0.className = "svelte-hdete1";
+    			td0.className = "svelte-13lxdna";
     			add_location(td0, file$1, 74, 10, 2010);
-    			td1.className = "svelte-hdete1";
+    			td1.className = "svelte-13lxdna";
     			add_location(td1, file$1, 75, 10, 2076);
-    			td2.className = "svelte-hdete1";
+    			td2.className = "svelte-13lxdna";
     			add_location(td2, file$1, 76, 10, 2105);
     			add_location(tr, file$1, 73, 8, 1995);
     		},
@@ -2610,29 +2610,29 @@ var app = (function () {
     			div6 = element("div");
     			button = element("button");
     			button.textContent = "Give points";
-    			table0.className = "svelte-hdete1";
+    			table0.className = "svelte-13lxdna";
     			add_location(table0, file$1, 38, 4, 1132);
-    			div0.className = "column svelte-hdete1";
+    			div0.className = "column svelte-13lxdna";
     			add_location(div0, file$1, 37, 2, 1107);
-    			table1.className = "svelte-hdete1";
+    			table1.className = "svelte-13lxdna";
     			add_location(table1, file$1, 49, 4, 1422);
-    			div1.className = "column svelte-hdete1";
+    			div1.className = "column svelte-13lxdna";
     			add_location(div1, file$1, 48, 2, 1397);
-    			table2.className = "svelte-hdete1";
+    			table2.className = "svelte-13lxdna";
     			add_location(table2, file$1, 60, 4, 1683);
-    			div2.className = "column svelte-hdete1";
+    			div2.className = "column svelte-13lxdna";
     			add_location(div2, file$1, 59, 2, 1658);
-    			table3.className = "svelte-hdete1";
+    			table3.className = "svelte-13lxdna";
     			add_location(table3, file$1, 71, 4, 1944);
-    			div3.className = "column svelte-hdete1";
+    			div3.className = "column svelte-13lxdna";
     			add_location(div3, file$1, 70, 2, 1919);
-    			div4.className = "row svelte-hdete1";
+    			div4.className = "row svelte-13lxdna";
     			add_location(div4, file$1, 36, 0, 1087);
     			add_location(p, file$1, 84, 2, 2214);
-    			div5.className = "points-text svelte-hdete1";
+    			div5.className = "points-text svelte-13lxdna";
     			add_location(div5, file$1, 83, 0, 2186);
     			add_location(button, file$1, 88, 2, 2273);
-    			div6.className = "points-button svelte-hdete1";
+    			div6.className = "points-button svelte-13lxdna";
     			add_location(div6, file$1, 87, 0, 2243);
     			dispose = listen(button, "click", ctx.click_handler);
     		},
