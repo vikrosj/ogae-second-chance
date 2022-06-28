@@ -85,24 +85,27 @@
   <p>{givesPoints}</p>
 </div>
 
-<div class="div-down">
+<div class="points-button">
   <button on:click={() => andThePointsGoTo(pointFrom, votingLength.pop(), name)}>Give points</button>
 </div>
 
 
 <style>
   
-  * {
+  /* * {
   box-sizing: border-box;
-}
+} */
 
   :global(body){
-    background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+    background: rgb(63,94,251);
+    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%); 
+    background-size: auto;
   }
 
 .row {
   margin-left:10px;
   margin-right:-20px;
+  margin-top: -100px;
 }
   
 .column {
@@ -124,29 +127,30 @@ table {
   border-spacing: 0;
   width: 80%;
   border: 1px solid black;
-  background-color: white;
 }
 
 td {
   text-align: left;
-  border: 1px solid black;
-  background-color: white;
+  border: 3px solid black;
   padding: 10px;
+  background: rgb(238,174,202);
+  font-size: large;
+  font-weight: bold;
 }
 
-tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
+/* .table-color {
+
+} */
 
 .points-text {
   position: absolute;
-  right: 300px;
+  right: 200px;
   bottom: 50px;;
 }
 
-.div-down {
+.points-button {
   position: absolute;
   right: 100px;
-  bottom: 50px;;
+  bottom: 50px;
 }
 </style>
