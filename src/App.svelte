@@ -87,7 +87,6 @@
 
 <div class="points-button">
   <button on:click={() => onClick()}>Give points</button>
-
 </div>
 
 
