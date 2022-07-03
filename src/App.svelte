@@ -3,21 +3,33 @@
   import { pointFromArray } from './../voting/points-from';
 	import { get } from 'svelte/store';
 	import Navbar from "./Navbar.svelte";
-  import { countryFlagEmoji }from "country-flag-emoji";
+  import countryFlagEmoji from "country-flag-emoji";
   import range from "../utils/range";
-  import { andThePointsGoTo } from "../utils/pointsHandler"
+  import {andThePointsGoTo} from "../utils/pointsHandler"
+  import compare from "../utils/compare"
 
   const pointFrom = get(pointFromArray);
   const votingLength = [...Array(pointFrom.length).keys()];
+  console.log(pointFrom);
 
 
   let participantsStore = [];
-  
+
   participantsArray.subscribe((data) => {
 
     participantsStore = data;
 
-  })
+  });
+  
+  function sortUpdate(){
+    participantsStore.sort(compare);
+  }
+
+  function onClick(){
+    andThePointsGoTo(pointFrom, votingLength.pop())
+    sortUpdate()
+    
+  }
 
 </script>
 
@@ -74,7 +86,8 @@
 </div>
 
 <div class="points-button">
-  <button on:click={() => andThePointsGoTo(pointFrom, votingLength.pop())}>Give points</button>
+  <button on:click={() => onClick()}>Give points</button>
+
 </div>
 
 
