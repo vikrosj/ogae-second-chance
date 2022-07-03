@@ -295,163 +295,203 @@ var app = (function () {
     let participantsArray = writable([
         {
             Name : "Albania",
-            Alpha2Code: "AL"
+            Alpha2Code: "AL",
+            Points: 0
         },
         {
             Name: "Armenia",
-            Alpha2Code: "AM"
+            Alpha2Code: "AM",
+            Points: 0
         },
         {
             Name: "Australia",
-            Alpha2Code: "AU"
+            Alpha2Code: "AU",
+            Points: 0
         },
         {
             Name: "Austria",
-            Alpha2Code: "AT"
+            Alpha2Code: "AT",
+            Points: 0
         },
         {
             Name: "Azerbaijan",
-            Alpha2Code: "AZ"
+            Alpha2Code: "AZ",
+            Points: 0
         },
         {
             Name: "Belgium",
-            Alpha2Code: "BE"
+            Alpha2Code: "BE",
+            Points: 0
         },
         {
             Name: "Bulgaria",
-            Alpha2Code: "BG"
+            Alpha2Code: "BG",
+            Points: 0
         },
         {
             Name: "Croatia",
-            Alpha2Code: "HR"
+            Alpha2Code: "HR",
+            Points: 0
         },
         {
             Name: "Cyprus",
-            Alpha2Code: "CY"
+            Alpha2Code: "CY",
+            Points: 0
         },
         {
             Name: "Czech Republic",
-            Alpha2Code: "CZ"
+            Alpha2Code: "CZ",
+            Points: 0
         },
         {
             Name: "Denmark",
-            Alpha2Code: "DK"
+            Alpha2Code: "DK",
+            Points: 0
         },
         {
             Name: "Estonia",
-            Alpha2Code: "EE"
+            Alpha2Code: "EE",
+            Points: 0
         },
         {
             Name: "Finland",
-            Alpha2Code: "FI"
+            Alpha2Code: "FI",
+            Points: 0
         },
         {
             Name: "France",
-            Alpha2Code: "FR"
+            Alpha2Code: "FR",
+            Points: 0
         },
         {
             Name: "Germany",
-            Alpha2Code: "DE"
+            Alpha2Code: "DE",
+            Points: 0
         },
         {
             Name: "Georgia",
-            Alpha2Code: "GE"
+            Alpha2Code: "GE",
+            Points: 0
         },
         {
             Name: "Greece",
-            Alpha2Code: "GR"
+            Alpha2Code: "GR",
+            Points: 0
         },
         {
             Name: "Iceland",
-            Alpha2Code: "IS"
+            Alpha2Code: "IS",
+            Points: 0
         },
         {
             Name: "Ireland",
-            Alpha2Code: "IE"
+            Alpha2Code: "IE",
+            Points: 0
         },
         {
             Name: "Israel",
-            Alpha2Code: "IL"
+            Alpha2Code: "IL",
+            Points: 0
         },
         {
             Name: "Italy",
-            Alpha2Code: "IT"
+            Alpha2Code: "IT",
+            Points: 0
         },
         {
             Name: "Latvia",
-            Alpha2Code: "LV"
+            Alpha2Code: "LV",
+            Points: 0
         },
         {
             Name: "Lithuania",
-            Alpha2Code: "LT"
+            Alpha2Code: "LT",
+            Points: 0
         },
         {
             Name: "Malta",
-            Alpha2Code: "MT"
+            Alpha2Code: "MT",
+            Points: 0
         },
         {
             Name: "Moldova",
-            Alpha2Code: "MD"
+            Alpha2Code: "MD",
+            Points: 0
         },
         {
             Name: "Montenegro",
-            Alpha2Code: "ME"
+            Alpha2Code: "ME",
+            Points: 0
         },
         {
             Name: "The Netherlands",
-            Alpha2Code: "NL"
+            Alpha2Code: "NL",
+            Points: 0
         },
         {
             Name: "North Macedonia",
-            Alpha2Code: "MK"
+            Alpha2Code: "MK",
+            Points: 0
         },
         {
             Name: "Norway",
-            Alpha2Code: "SE"
+            Alpha2Code: "NO",
+            Points: 0
         },
         {
             Name: "Poland",
-            Alpha2Code: "PL"
+            Alpha2Code: "PL",
+            Points: 0
         },
         {
             Name: "Portugal",
-            Alpha2Code: "PT"
+            Alpha2Code: "PT",
+            Points: 0
         },
         {
             Name: "Romania",
-            Alpha2Code: "RO"
+            Alpha2Code: "RO",
+            Points: 0
         },
         {
             Name: "San Marino",
-            Alpha2Code: "SM"
+            Alpha2Code: "SM",
+            Points: 0
         },
         {
             Name: "Serbia",
-            Alpha2Code: "RS"
+            Alpha2Code: "RS",
+            Points: 0
         },
         {
             Name: "Slovenia",
-            Alpha2Code: "SI"
+            Alpha2Code: "SI",
+            Points: 0
         },
         {
             Name: "Spain",
-            Alpha2Code: "ES"
+            Alpha2Code: "ES",
+            Points: 0
         },
         {
             Name: "Sweden",
-            Alpha2Code: "SE"
+            Alpha2Code: "SE",
+            Points: 0
         },
         {
             Name: "Switzerland",
-            Alpha2Code: "CH"
+            Alpha2Code: "CH",
+            Points: 0
         },
         {
             Name: "Ukraine",
-            Alpha2Code: "UA"
+            Alpha2Code: "UA",
+            Points: 0
         },
         {
             Name: "United Kingdom",
-            Alpha2Code: "GB"
+            Alpha2Code: "GB",
+            Points: 0
         },
       ]);
 
@@ -2293,13 +2333,30 @@ var app = (function () {
         return Array(end - start).fill().map((_, idx) => start + idx)
       }
 
-    function initalizeParticipants(array, country_code, name) {
-    		array.forEach(el => {
-    		el.value ++;
-    		country_code.push(el.Alpha2Code);
-        name.push(el.Name);
-    	});
-    	}
+    function addPoints(pointsTo, pointsValue){
+        participantsArray.update(currentData => {
+          let cp = [...currentData];
+          let specific = cp.find((row) => row.Name == pointsTo);
+
+          specific.Points+= pointsValue;
+          console.log(specific);
+          return cp;
+          });
+      }
+    function andThePointsGoTo(array, index){
+        const row = array[index];
+        const object = row.Points;
+      
+        // givesPoints = "Points from ".concat(row.Name);
+
+        for (const property in object) {
+          
+          console.log(`${object[property]} points go to ${property}`);
+
+          addPoints(property, object[property]);
+
+        }
+    }
 
     /* src/App.svelte generated by Svelte v3.4.4 */
 
@@ -2329,9 +2386,9 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (40:8) {#each Array.from({length: 10}, (_, i) => i + 1)  as i}
+    // (28:8) {#each Array.from({length: 10}, (_, i) => i + 1)  as i}
     function create_each_block_3(ctx) {
-    	var tr, td0, t0_value = countryFlagEmoji_cjs.get(ctx.country_code[ctx.i]).emoji, t0, t1, td1, t2_value = ctx.name[ctx.i], t2, t3, td2, t4_value = ctx.points[ctx.i], t4;
+    	var tr, td0, t0_value = countryFlagEmoji_cjs.get(ctx.participantsStore[ctx.i].Alpha2Code).emoji, t0, t1, td1, t2_value = ctx.participantsStore[ctx.i].Name, t2, t3, td2, t4_value = ctx.participantsStore[ctx.i].Points, t4;
 
     	return {
     		c: function create() {
@@ -2345,12 +2402,12 @@ var app = (function () {
     			td2 = element("td");
     			t4 = text(t4_value);
     			td0.className = "svelte-13lxdna";
-    			add_location(td0, file$1, 41, 10, 1227);
+    			add_location(td0, file$1, 29, 10, 748);
     			td1.className = "svelte-13lxdna";
-    			add_location(td1, file$1, 42, 10, 1293);
+    			add_location(td1, file$1, 30, 10, 830);
     			td2.className = "svelte-13lxdna";
-    			add_location(td2, file$1, 43, 10, 1322);
-    			add_location(tr, file$1, 40, 8, 1212);
+    			add_location(td2, file$1, 31, 10, 877);
+    			add_location(tr, file$1, 28, 8, 733);
     		},
 
     		m: function mount(target, anchor) {
@@ -2366,7 +2423,15 @@ var app = (function () {
     		},
 
     		p: function update(changed, ctx) {
-    			if ((changed.points) && t4_value !== (t4_value = ctx.points[ctx.i])) {
+    			if ((changed.participantsStore) && t0_value !== (t0_value = countryFlagEmoji_cjs.get(ctx.participantsStore[ctx.i].Alpha2Code).emoji)) {
+    				set_data(t0, t0_value);
+    			}
+
+    			if ((changed.participantsStore) && t2_value !== (t2_value = ctx.participantsStore[ctx.i].Name)) {
+    				set_data(t2, t2_value);
+    			}
+
+    			if ((changed.participantsStore) && t4_value !== (t4_value = ctx.participantsStore[ctx.i].Points)) {
     				set_data(t4, t4_value);
     			}
     		},
@@ -2379,9 +2444,9 @@ var app = (function () {
     	};
     }
 
-    // (51:8) {#each range(11, 20) as i}
+    // (39:8) {#each range(11, 20) as i}
     function create_each_block_2(ctx) {
-    	var tr, td0, t0_value = countryFlagEmoji_cjs.get(ctx.country_code[ctx.i]).emoji, t0, t1, td1, t2_value = ctx.name[ctx.i], t2, t3, td2, t4_value = ctx.points[ctx.i], t4;
+    	var tr, td0, t0_value = countryFlagEmoji_cjs.get(ctx.participantsStore[ctx.i].Alpha2Code).emoji, t0, t1, td1, t2_value = ctx.participantsStore[ctx.i].Name, t2, t3, td2, t4_value = ctx.participantsStore[ctx.i].Points, t4;
 
     	return {
     		c: function create() {
@@ -2395,12 +2460,12 @@ var app = (function () {
     			td2 = element("td");
     			t4 = text(t4_value);
     			td0.className = "svelte-13lxdna";
-    			add_location(td0, file$1, 52, 10, 1488);
+    			add_location(td0, file$1, 40, 10, 1061);
     			td1.className = "svelte-13lxdna";
-    			add_location(td1, file$1, 53, 10, 1554);
+    			add_location(td1, file$1, 41, 10, 1143);
     			td2.className = "svelte-13lxdna";
-    			add_location(td2, file$1, 54, 10, 1583);
-    			add_location(tr, file$1, 51, 8, 1473);
+    			add_location(td2, file$1, 42, 10, 1190);
+    			add_location(tr, file$1, 39, 8, 1046);
     		},
 
     		m: function mount(target, anchor) {
@@ -2416,7 +2481,15 @@ var app = (function () {
     		},
 
     		p: function update(changed, ctx) {
-    			if ((changed.points) && t4_value !== (t4_value = ctx.points[ctx.i])) {
+    			if ((changed.participantsStore) && t0_value !== (t0_value = countryFlagEmoji_cjs.get(ctx.participantsStore[ctx.i].Alpha2Code).emoji)) {
+    				set_data(t0, t0_value);
+    			}
+
+    			if ((changed.participantsStore) && t2_value !== (t2_value = ctx.participantsStore[ctx.i].Name)) {
+    				set_data(t2, t2_value);
+    			}
+
+    			if ((changed.participantsStore) && t4_value !== (t4_value = ctx.participantsStore[ctx.i].Points)) {
     				set_data(t4, t4_value);
     			}
     		},
@@ -2429,9 +2502,9 @@ var app = (function () {
     	};
     }
 
-    // (62:8) {#each range(21, 30) as i}
+    // (50:8) {#each range(21, 30) as i}
     function create_each_block_1(ctx) {
-    	var tr, td0, t0_value = countryFlagEmoji_cjs.get(ctx.country_code[ctx.i]).emoji, t0, t1, td1, t2_value = ctx.name[ctx.i], t2, t3, td2, t4_value = ctx.points[ctx.i], t4;
+    	var tr, td0, t0_value = countryFlagEmoji_cjs.get(ctx.participantsStore[ctx.i].Alpha2Code).emoji, t0, t1, td1, t2_value = ctx.participantsStore[ctx.i].Name, t2, t3, td2, t4_value = ctx.participantsStore[ctx.i].Points, t4;
 
     	return {
     		c: function create() {
@@ -2445,12 +2518,12 @@ var app = (function () {
     			td2 = element("td");
     			t4 = text(t4_value);
     			td0.className = "svelte-13lxdna";
-    			add_location(td0, file$1, 63, 10, 1749);
+    			add_location(td0, file$1, 51, 10, 1374);
     			td1.className = "svelte-13lxdna";
-    			add_location(td1, file$1, 64, 10, 1815);
+    			add_location(td1, file$1, 52, 10, 1456);
     			td2.className = "svelte-13lxdna";
-    			add_location(td2, file$1, 65, 10, 1844);
-    			add_location(tr, file$1, 62, 8, 1734);
+    			add_location(td2, file$1, 53, 10, 1503);
+    			add_location(tr, file$1, 50, 8, 1359);
     		},
 
     		m: function mount(target, anchor) {
@@ -2466,7 +2539,15 @@ var app = (function () {
     		},
 
     		p: function update(changed, ctx) {
-    			if ((changed.points) && t4_value !== (t4_value = ctx.points[ctx.i])) {
+    			if ((changed.participantsStore) && t0_value !== (t0_value = countryFlagEmoji_cjs.get(ctx.participantsStore[ctx.i].Alpha2Code).emoji)) {
+    				set_data(t0, t0_value);
+    			}
+
+    			if ((changed.participantsStore) && t2_value !== (t2_value = ctx.participantsStore[ctx.i].Name)) {
+    				set_data(t2, t2_value);
+    			}
+
+    			if ((changed.participantsStore) && t4_value !== (t4_value = ctx.participantsStore[ctx.i].Points)) {
     				set_data(t4, t4_value);
     			}
     		},
@@ -2479,9 +2560,9 @@ var app = (function () {
     	};
     }
 
-    // (73:8) {#each range(31, 40) as i}
+    // (61:8) {#each range(31, 40) as i}
     function create_each_block(ctx) {
-    	var tr, td0, t0_value = countryFlagEmoji_cjs.get(ctx.country_code[ctx.i]).emoji, t0, t1, td1, t2_value = ctx.name[ctx.i], t2, t3, td2, t4_value = ctx.points[ctx.i], t4;
+    	var tr, td0, t0_value = countryFlagEmoji_cjs.get(ctx.participantsStore[ctx.i].Alpha2Code).emoji, t0, t1, td1, t2_value = ctx.participantsStore[ctx.i].Name, t2, t3, td2, t4_value = ctx.participantsStore[ctx.i].Points, t4;
 
     	return {
     		c: function create() {
@@ -2495,12 +2576,12 @@ var app = (function () {
     			td2 = element("td");
     			t4 = text(t4_value);
     			td0.className = "svelte-13lxdna";
-    			add_location(td0, file$1, 74, 10, 2010);
+    			add_location(td0, file$1, 62, 10, 1687);
     			td1.className = "svelte-13lxdna";
-    			add_location(td1, file$1, 75, 10, 2076);
+    			add_location(td1, file$1, 63, 10, 1769);
     			td2.className = "svelte-13lxdna";
-    			add_location(td2, file$1, 76, 10, 2105);
-    			add_location(tr, file$1, 73, 8, 1995);
+    			add_location(td2, file$1, 64, 10, 1816);
+    			add_location(tr, file$1, 61, 8, 1672);
     		},
 
     		m: function mount(target, anchor) {
@@ -2516,7 +2597,15 @@ var app = (function () {
     		},
 
     		p: function update(changed, ctx) {
-    			if ((changed.points) && t4_value !== (t4_value = ctx.points[ctx.i])) {
+    			if ((changed.participantsStore) && t0_value !== (t0_value = countryFlagEmoji_cjs.get(ctx.participantsStore[ctx.i].Alpha2Code).emoji)) {
+    				set_data(t0, t0_value);
+    			}
+
+    			if ((changed.participantsStore) && t2_value !== (t2_value = ctx.participantsStore[ctx.i].Name)) {
+    				set_data(t2, t2_value);
+    			}
+
+    			if ((changed.participantsStore) && t4_value !== (t4_value = ctx.participantsStore[ctx.i].Points)) {
     				set_data(t4, t4_value);
     			}
     		},
@@ -2530,7 +2619,7 @@ var app = (function () {
     }
 
     function create_fragment$1(ctx) {
-    	var t0, div4, div0, table0, t1, div1, table1, t2, div2, table2, t3, div3, table3, t4, div5, p, t5, t6, div6, button, current, dispose;
+    	var t0, div4, div0, table0, t1, div1, table1, t2, div2, table2, t3, div3, table3, t4, div5, p, t5_value = "later", t5, t6, div6, button, current, dispose;
 
     	var navbar = new Navbar({ $$inline: true });
 
@@ -2605,35 +2694,35 @@ var app = (function () {
     			t4 = space();
     			div5 = element("div");
     			p = element("p");
-    			t5 = text(ctx.givesPoints);
+    			t5 = text(t5_value);
     			t6 = space();
     			div6 = element("div");
     			button = element("button");
     			button.textContent = "Give points";
     			table0.className = "svelte-13lxdna";
-    			add_location(table0, file$1, 38, 4, 1132);
+    			add_location(table0, file$1, 26, 4, 653);
     			div0.className = "column svelte-13lxdna";
-    			add_location(div0, file$1, 37, 2, 1107);
+    			add_location(div0, file$1, 25, 2, 628);
     			table1.className = "svelte-13lxdna";
-    			add_location(table1, file$1, 49, 4, 1422);
+    			add_location(table1, file$1, 37, 4, 995);
     			div1.className = "column svelte-13lxdna";
-    			add_location(div1, file$1, 48, 2, 1397);
+    			add_location(div1, file$1, 36, 2, 970);
     			table2.className = "svelte-13lxdna";
-    			add_location(table2, file$1, 60, 4, 1683);
+    			add_location(table2, file$1, 48, 4, 1308);
     			div2.className = "column svelte-13lxdna";
-    			add_location(div2, file$1, 59, 2, 1658);
+    			add_location(div2, file$1, 47, 2, 1283);
     			table3.className = "svelte-13lxdna";
-    			add_location(table3, file$1, 71, 4, 1944);
+    			add_location(table3, file$1, 59, 4, 1621);
     			div3.className = "column svelte-13lxdna";
-    			add_location(div3, file$1, 70, 2, 1919);
+    			add_location(div3, file$1, 58, 2, 1596);
     			div4.className = "row svelte-13lxdna";
-    			add_location(div4, file$1, 36, 0, 1087);
-    			add_location(p, file$1, 84, 2, 2214);
+    			add_location(div4, file$1, 24, 0, 608);
+    			add_location(p, file$1, 72, 2, 1943);
     			div5.className = "points-text svelte-13lxdna";
-    			add_location(div5, file$1, 83, 0, 2186);
-    			add_location(button, file$1, 88, 2, 2273);
+    			add_location(div5, file$1, 71, 0, 1915);
+    			add_location(button, file$1, 76, 2, 1998);
     			div6.className = "points-button svelte-13lxdna";
-    			add_location(div6, file$1, 87, 0, 2243);
+    			add_location(div6, file$1, 75, 0, 1968);
     			dispose = listen(button, "click", ctx.click_handler);
     		},
 
@@ -2687,7 +2776,7 @@ var app = (function () {
     		},
 
     		p: function update(changed, ctx) {
-    			if (changed.points || changed.Array || changed.name || changed.countryFlagEmoji || changed.country_code) {
+    			if (changed.participantsStore || changed.Array || changed.countryFlagEmoji) {
     				each_value_3 = ctx.Array.from({length: 10}, func);
 
     				for (var i = 0; i < each_value_3.length; i += 1) {
@@ -2708,7 +2797,7 @@ var app = (function () {
     				each_blocks_3.length = each_value_3.length;
     			}
 
-    			if (changed.points || changed.range || changed.name || changed.countryFlagEmoji || changed.country_code) {
+    			if (changed.participantsStore || changed.range || changed.countryFlagEmoji) {
     				each_value_2 = range(11, 20);
 
     				for (var i = 0; i < each_value_2.length; i += 1) {
@@ -2729,7 +2818,7 @@ var app = (function () {
     				each_blocks_2.length = each_value_2.length;
     			}
 
-    			if (changed.points || changed.range || changed.name || changed.countryFlagEmoji || changed.country_code) {
+    			if (changed.participantsStore || changed.range || changed.countryFlagEmoji) {
     				each_value_1 = range(21, 30);
 
     				for (var i = 0; i < each_value_1.length; i += 1) {
@@ -2750,7 +2839,7 @@ var app = (function () {
     				each_blocks_1.length = each_value_1.length;
     			}
 
-    			if (changed.points || changed.range || changed.name || changed.countryFlagEmoji || changed.country_code) {
+    			if (changed.participantsStore || changed.range || changed.countryFlagEmoji) {
     				each_value = range(31, 40);
 
     				for (var i = 0; i < each_value.length; i += 1) {
@@ -2769,10 +2858,6 @@ var app = (function () {
     					each_blocks[i].d(1);
     				}
     				each_blocks.length = each_value.length;
-    			}
-
-    			if (!current || changed.givesPoints) {
-    				set_data(t5, ctx.givesPoints);
     			}
     		},
 
@@ -2823,43 +2908,26 @@ var app = (function () {
     function instance($$self, $$props, $$invalidate) {
     	
 
-      const participants = get(participantsArray);
       const pointFrom = get(pointFromArray);
       const votingLength = [...Array(pointFrom.length).keys()];
 
-      let country_code = [];
-      let name = [];
-      let points = new Array(pointFrom.length).fill(0);
-      let givesPoints = ""; 
 
+      let participantsStore = [];
+      
+      participantsArray.subscribe((data) => {
 
-      initalizeParticipants(participants, country_code, name);
+        $$invalidate('participantsStore', participantsStore = data);
 
-      function andThePointsGoTo(array, index, name){
-        const row = array[index];
-        const object = row.Points;
-
-        $$invalidate('givesPoints', givesPoints = "Points from ".concat(row.Name));
-        for (const property in object) {
-          console.log(`${object[property]} points go to ${property}`);
-
-          points[name.indexOf(property)] = points[name.indexOf(property)] + object[property]; $$invalidate('points', points);
-        }
-
-    }
+      });
 
     	function click_handler() {
-    		return andThePointsGoTo(pointFrom, votingLength.pop(), name);
+    		return andThePointsGoTo(pointFrom, votingLength.pop());
     	}
 
     	return {
     		pointFrom,
     		votingLength,
-    		country_code,
-    		name,
-    		points,
-    		givesPoints,
-    		andThePointsGoTo,
+    		participantsStore,
     		Array,
     		click_handler
     	};
