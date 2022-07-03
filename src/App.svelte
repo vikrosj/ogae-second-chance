@@ -3,34 +3,22 @@
   import { pointFromArray } from './../voting/points-from';
 	import { get } from 'svelte/store';
 	import Navbar from "./Navbar.svelte";
-  import countryFlagEmoji from "country-flag-emoji";
+  import { countryFlagEmoji }from "country-flag-emoji";
   import range from "../utils/range";
-  import initalizeParticipants from "../utils/initalizeParticipants"
+  import { andThePointsGoTo } from "../utils/pointsHandler"
 
-  const participants = get(participantsArray);
   const pointFrom = get(pointFromArray);
   const votingLength = [...Array(pointFrom.length).keys()];
 
-  let country_code = [];
-  let name = [];
-  let points = new Array(pointFrom.length).fill(0);
-  let givesPoints = ""; 
 
+  let participantsStore = [];
+  
+  participantsArray.subscribe((data) => {
 
-  initalizeParticipants(participants, country_code, name);
+    participantsStore = data;
 
-  function andThePointsGoTo(array, index, name){
-    const row = array[index];
-    const object = row.Points;
+  })
 
-    givesPoints = "Points from ".concat(row.Name);
-    for (const property in object) {
-      console.log(`${object[property]} points go to ${property}`);
-
-      points[name.indexOf(property)] = points[name.indexOf(property)] + object[property];
-    }
-
-}
 </script>
 
 <Navbar />
@@ -39,9 +27,9 @@
     <table>
         {#each Array.from({length: 10}, (_, i) => i + 1)  as i}
         <tr>
-          <td> {countryFlagEmoji.get(country_code[i]).emoji}</td>
-          <td>{name[i]}</td>
-          <td>{points[i]}</td>
+          <td> {countryFlagEmoji.get(participantsStore[i].Alpha2Code).emoji}</td>
+          <td>{participantsStore[i].Name}</td>
+          <td>{participantsStore[i].Points}</td>
         </tr>
         {/each}
     </table>
@@ -50,9 +38,9 @@
     <table>
         {#each range(11, 20) as i}
         <tr>
-          <td> {countryFlagEmoji.get(country_code[i]).emoji}</td>
-          <td>{name[i]}</td>
-          <td>{points[i]}</td>
+          <td> {countryFlagEmoji.get(participantsStore[i].Alpha2Code).emoji}</td>
+          <td>{participantsStore[i].Name}</td>
+          <td>{participantsStore[i].Points}</td>
         </tr>
         {/each}
     </table>
@@ -61,9 +49,9 @@
     <table>
         {#each range(21, 30) as i}
         <tr>
-          <td> {countryFlagEmoji.get(country_code[i]).emoji}</td>
-          <td>{name[i]}</td>
-          <td>{points[i]}</td>
+          <td> {countryFlagEmoji.get(participantsStore[i].Alpha2Code).emoji}</td>
+          <td>{participantsStore[i].Name}</td>
+          <td>{participantsStore[i].Points}</td>
         </tr>
         {/each}
     </table>
@@ -72,9 +60,9 @@
     <table>
         {#each range(31, 40) as i}
         <tr>
-          <td> {countryFlagEmoji.get(country_code[i]).emoji}</td>
-          <td>{name[i]}</td>
-          <td>{points[i]}</td>
+          <td> {countryFlagEmoji.get(participantsStore[i].Alpha2Code).emoji}</td>
+          <td>{participantsStore[i].Name}</td>
+          <td>{participantsStore[i].Points}</td>
         </tr>
         {/each}
     </table>
@@ -82,11 +70,11 @@
 </div>
 
 <div class="points-text">
-  <p>{givesPoints}</p>
+  <p>{"later"}</p>
 </div>
 
 <div class="points-button">
-  <button on:click={() => andThePointsGoTo(pointFrom, votingLength.pop(), name)}>Give points</button>
+  <button on:click={() => andThePointsGoTo(pointFrom, votingLength.pop())}>Give points</button>
 </div>
 
 
