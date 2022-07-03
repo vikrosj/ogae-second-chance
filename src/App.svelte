@@ -9,8 +9,6 @@
 
   const pointFrom = get(pointFromArray);
   const votingLength = [...Array(pointFrom.length).keys()];
-  console.log(pointFrom);
-
 
   let participantsStore = [];
 
