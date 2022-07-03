@@ -6,7 +6,6 @@ function addPoints(pointsTo, pointsValue){
       let specific = cp.find((row) => row.Name == pointsTo);
 
       specific.Points+= pointsValue;
-      console.log(specific);
       return cp;
       });
   };
