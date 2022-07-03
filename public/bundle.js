@@ -2411,12 +2411,12 @@ var app = (function () {
     			td2 = element("td");
     			t4 = text(t4_value);
     			td0.className = "svelte-13lxdna";
-    			add_location(td0, file$1, 41, 10, 972);
+    			add_location(td0, file$1, 41, 10, 1027);
     			td1.className = "svelte-13lxdna";
-    			add_location(td1, file$1, 42, 10, 1054);
+    			add_location(td1, file$1, 42, 10, 1109);
     			td2.className = "svelte-13lxdna";
-    			add_location(td2, file$1, 43, 10, 1101);
-    			add_location(tr, file$1, 40, 8, 957);
+    			add_location(td2, file$1, 43, 10, 1156);
+    			add_location(tr, file$1, 40, 8, 1012);
     		},
 
     		m: function mount(target, anchor) {
@@ -2469,12 +2469,12 @@ var app = (function () {
     			td2 = element("td");
     			t4 = text(t4_value);
     			td0.className = "svelte-13lxdna";
-    			add_location(td0, file$1, 52, 10, 1285);
+    			add_location(td0, file$1, 52, 10, 1340);
     			td1.className = "svelte-13lxdna";
-    			add_location(td1, file$1, 53, 10, 1367);
+    			add_location(td1, file$1, 53, 10, 1422);
     			td2.className = "svelte-13lxdna";
-    			add_location(td2, file$1, 54, 10, 1414);
-    			add_location(tr, file$1, 51, 8, 1270);
+    			add_location(td2, file$1, 54, 10, 1469);
+    			add_location(tr, file$1, 51, 8, 1325);
     		},
 
     		m: function mount(target, anchor) {
@@ -2527,12 +2527,12 @@ var app = (function () {
     			td2 = element("td");
     			t4 = text(t4_value);
     			td0.className = "svelte-13lxdna";
-    			add_location(td0, file$1, 63, 10, 1598);
+    			add_location(td0, file$1, 63, 10, 1653);
     			td1.className = "svelte-13lxdna";
-    			add_location(td1, file$1, 64, 10, 1680);
+    			add_location(td1, file$1, 64, 10, 1735);
     			td2.className = "svelte-13lxdna";
-    			add_location(td2, file$1, 65, 10, 1727);
-    			add_location(tr, file$1, 62, 8, 1583);
+    			add_location(td2, file$1, 65, 10, 1782);
+    			add_location(tr, file$1, 62, 8, 1638);
     		},
 
     		m: function mount(target, anchor) {
@@ -2585,12 +2585,12 @@ var app = (function () {
     			td2 = element("td");
     			t4 = text(t4_value);
     			td0.className = "svelte-13lxdna";
-    			add_location(td0, file$1, 74, 10, 1911);
+    			add_location(td0, file$1, 74, 10, 1966);
     			td1.className = "svelte-13lxdna";
-    			add_location(td1, file$1, 75, 10, 1993);
+    			add_location(td1, file$1, 75, 10, 2048);
     			td2.className = "svelte-13lxdna";
-    			add_location(td2, file$1, 76, 10, 2040);
-    			add_location(tr, file$1, 73, 8, 1896);
+    			add_location(td2, file$1, 76, 10, 2095);
+    			add_location(tr, file$1, 73, 8, 1951);
     		},
 
     		m: function mount(target, anchor) {
@@ -2709,29 +2709,29 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "Give points";
     			table0.className = "svelte-13lxdna";
-    			add_location(table0, file$1, 38, 4, 877);
+    			add_location(table0, file$1, 38, 4, 932);
     			div0.className = "column svelte-13lxdna";
-    			add_location(div0, file$1, 37, 2, 852);
+    			add_location(div0, file$1, 37, 2, 907);
     			table1.className = "svelte-13lxdna";
-    			add_location(table1, file$1, 49, 4, 1219);
+    			add_location(table1, file$1, 49, 4, 1274);
     			div1.className = "column svelte-13lxdna";
-    			add_location(div1, file$1, 48, 2, 1194);
+    			add_location(div1, file$1, 48, 2, 1249);
     			table2.className = "svelte-13lxdna";
-    			add_location(table2, file$1, 60, 4, 1532);
+    			add_location(table2, file$1, 60, 4, 1587);
     			div2.className = "column svelte-13lxdna";
-    			add_location(div2, file$1, 59, 2, 1507);
+    			add_location(div2, file$1, 59, 2, 1562);
     			table3.className = "svelte-13lxdna";
-    			add_location(table3, file$1, 71, 4, 1845);
+    			add_location(table3, file$1, 71, 4, 1900);
     			div3.className = "column svelte-13lxdna";
-    			add_location(div3, file$1, 70, 2, 1820);
+    			add_location(div3, file$1, 70, 2, 1875);
     			div4.className = "row svelte-13lxdna";
-    			add_location(div4, file$1, 36, 0, 832);
-    			add_location(p, file$1, 84, 2, 2167);
+    			add_location(div4, file$1, 36, 0, 887);
+    			add_location(p, file$1, 84, 2, 2222);
     			div5.className = "points-text svelte-13lxdna";
-    			add_location(div5, file$1, 83, 0, 2139);
-    			add_location(button, file$1, 88, 2, 2222);
+    			add_location(div5, file$1, 83, 0, 2194);
+    			add_location(button, file$1, 88, 2, 2277);
     			div6.className = "points-button svelte-13lxdna";
-    			add_location(div6, file$1, 87, 0, 2192);
+    			add_location(div6, file$1, 87, 0, 2247);
     			dispose = listen(button, "click", ctx.click_handler);
     		},
 
@@ -2936,8 +2936,8 @@ var app = (function () {
 
       function onClick(){
         andThePointsGoTo(pointFrom, votingLength.pop());
+        // setTimeout(() => console.log("Waiting..."), 3000);
         sortUpdate();
-        
       }
 
     	function click_handler() {

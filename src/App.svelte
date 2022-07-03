@@ -26,9 +26,9 @@
   }
 
   function onClick(){
-    andThePointsGoTo(pointFrom, votingLength.pop())
-    sortUpdate()
-    
+    andThePointsGoTo(pointFrom, votingLength.pop());
+    // setTimeout(() => console.log("Waiting..."), 3000);
+    sortUpdate();
   }
 
 </script>
