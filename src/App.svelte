@@ -5,7 +5,7 @@
 	import Navbar from "./Navbar.svelte";
   import countryFlagEmoji from "country-flag-emoji";
   import range from "../utils/range";
-  import {andThePointsGoTo} from "../utils/pointsHandler"
+  import { andThePointsGoTo } from "../utils/pointsHandler"
   import compare from "../utils/compare"
 
   const pointFrom = get(pointFromArray);
