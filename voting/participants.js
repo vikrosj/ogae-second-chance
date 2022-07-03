@@ -3,162 +3,202 @@ import { writable } from 'svelte/store';
 export let participantsArray = writable([
     {
         Name : "Albania",
-        Alpha2Code: "AL"
+        Alpha2Code: "AL",
+        Points: 0
     },
     {
         Name: "Armenia",
-        Alpha2Code: "AM"
+        Alpha2Code: "AM",
+        Points: 0
     },
     {
         Name: "Australia",
-        Alpha2Code: "AU"
+        Alpha2Code: "AU",
+        Points: 0
     },
     {
         Name: "Austria",
-        Alpha2Code: "AT"
+        Alpha2Code: "AT",
+        Points: 0
     },
     {
         Name: "Azerbaijan",
-        Alpha2Code: "AZ"
+        Alpha2Code: "AZ",
+        Points: 0
     },
     {
         Name: "Belgium",
-        Alpha2Code: "BE"
+        Alpha2Code: "BE",
+        Points: 0
     },
     {
         Name: "Bulgaria",
-        Alpha2Code: "BG"
+        Alpha2Code: "BG",
+        Points: 0
     },
     {
         Name: "Croatia",
-        Alpha2Code: "HR"
+        Alpha2Code: "HR",
+        Points: 0
     },
     {
         Name: "Cyprus",
-        Alpha2Code: "CY"
+        Alpha2Code: "CY",
+        Points: 0
     },
     {
         Name: "Czech Republic",
-        Alpha2Code: "CZ"
+        Alpha2Code: "CZ",
+        Points: 0
     },
     {
         Name: "Denmark",
-        Alpha2Code: "DK"
+        Alpha2Code: "DK",
+        Points: 0
     },
     {
         Name: "Estonia",
-        Alpha2Code: "EE"
+        Alpha2Code: "EE",
+        Points: 0
     },
     {
         Name: "Finland",
-        Alpha2Code: "FI"
+        Alpha2Code: "FI",
+        Points: 0
     },
     {
         Name: "France",
-        Alpha2Code: "FR"
+        Alpha2Code: "FR",
+        Points: 0
     },
     {
         Name: "Germany",
-        Alpha2Code: "DE"
+        Alpha2Code: "DE",
+        Points: 0
     },
     {
         Name: "Georgia",
-        Alpha2Code: "GE"
+        Alpha2Code: "GE",
+        Points: 0
     },
     {
         Name: "Greece",
-        Alpha2Code: "GR"
+        Alpha2Code: "GR",
+        Points: 0
     },
     {
         Name: "Iceland",
-        Alpha2Code: "IS"
+        Alpha2Code: "IS",
+        Points: 0
     },
     {
         Name: "Ireland",
-        Alpha2Code: "IE"
+        Alpha2Code: "IE",
+        Points: 0
     },
     {
         Name: "Israel",
-        Alpha2Code: "IL"
+        Alpha2Code: "IL",
+        Points: 0
     },
     {
         Name: "Italy",
-        Alpha2Code: "IT"
+        Alpha2Code: "IT",
+        Points: 0
     },
     {
         Name: "Latvia",
-        Alpha2Code: "LV"
+        Alpha2Code: "LV",
+        Points: 0
     },
     {
         Name: "Lithuania",
-        Alpha2Code: "LT"
+        Alpha2Code: "LT",
+        Points: 0
     },
     {
         Name: "Malta",
-        Alpha2Code: "MT"
+        Alpha2Code: "MT",
+        Points: 0
     },
     {
         Name: "Moldova",
-        Alpha2Code: "MD"
+        Alpha2Code: "MD",
+        Points: 0
     },
     {
         Name: "Montenegro",
-        Alpha2Code: "ME"
+        Alpha2Code: "ME",
+        Points: 0
     },
     {
         Name: "The Netherlands",
-        Alpha2Code: "NL"
+        Alpha2Code: "NL",
+        Points: 0
     },
     {
         Name: "North Macedonia",
-        Alpha2Code: "MK"
+        Alpha2Code: "MK",
+        Points: 0
     },
     {
         Name: "Norway",
-        Alpha2Code: "SE"
+        Alpha2Code: "NO",
+        Points: 0
     },
     {
         Name: "Poland",
-        Alpha2Code: "PL"
+        Alpha2Code: "PL",
+        Points: 0
     },
     {
         Name: "Portugal",
-        Alpha2Code: "PT"
+        Alpha2Code: "PT",
+        Points: 0
     },
     {
         Name: "Romania",
-        Alpha2Code: "RO"
+        Alpha2Code: "RO",
+        Points: 0
     },
     {
         Name: "San Marino",
-        Alpha2Code: "SM"
+        Alpha2Code: "SM",
+        Points: 0
     },
     {
         Name: "Serbia",
-        Alpha2Code: "RS"
+        Alpha2Code: "RS",
+        Points: 0
     },
     {
         Name: "Slovenia",
-        Alpha2Code: "SI"
+        Alpha2Code: "SI",
+        Points: 0
     },
     {
         Name: "Spain",
-        Alpha2Code: "ES"
+        Alpha2Code: "ES",
+        Points: 0
     },
     {
         Name: "Sweden",
-        Alpha2Code: "SE"
+        Alpha2Code: "SE",
+        Points: 0
     },
     {
         Name: "Switzerland",
-        Alpha2Code: "CH"
+        Alpha2Code: "CH",
+        Points: 0
     },
     {
         Name: "Ukraine",
-        Alpha2Code: "UA"
+        Alpha2Code: "UA",
+        Points: 0
     },
     {
         Name: "United Kingdom",
-        Alpha2Code: "GB"
+        Alpha2Code: "GB",
+        Points: 0
     },
   ]);
