@@ -61,7 +61,7 @@
 }
 
 .button-2:hover {
-  background-color: yellow;
+  background-color: green;
   color: black;
 }
 </style>

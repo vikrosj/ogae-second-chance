@@ -5,6 +5,7 @@
   
 </script>
 
+<main>
 <Navbar />
 <Table />
 <PointsButton/>
@@ -12,9 +13,7 @@
 <div class="points-text">
   <p>{"later"}</p>
 </div>
-
-
-
+</main>
 
 <style>
   :global(body){
