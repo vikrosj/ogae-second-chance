@@ -1,34 +1,8 @@
 <script>
-	import { participantsArray } from './../voting/participants';
-  import { pointFromArray } from './../voting/points-from';
-	import { get } from 'svelte/store';
 	import Navbar from "./Navbar.svelte";
   import Table from "./Table.svelte";
   import PointsButton from "./PointsButton.svelte";
-  import { andThePointsGoTo } from "../utils/pointsHandler"
-  import compare from "../utils/compare"
-
-  const pointFrom = get(pointFromArray);
-  const votingLength = [...Array(pointFrom.length).keys()];
-
-  let participantsStore = [];
-
-  participantsArray.subscribe((data) => {
-
-    participantsStore = data;
-
-  });
   
-  function sortUpdate(){
-    participantsStore.sort(compare);
-  }
-
-  function onClick(){
-    andThePointsGoTo(pointFrom, votingLength.pop());
-    // setTimeout(() => console.log("Waiting..."), 3000);
-    sortUpdate();
-  }
-
 </script>
 
 <Navbar />
