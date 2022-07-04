@@ -22,6 +22,7 @@
   "dependencies": {
     "country-flag-emoji": "^1.0.3",
     "lodash": "^4.17.21",
-    "node-emoji": "^1.11.0"
+    "node-emoji": "^1.11.0",
+    "svelte-video-player": "^1.2.5"
   }
 }
