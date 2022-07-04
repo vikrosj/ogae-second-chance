@@ -498,52 +498,52 @@ var app = (function () {
     const pointFromArray = writable([
       {
         Name : "Albania",
-        Points : {"Armenia":1, "Australia":2, "Austria":3, "Azerbaijan":4, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Points : {"Armenia":1, "Australia":2, "Austria":3, "Azerbaijan":4, "Belgium":5, "Bulgaria":6, "Croatia":7, "Cyprus":8, "Czech Republic":10, "Denmark":0, "Estonia":0, "Finland":0, "France":0, "Germany":0, "Georgia":0, "Greece":0, "Iceland":0, "Ireland":0, "Israel":0, "Italy":0, "Latvia":0, "Lithuania":0, "Malta":0, "Moldova":0, "Montenegro":0, "The Netherlands":0, "North Macedonia":0, "Norway":0, "Poland":0, "Portugal":0, "Romania":0, "San Marino":0, "Serbia":0, "Slovenia":0, "Spain":0, "Sweden":0, "Switzerland":0, "Ukraine":0, "United Kingdom":0},
         Alpha2Code: "AL"
     },
     {
         Name: "Armenia",
-        Points : {"Albania":1, "Australia":2, "Austria":3, "Azerbaijan":4, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Points : {"Albania":1, "Australia":2, "Austria":3, "Azerbaijan":4, "Belgium":5, "Bulgaria":6, "Croatia":7, "Cyprus":8, "Czech Republic":10, "Denmark":0, "Estonia":0, "Finland":0, "France":0, "Germany":0, "Georgia":0, "Greece":0, "Iceland":0, "Ireland":0, "Israel":0, "Italy":0, "Latvia":0, "Lithuania":0, "Malta":0, "Moldova":0, "Montenegro":0, "The Netherlands":0, "North Macedonia":0, "Norway":0, "Poland":0, "Portugal":0, "Romania":0, "San Marino":0, "Serbia":0, "Slovenia":0, "Spain":0, "Sweden":0, "Switzerland":0, "Ukraine":0, "United Kingdom":0},
         Alpha2Code: "AM"
     },
     {
         Name: "Australia",
-        Points : {"Albania":1,"Armenia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Points : {"Albania":1,"Armenia":2, "Austria":3, "Azerbaijan":4, "Belgium":5, "Bulgaria":6, "Croatia":7, "Cyprus":8, "Czech Republic":10, "Denmark":0, "Estonia":0, "Finland":0, "France":0, "Germany":0, "Georgia":0, "Greece":0, "Iceland":0, "Ireland":0, "Israel":0, "Italy":0, "Latvia":0, "Lithuania":0, "Malta":0, "Moldova":0, "Montenegro":0, "The Netherlands":0, "North Macedonia":0, "Norway":0, "Poland":0, "Portugal":0, "Romania":0, "San Marino":0, "Serbia":0, "Slovenia":0, "Spain":0, "Sweden":0, "Switzerland":0, "Ukraine":0, "United Kingdom":0},
         Alpha2Code: "AU"
     },
     {
         Name: "Austria",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Points : {"Albania":1,"Armenia":2, "Australia":3, "Azerbaijan":4, "Belgium":5, "Bulgaria":6, "Croatia":7, "Cyprus":8, "Czech Republic":10, "Denmark":0, "Estonia":0, "Finland":0, "France":0, "Germany":0, "Georgia":0, "Greece":0, "Iceland":0, "Ireland":0, "Israel":0, "Italy":0, "Latvia":0, "Lithuania":0, "Malta":0, "Moldova":0, "Montenegro":0, "The Netherlands":0, "North Macedonia":0, "Norway":0, "Poland":0, "Portugal":0, "Romania":0, "San Marino":0, "Serbia":0, "Slovenia":0, "Spain":0, "Sweden":0, "Switzerland":0, "Ukraine":0, "United Kingdom":0},
         Alpha2Code: "AT"
     },
     {
         Name: "Azerbaijan",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Points : {"Albania":1,"Armenia":2, "Australia":3, "Austria":4, "Belgium":5, "Bulgaria":6, "Croatia":7, "Cyprus":8, "Czech Republic":10, "Denmark":0, "Estonia":0, "Finland":0, "France":0, "Germany":0, "Georgia":0, "Greece":0, "Iceland":0, "Ireland":0, "Israel":0, "Italy":0, "Latvia":0, "Lithuania":0, "Malta":0, "Moldova":0, "Montenegro":0, "The Netherlands":0, "North Macedonia":0, "Norway":0, "Poland":0, "Portugal":0, "Romania":0, "San Marino":0, "Serbia":0, "Slovenia":0, "Spain":0, "Sweden":0, "Switzerland":0, "Ukraine":0, "United Kingdom":0},
         Alpha2Code: "AZ"
     },
     {
         Name: "Belgium",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1,"Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Points : {"Albania":1,"Armenia":2, "Australia":3, "Austria":4, "Azerbaijan":5,"Bulgaria":6, "Croatia":7, "Cyprus":8, "Czech Republic":10, "Denmark":0, "Estonia":0, "Finland":0, "France":0, "Germany":0, "Georgia":0, "Greece":0, "Iceland":0, "Ireland":0, "Israel":0, "Italy":0, "Latvia":0, "Lithuania":0, "Malta":0, "Moldova":0, "Montenegro":0, "The Netherlands":0, "North Macedonia":0, "Norway":0, "Poland":0, "Portugal":0, "Romania":0, "San Marino":0, "Serbia":0, "Slovenia":0, "Spain":0, "Sweden":0, "Switzerland":0, "Ukraine":0, "United Kingdom":0},
         Alpha2Code: "BE"
     },
     {
         Name: "Bulgaria",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1,"Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1,"Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":0, "Estonia":0, "Finland":0, "France":0, "Germany":0, "Georgia":0, "Greece":0, "Iceland":0, "Ireland":0, "Israel":0, "Italy":0, "Latvia":0, "Lithuania":0, "Malta":0, "Moldova":0, "Montenegro":0, "The Netherlands":0, "North Macedonia":0, "Norway":0, "Poland":0, "Portugal":0, "Romania":0, "San Marino":0, "Serbia":0, "Slovenia":0, "Spain":0, "Sweden":0, "Switzerland":0, "Ukraine":0, "United Kingdom":0},
         Alpha2Code: "BG"
     },
     {
         Name: "Croatia",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Cyprus":1, "Czech Republic":1, "Denmark":0, "Estonia":0, "Finland":0, "France":0, "Germany":0, "Georgia":0, "Greece":0, "Iceland":0, "Ireland":0, "Israel":0, "Italy":0, "Latvia":0, "Lithuania":0, "Malta":0, "Moldova":0, "Montenegro":0, "The Netherlands":0, "North Macedonia":0, "Norway":0, "Poland":0, "Portugal":0, "Romania":0, "San Marino":0, "Serbia":0, "Slovenia":0, "Spain":0, "Sweden":0, "Switzerland":0, "Ukraine":0, "United Kingdom":0},
         Alpha2Code: "HR"
     },
     {
         Name: "Cyprus",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Czech Republic":1, "Denmark":0, "Estonia":0, "Finland":0, "France":0, "Germany":0, "Georgia":0, "Greece":0, "Iceland":0, "Ireland":0, "Israel":0, "Italy":0, "Latvia":0, "Lithuania":0, "Malta":0, "Moldova":0, "Montenegro":0, "The Netherlands":0, "North Macedonia":0, "Norway":0, "Poland":0, "Portugal":0, "Romania":0, "San Marino":0, "Serbia":0, "Slovenia":0, "Spain":0, "Sweden":0, "Switzerland":0, "Ukraine":0, "United Kingdom":0},
         Alpha2Code: "CY"
     },
     {
         Name: "Czech Republic",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Denmark":0, "Estonia":0, "Finland":0, "France":0, "Germany":0, "Georgia":0, "Greece":0, "Iceland":0, "Ireland":0, "Israel":0, "Italy":0, "Latvia":0, "Lithuania":0, "Malta":0, "Moldova":0, "Montenegro":0, "The Netherlands":0, "North Macedonia":0, "Norway":0, "Poland":0, "Portugal":0, "Romania":0, "San Marino":0, "Serbia":0, "Slovenia":0, "Spain":0, "Sweden":0, "Switzerland":0, "Ukraine":0, "United Kingdom":0},
         Alpha2Code: "CZ"
     },
     {
@@ -2333,43 +2333,9 @@ var app = (function () {
         return Array(end - start).fill().map((_, idx) => start + idx)
       }
 
-    function addPoints(pointsTo, pointsValue){
-        participantsArray.update(currentData => {
-          let cp = [...currentData];
-          let specific = cp.find((row) => row.Name == pointsTo);
+    /* src/Table.svelte generated by Svelte v3.4.4 */
 
-          specific.Points+= pointsValue;
-          return cp;
-          });
-      }
-    function andThePointsGoTo(array, index){
-        const row = array[index];
-        const object = row.Points;
-      
-        // givesPoints = "Points from ".concat(row.Name);
-
-        for (const property in object) {
-          
-          console.log(`${object[property]} points go to ${property}`);
-
-          addPoints(property, object[property]);
-
-        }
-    }
-
-    function compare( a, b ) {
-        if ( a.Points < b.Points ){
-          return 1;
-        }
-        if ( a.Points > b.Points ){
-          return -1;
-        }
-        return 0;
-      }
-
-    /* src/App.svelte generated by Svelte v3.4.4 */
-
-    const file$1 = "src/App.svelte";
+    const file$1 = "src/Table.svelte";
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = Object.create(ctx);
@@ -2395,7 +2361,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (40:8) {#each Array.from({length: 10}, (_, i) => i + 1)  as i}
+    // (19:10) {#each Array.from({length: 10}, (_, i) => i + 1)  as i}
     function create_each_block_3(ctx) {
     	var tr, td0, t0_value = countryFlagEmoji_cjs.get(ctx.participantsStore[ctx.i].Alpha2Code).emoji, t0, t1, td1, t2_value = ctx.participantsStore[ctx.i].Name, t2, t3, td2, t4_value = ctx.participantsStore[ctx.i].Points, t4;
 
@@ -2410,13 +2376,13 @@ var app = (function () {
     			t3 = space();
     			td2 = element("td");
     			t4 = text(t4_value);
-    			td0.className = "svelte-13lxdna";
-    			add_location(td0, file$1, 41, 10, 1027);
-    			td1.className = "svelte-13lxdna";
-    			add_location(td1, file$1, 42, 10, 1109);
-    			td2.className = "svelte-13lxdna";
-    			add_location(td2, file$1, 43, 10, 1156);
-    			add_location(tr, file$1, 40, 8, 1012);
+    			td0.className = "svelte-fynzz5";
+    			add_location(td0, file$1, 20, 12, 424);
+    			td1.className = "svelte-fynzz5";
+    			add_location(td1, file$1, 21, 12, 508);
+    			td2.className = "svelte-fynzz5";
+    			add_location(td2, file$1, 22, 12, 557);
+    			add_location(tr, file$1, 19, 10, 407);
     		},
 
     		m: function mount(target, anchor) {
@@ -2453,7 +2419,7 @@ var app = (function () {
     	};
     }
 
-    // (51:8) {#each range(11, 20) as i}
+    // (30:10) {#each range(11, 20) as i}
     function create_each_block_2(ctx) {
     	var tr, td0, t0_value = countryFlagEmoji_cjs.get(ctx.participantsStore[ctx.i].Alpha2Code).emoji, t0, t1, td1, t2_value = ctx.participantsStore[ctx.i].Name, t2, t3, td2, t4_value = ctx.participantsStore[ctx.i].Points, t4;
 
@@ -2468,13 +2434,13 @@ var app = (function () {
     			t3 = space();
     			td2 = element("td");
     			t4 = text(t4_value);
-    			td0.className = "svelte-13lxdna";
-    			add_location(td0, file$1, 52, 10, 1340);
-    			td1.className = "svelte-13lxdna";
-    			add_location(td1, file$1, 53, 10, 1422);
-    			td2.className = "svelte-13lxdna";
-    			add_location(td2, file$1, 54, 10, 1469);
-    			add_location(tr, file$1, 51, 8, 1325);
+    			td0.className = "svelte-fynzz5";
+    			add_location(td0, file$1, 31, 12, 759);
+    			td1.className = "svelte-fynzz5";
+    			add_location(td1, file$1, 32, 12, 843);
+    			td2.className = "svelte-fynzz5";
+    			add_location(td2, file$1, 33, 12, 892);
+    			add_location(tr, file$1, 30, 10, 742);
     		},
 
     		m: function mount(target, anchor) {
@@ -2511,7 +2477,7 @@ var app = (function () {
     	};
     }
 
-    // (62:8) {#each range(21, 30) as i}
+    // (41:10) {#each range(21, 30) as i}
     function create_each_block_1(ctx) {
     	var tr, td0, t0_value = countryFlagEmoji_cjs.get(ctx.participantsStore[ctx.i].Alpha2Code).emoji, t0, t1, td1, t2_value = ctx.participantsStore[ctx.i].Name, t2, t3, td2, t4_value = ctx.participantsStore[ctx.i].Points, t4;
 
@@ -2526,13 +2492,13 @@ var app = (function () {
     			t3 = space();
     			td2 = element("td");
     			t4 = text(t4_value);
-    			td0.className = "svelte-13lxdna";
-    			add_location(td0, file$1, 63, 10, 1653);
-    			td1.className = "svelte-13lxdna";
-    			add_location(td1, file$1, 64, 10, 1735);
-    			td2.className = "svelte-13lxdna";
-    			add_location(td2, file$1, 65, 10, 1782);
-    			add_location(tr, file$1, 62, 8, 1638);
+    			td0.className = "svelte-fynzz5";
+    			add_location(td0, file$1, 42, 12, 1094);
+    			td1.className = "svelte-fynzz5";
+    			add_location(td1, file$1, 43, 12, 1178);
+    			td2.className = "svelte-fynzz5";
+    			add_location(td2, file$1, 44, 12, 1227);
+    			add_location(tr, file$1, 41, 10, 1077);
     		},
 
     		m: function mount(target, anchor) {
@@ -2569,9 +2535,9 @@ var app = (function () {
     	};
     }
 
-    // (73:8) {#each range(31, 40) as i}
+    // (52:10) {#each range(31, 40) as i}
     function create_each_block(ctx) {
-    	var tr, td0, t0_value = countryFlagEmoji_cjs.get(ctx.participantsStore[ctx.i].Alpha2Code).emoji, t0, t1, td1, t2_value = ctx.participantsStore[ctx.i].Name, t2, t3, td2, t4_value = ctx.participantsStore[ctx.i].Points, t4;
+    	var tr, td0, t0_value = countryFlagEmoji_cjs.get(ctx.participantsStore[ctx.i].Alpha2Code).emoji, t0, t1, td1, t2_value = ctx.participantsStore[ctx.i].Name, t2, t3, td2, t4_value = ctx.participantsStore[ctx.i].Points, t4, t5;
 
     	return {
     		c: function create() {
@@ -2584,13 +2550,14 @@ var app = (function () {
     			t3 = space();
     			td2 = element("td");
     			t4 = text(t4_value);
-    			td0.className = "svelte-13lxdna";
-    			add_location(td0, file$1, 74, 10, 1966);
-    			td1.className = "svelte-13lxdna";
-    			add_location(td1, file$1, 75, 10, 2048);
-    			td2.className = "svelte-13lxdna";
-    			add_location(td2, file$1, 76, 10, 2095);
-    			add_location(tr, file$1, 73, 8, 1951);
+    			t5 = space();
+    			td0.className = "svelte-fynzz5";
+    			add_location(td0, file$1, 53, 12, 1429);
+    			td1.className = "svelte-fynzz5";
+    			add_location(td1, file$1, 54, 12, 1513);
+    			td2.className = "svelte-fynzz5";
+    			add_location(td2, file$1, 55, 12, 1562);
+    			add_location(tr, file$1, 52, 10, 1412);
     		},
 
     		m: function mount(target, anchor) {
@@ -2603,6 +2570,7 @@ var app = (function () {
     			append(tr, t3);
     			append(tr, td2);
     			append(td2, t4);
+    			append(tr, t5);
     		},
 
     		p: function update(changed, ctx) {
@@ -2628,11 +2596,9 @@ var app = (function () {
     }
 
     function create_fragment$1(ctx) {
-    	var t0, div4, div0, table0, t1, div1, table1, t2, div2, table2, t3, div3, table3, t4, div5, p, t5_value = "later", t5, t6, div6, button, current, dispose;
+    	var div4, div0, table0, t0, div1, table1, t1, div2, table2, t2, div3, table3;
 
-    	var navbar = new Navbar({ $$inline: true });
-
-    	var each_value_3 = ctx.Array.from({length: 10}, func);
+    	var each_value_3 = Array.from({length: 10}, func);
 
     	var each_blocks_3 = [];
 
@@ -2666,8 +2632,6 @@ var app = (function () {
 
     	return {
     		c: function create() {
-    			navbar.$$.fragment.c();
-    			t0 = space();
     			div4 = element("div");
     			div0 = element("div");
     			table0 = element("table");
@@ -2676,7 +2640,7 @@ var app = (function () {
     				each_blocks_3[i].c();
     			}
 
-    			t1 = space();
+    			t0 = space();
     			div1 = element("div");
     			table1 = element("table");
 
@@ -2684,7 +2648,7 @@ var app = (function () {
     				each_blocks_2[i].c();
     			}
 
-    			t2 = space();
+    			t1 = space();
     			div2 = element("div");
     			table2 = element("table");
 
@@ -2692,47 +2656,31 @@ var app = (function () {
     				each_blocks_1[i].c();
     			}
 
-    			t3 = space();
+    			t2 = space();
     			div3 = element("div");
     			table3 = element("table");
 
     			for (var i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
-
-    			t4 = space();
-    			div5 = element("div");
-    			p = element("p");
-    			t5 = text(t5_value);
-    			t6 = space();
-    			div6 = element("div");
-    			button = element("button");
-    			button.textContent = "Give points";
-    			table0.className = "svelte-13lxdna";
-    			add_location(table0, file$1, 38, 4, 932);
-    			div0.className = "column svelte-13lxdna";
-    			add_location(div0, file$1, 37, 2, 907);
-    			table1.className = "svelte-13lxdna";
-    			add_location(table1, file$1, 49, 4, 1274);
-    			div1.className = "column svelte-13lxdna";
-    			add_location(div1, file$1, 48, 2, 1249);
-    			table2.className = "svelte-13lxdna";
-    			add_location(table2, file$1, 60, 4, 1587);
-    			div2.className = "column svelte-13lxdna";
-    			add_location(div2, file$1, 59, 2, 1562);
-    			table3.className = "svelte-13lxdna";
-    			add_location(table3, file$1, 71, 4, 1900);
-    			div3.className = "column svelte-13lxdna";
-    			add_location(div3, file$1, 70, 2, 1875);
-    			div4.className = "row svelte-13lxdna";
-    			add_location(div4, file$1, 36, 0, 887);
-    			add_location(p, file$1, 84, 2, 2222);
-    			div5.className = "points-text svelte-13lxdna";
-    			add_location(div5, file$1, 83, 0, 2194);
-    			add_location(button, file$1, 88, 2, 2277);
-    			div6.className = "points-button svelte-13lxdna";
-    			add_location(div6, file$1, 87, 0, 2247);
-    			dispose = listen(button, "click", ctx.click_handler);
+    			table0.className = "svelte-fynzz5";
+    			add_location(table0, file$1, 17, 6, 323);
+    			div0.className = "column svelte-fynzz5";
+    			add_location(div0, file$1, 16, 4, 296);
+    			table1.className = "svelte-fynzz5";
+    			add_location(table1, file$1, 28, 6, 687);
+    			div1.className = "column svelte-fynzz5";
+    			add_location(div1, file$1, 27, 4, 660);
+    			table2.className = "svelte-fynzz5";
+    			add_location(table2, file$1, 39, 6, 1022);
+    			div2.className = "column svelte-fynzz5";
+    			add_location(div2, file$1, 38, 4, 995);
+    			table3.className = "svelte-fynzz5";
+    			add_location(table3, file$1, 50, 6, 1357);
+    			div3.className = "column svelte-fynzz5";
+    			add_location(div3, file$1, 49, 4, 1330);
+    			div4.className = "row svelte-fynzz5";
+    			add_location(div4, file$1, 15, 0, 274);
     		},
 
     		l: function claim(nodes) {
@@ -2740,8 +2688,6 @@ var app = (function () {
     		},
 
     		m: function mount(target, anchor) {
-    			mount_component(navbar, target, anchor);
-    			insert(target, t0, anchor);
     			insert(target, div4, anchor);
     			append(div4, div0);
     			append(div0, table0);
@@ -2750,7 +2696,7 @@ var app = (function () {
     				each_blocks_3[i].m(table0, null);
     			}
 
-    			append(div4, t1);
+    			append(div4, t0);
     			append(div4, div1);
     			append(div1, table1);
 
@@ -2758,7 +2704,7 @@ var app = (function () {
     				each_blocks_2[i].m(table1, null);
     			}
 
-    			append(div4, t2);
+    			append(div4, t1);
     			append(div4, div2);
     			append(div2, table2);
 
@@ -2766,27 +2712,18 @@ var app = (function () {
     				each_blocks_1[i].m(table2, null);
     			}
 
-    			append(div4, t3);
+    			append(div4, t2);
     			append(div4, div3);
     			append(div3, table3);
 
     			for (var i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].m(table3, null);
     			}
-
-    			insert(target, t4, anchor);
-    			insert(target, div5, anchor);
-    			append(div5, p);
-    			append(p, t5);
-    			insert(target, t6, anchor);
-    			insert(target, div6, anchor);
-    			append(div6, button);
-    			current = true;
     		},
 
     		p: function update(changed, ctx) {
-    			if (changed.participantsStore || changed.Array || changed.countryFlagEmoji) {
-    				each_value_3 = ctx.Array.from({length: 10}, func);
+    			if (changed.participantsStore || changed.countryFlagEmoji) {
+    				each_value_3 = Array.from({length: 10}, func);
 
     				for (var i = 0; i < each_value_3.length; i += 1) {
     					const child_ctx = get_each_context_3(ctx, each_value_3, i);
@@ -2870,23 +2807,11 @@ var app = (function () {
     			}
     		},
 
-    		i: function intro(local) {
-    			if (current) return;
-    			navbar.$$.fragment.i(local);
-
-    			current = true;
-    		},
-
-    		o: function outro(local) {
-    			navbar.$$.fragment.o(local);
-    			current = false;
-    		},
+    		i: noop,
+    		o: noop,
 
     		d: function destroy(detaching) {
-    			navbar.$destroy(detaching);
-
     			if (detaching) {
-    				detach(t0);
     				detach(div4);
     			}
 
@@ -2897,15 +2822,6 @@ var app = (function () {
     			destroy_each(each_blocks_1, detaching);
 
     			destroy_each(each_blocks, detaching);
-
-    			if (detaching) {
-    				detach(t4);
-    				detach(div5);
-    				detach(t6);
-    				detach(div6);
-    			}
-
-    			dispose();
     		}
     	};
     }
@@ -2917,16 +2833,159 @@ var app = (function () {
     function instance($$self, $$props, $$invalidate) {
     	
 
+    let participantsStore = [];
+
+    participantsArray.subscribe((data) => {
+
+      $$invalidate('participantsStore', participantsStore = data);
+
+    });
+
+    	return { participantsStore };
+    }
+
+    class Table extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance, create_fragment$1, safe_not_equal, []);
+    	}
+    }
+
+    function addPoints(pointsTo, pointsValue){
+        participantsArray.update(currentData => {
+          let cp = [...currentData];
+          let specific = cp.find((row) => row.Name == pointsTo);
+
+          specific.Points+= pointsValue;
+          return cp;
+          });
+      }
+    function andThePointsGoTo(array, index){
+        const row = array[index];
+        const object = row.Points;
+      
+        // givesPoints = "Points from ".concat(row.Name);
+
+        for (const property in object) {
+          
+          console.log(`${object[property]} points go to ${property}`);
+
+          addPoints(property, object[property]);
+
+        }
+    }
+
+    function compare( a, b ) {
+        if ( a.Points < b.Points ){
+          return 1;
+        }
+        if ( a.Points > b.Points ){
+          return -1;
+        }
+        return 0;
+      }
+
+    /* src/App.svelte generated by Svelte v3.4.4 */
+
+    const file$2 = "src/App.svelte";
+
+    function create_fragment$2(ctx) {
+    	var t0, t1, div0, p, t2_value = "later", t2, t3, div1, button, current, dispose;
+
+    	var navbar = new Navbar({ $$inline: true });
+
+    	var table = new Table({ $$inline: true });
+
+    	return {
+    		c: function create() {
+    			navbar.$$.fragment.c();
+    			t0 = space();
+    			table.$$.fragment.c();
+    			t1 = space();
+    			div0 = element("div");
+    			p = element("p");
+    			t2 = text(t2_value);
+    			t3 = space();
+    			div1 = element("div");
+    			button = element("button");
+    			button.textContent = "Give points";
+    			add_location(p, file$2, 36, 2, 848);
+    			div0.className = "points-text svelte-k3bvqk";
+    			add_location(div0, file$2, 35, 0, 820);
+    			button.className = "button-2 svelte-k3bvqk";
+    			add_location(button, file$2, 40, 2, 903);
+    			div1.className = "points-button svelte-k3bvqk";
+    			add_location(div1, file$2, 39, 0, 873);
+    			dispose = listen(button, "click", ctx.click_handler);
+    		},
+
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+
+    		m: function mount(target, anchor) {
+    			mount_component(navbar, target, anchor);
+    			insert(target, t0, anchor);
+    			mount_component(table, target, anchor);
+    			insert(target, t1, anchor);
+    			insert(target, div0, anchor);
+    			append(div0, p);
+    			append(p, t2);
+    			insert(target, t3, anchor);
+    			insert(target, div1, anchor);
+    			append(div1, button);
+    			current = true;
+    		},
+
+    		p: noop,
+
+    		i: function intro(local) {
+    			if (current) return;
+    			navbar.$$.fragment.i(local);
+
+    			table.$$.fragment.i(local);
+
+    			current = true;
+    		},
+
+    		o: function outro(local) {
+    			navbar.$$.fragment.o(local);
+    			table.$$.fragment.o(local);
+    			current = false;
+    		},
+
+    		d: function destroy(detaching) {
+    			navbar.$destroy(detaching);
+
+    			if (detaching) {
+    				detach(t0);
+    			}
+
+    			table.$destroy(detaching);
+
+    			if (detaching) {
+    				detach(t1);
+    				detach(div0);
+    				detach(t3);
+    				detach(div1);
+    			}
+
+    			dispose();
+    		}
+    	};
+    }
+
+    function instance$1($$self, $$props, $$invalidate) {
+    	
+
       const pointFrom = get(pointFromArray);
       const votingLength = [...Array(pointFrom.length).keys()];
-      console.log(pointFrom);
-
 
       let participantsStore = [];
 
       participantsArray.subscribe((data) => {
 
-        $$invalidate('participantsStore', participantsStore = data);
+        participantsStore = data;
 
       });
       
@@ -2944,18 +3003,13 @@ var app = (function () {
     		return onClick();
     	}
 
-    	return {
-    		participantsStore,
-    		onClick,
-    		Array,
-    		click_handler
-    	};
+    	return { onClick, click_handler };
     }
 
     class App extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance, create_fragment$1, safe_not_equal, []);
+    		init(this, options, instance$1, create_fragment$2, safe_not_equal, []);
     	}
     }
 
