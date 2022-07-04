@@ -407,462 +407,6 @@ var app = (function () {
         $inject_state() { }
     }
 
-    const subscriber_queue = [];
-    /**
-     * Create a `Writable` store that allows both updating and reading by subscription.
-     * @param {*=}value initial value
-     * @param {StartStopNotifier=}start start and stop notifications for subscriptions
-     */
-    function writable(value, start = noop) {
-        let stop;
-        const subscribers = new Set();
-        function set(new_value) {
-            if (safe_not_equal(value, new_value)) {
-                value = new_value;
-                if (stop) { // store is ready
-                    const run_queue = !subscriber_queue.length;
-                    for (const subscriber of subscribers) {
-                        subscriber[1]();
-                        subscriber_queue.push(subscriber, value);
-                    }
-                    if (run_queue) {
-                        for (let i = 0; i < subscriber_queue.length; i += 2) {
-                            subscriber_queue[i][0](subscriber_queue[i + 1]);
-                        }
-                        subscriber_queue.length = 0;
-                    }
-                }
-            }
-        }
-        function update(fn) {
-            set(fn(value));
-        }
-        function subscribe(run, invalidate = noop) {
-            const subscriber = [run, invalidate];
-            subscribers.add(subscriber);
-            if (subscribers.size === 1) {
-                stop = start(set) || noop;
-            }
-            run(value);
-            return () => {
-                subscribers.delete(subscriber);
-                if (subscribers.size === 0) {
-                    stop();
-                    stop = null;
-                }
-            };
-        }
-        return { set, update, subscribe };
-    }
-
-    let participantsArray = writable([
-        {
-            Name : "Albania",
-            Alpha2Code: "AL",
-            Points: 0
-        },
-        {
-            Name: "Armenia",
-            Alpha2Code: "AM",
-            Points: 0
-        },
-        {
-            Name: "Australia",
-            Alpha2Code: "AU",
-            Points: 0
-        },
-        {
-            Name: "Austria",
-            Alpha2Code: "AT",
-            Points: 0
-        },
-        {
-            Name: "Azerbaijan",
-            Alpha2Code: "AZ",
-            Points: 0
-        },
-        {
-            Name: "Belgium",
-            Alpha2Code: "BE",
-            Points: 0
-        },
-        {
-            Name: "Bulgaria",
-            Alpha2Code: "BG",
-            Points: 0
-        },
-        {
-            Name: "Croatia",
-            Alpha2Code: "HR",
-            Points: 0
-        },
-        {
-            Name: "Cyprus",
-            Alpha2Code: "CY",
-            Points: 0
-        },
-        {
-            Name: "Czech Republic",
-            Alpha2Code: "CZ",
-            Points: 0
-        },
-        {
-            Name: "Denmark",
-            Alpha2Code: "DK",
-            Points: 0
-        },
-        {
-            Name: "Estonia",
-            Alpha2Code: "EE",
-            Points: 0
-        },
-        {
-            Name: "Finland",
-            Alpha2Code: "FI",
-            Points: 0
-        },
-        {
-            Name: "France",
-            Alpha2Code: "FR",
-            Points: 0
-        },
-        {
-            Name: "Germany",
-            Alpha2Code: "DE",
-            Points: 0
-        },
-        {
-            Name: "Georgia",
-            Alpha2Code: "GE",
-            Points: 0
-        },
-        {
-            Name: "Greece",
-            Alpha2Code: "GR",
-            Points: 0
-        },
-        {
-            Name: "Iceland",
-            Alpha2Code: "IS",
-            Points: 0
-        },
-        {
-            Name: "Ireland",
-            Alpha2Code: "IE",
-            Points: 0
-        },
-        {
-            Name: "Israel",
-            Alpha2Code: "IL",
-            Points: 0
-        },
-        {
-            Name: "Italy",
-            Alpha2Code: "IT",
-            Points: 0
-        },
-        {
-            Name: "Latvia",
-            Alpha2Code: "LV",
-            Points: 0
-        },
-        {
-            Name: "Lithuania",
-            Alpha2Code: "LT",
-            Points: 0
-        },
-        {
-            Name: "Malta",
-            Alpha2Code: "MT",
-            Points: 0
-        },
-        {
-            Name: "Moldova",
-            Alpha2Code: "MD",
-            Points: 0
-        },
-        {
-            Name: "Montenegro",
-            Alpha2Code: "ME",
-            Points: 0
-        },
-        {
-            Name: "The Netherlands",
-            Alpha2Code: "NL",
-            Points: 0
-        },
-        {
-            Name: "North Macedonia",
-            Alpha2Code: "MK",
-            Points: 0
-        },
-        {
-            Name: "Norway",
-            Alpha2Code: "NO",
-            Points: 0
-        },
-        {
-            Name: "Poland",
-            Alpha2Code: "PL",
-            Points: 0
-        },
-        {
-            Name: "Portugal",
-            Alpha2Code: "PT",
-            Points: 0
-        },
-        {
-            Name: "Romania",
-            Alpha2Code: "RO",
-            Points: 0
-        },
-        {
-            Name: "San Marino",
-            Alpha2Code: "SM",
-            Points: 0
-        },
-        {
-            Name: "Serbia",
-            Alpha2Code: "RS",
-            Points: 0
-        },
-        {
-            Name: "Slovenia",
-            Alpha2Code: "SI",
-            Points: 0
-        },
-        {
-            Name: "Spain",
-            Alpha2Code: "ES",
-            Points: 0
-        },
-        {
-            Name: "Sweden",
-            Alpha2Code: "SE",
-            Points: 0
-        },
-        {
-            Name: "Switzerland",
-            Alpha2Code: "CH",
-            Points: 0
-        },
-        {
-            Name: "Ukraine",
-            Alpha2Code: "UA",
-            Points: 0
-        },
-        {
-            Name: "United Kingdom",
-            Alpha2Code: "GB",
-            Points: 0
-        },
-      ]);
-
-    const pointFromArray = writable([
-      {
-        Name : "Albania",
-        Points : {"Armenia":1, "Australia":2, "Austria":3, "Azerbaijan":4, "Belgium":5, "Bulgaria":6, "Croatia":7, "Cyprus":8, "Czech Republic":10, "Denmark":0, "Estonia":0, "Finland":0, "France":0, "Germany":0, "Georgia":0, "Greece":0, "Iceland":0, "Ireland":0, "Israel":0, "Italy":0, "Latvia":0, "Lithuania":0, "Malta":0, "Moldova":0, "Montenegro":0, "The Netherlands":0, "North Macedonia":0, "Norway":0, "Poland":0, "Portugal":0, "Romania":0, "San Marino":0, "Serbia":0, "Slovenia":0, "Spain":0, "Sweden":0, "Switzerland":0, "Ukraine":0, "United Kingdom":0},
-        Alpha2Code: "AL"
-    },
-    {
-        Name: "Armenia",
-        Points : {"Albania":1, "Australia":2, "Austria":3, "Azerbaijan":4, "Belgium":5, "Bulgaria":6, "Croatia":7, "Cyprus":8, "Czech Republic":10, "Denmark":0, "Estonia":0, "Finland":0, "France":0, "Germany":0, "Georgia":0, "Greece":0, "Iceland":0, "Ireland":0, "Israel":0, "Italy":0, "Latvia":0, "Lithuania":0, "Malta":0, "Moldova":0, "Montenegro":0, "The Netherlands":0, "North Macedonia":0, "Norway":0, "Poland":0, "Portugal":0, "Romania":0, "San Marino":0, "Serbia":0, "Slovenia":0, "Spain":0, "Sweden":0, "Switzerland":0, "Ukraine":0, "United Kingdom":0},
-        Alpha2Code: "AM"
-    },
-    {
-        Name: "Australia",
-        Points : {"Albania":1,"Armenia":2, "Austria":3, "Azerbaijan":4, "Belgium":5, "Bulgaria":6, "Croatia":7, "Cyprus":8, "Czech Republic":10, "Denmark":0, "Estonia":0, "Finland":0, "France":0, "Germany":0, "Georgia":0, "Greece":0, "Iceland":0, "Ireland":0, "Israel":0, "Italy":0, "Latvia":0, "Lithuania":0, "Malta":0, "Moldova":0, "Montenegro":0, "The Netherlands":0, "North Macedonia":0, "Norway":0, "Poland":0, "Portugal":0, "Romania":0, "San Marino":0, "Serbia":0, "Slovenia":0, "Spain":0, "Sweden":0, "Switzerland":0, "Ukraine":0, "United Kingdom":0},
-        Alpha2Code: "AU"
-    },
-    {
-        Name: "Austria",
-        Points : {"Albania":1,"Armenia":2, "Australia":3, "Azerbaijan":4, "Belgium":5, "Bulgaria":6, "Croatia":7, "Cyprus":8, "Czech Republic":10, "Denmark":0, "Estonia":0, "Finland":0, "France":0, "Germany":0, "Georgia":0, "Greece":0, "Iceland":0, "Ireland":0, "Israel":0, "Italy":0, "Latvia":0, "Lithuania":0, "Malta":0, "Moldova":0, "Montenegro":0, "The Netherlands":0, "North Macedonia":0, "Norway":0, "Poland":0, "Portugal":0, "Romania":0, "San Marino":0, "Serbia":0, "Slovenia":0, "Spain":0, "Sweden":0, "Switzerland":0, "Ukraine":0, "United Kingdom":0},
-        Alpha2Code: "AT"
-    },
-    {
-        Name: "Azerbaijan",
-        Points : {"Albania":1,"Armenia":2, "Australia":3, "Austria":4, "Belgium":5, "Bulgaria":6, "Croatia":7, "Cyprus":8, "Czech Republic":10, "Denmark":0, "Estonia":0, "Finland":0, "France":0, "Germany":0, "Georgia":0, "Greece":0, "Iceland":0, "Ireland":0, "Israel":0, "Italy":0, "Latvia":0, "Lithuania":0, "Malta":0, "Moldova":0, "Montenegro":0, "The Netherlands":0, "North Macedonia":0, "Norway":0, "Poland":0, "Portugal":0, "Romania":0, "San Marino":0, "Serbia":0, "Slovenia":0, "Spain":0, "Sweden":0, "Switzerland":0, "Ukraine":0, "United Kingdom":0},
-        Alpha2Code: "AZ"
-    },
-    {
-        Name: "Belgium",
-        Points : {"Albania":1,"Armenia":2, "Australia":3, "Austria":4, "Azerbaijan":5,"Bulgaria":6, "Croatia":7, "Cyprus":8, "Czech Republic":10, "Denmark":0, "Estonia":0, "Finland":0, "France":0, "Germany":0, "Georgia":0, "Greece":0, "Iceland":0, "Ireland":0, "Israel":0, "Italy":0, "Latvia":0, "Lithuania":0, "Malta":0, "Moldova":0, "Montenegro":0, "The Netherlands":0, "North Macedonia":0, "Norway":0, "Poland":0, "Portugal":0, "Romania":0, "San Marino":0, "Serbia":0, "Slovenia":0, "Spain":0, "Sweden":0, "Switzerland":0, "Ukraine":0, "United Kingdom":0},
-        Alpha2Code: "BE"
-    },
-    {
-        Name: "Bulgaria",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1,"Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":0, "Estonia":0, "Finland":0, "France":0, "Germany":0, "Georgia":0, "Greece":0, "Iceland":0, "Ireland":0, "Israel":0, "Italy":0, "Latvia":0, "Lithuania":0, "Malta":0, "Moldova":0, "Montenegro":0, "The Netherlands":0, "North Macedonia":0, "Norway":0, "Poland":0, "Portugal":0, "Romania":0, "San Marino":0, "Serbia":0, "Slovenia":0, "Spain":0, "Sweden":0, "Switzerland":0, "Ukraine":0, "United Kingdom":0},
-        Alpha2Code: "BG"
-    },
-    {
-        Name: "Croatia",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Cyprus":1, "Czech Republic":1, "Denmark":0, "Estonia":0, "Finland":0, "France":0, "Germany":0, "Georgia":0, "Greece":0, "Iceland":0, "Ireland":0, "Israel":0, "Italy":0, "Latvia":0, "Lithuania":0, "Malta":0, "Moldova":0, "Montenegro":0, "The Netherlands":0, "North Macedonia":0, "Norway":0, "Poland":0, "Portugal":0, "Romania":0, "San Marino":0, "Serbia":0, "Slovenia":0, "Spain":0, "Sweden":0, "Switzerland":0, "Ukraine":0, "United Kingdom":0},
-        Alpha2Code: "HR"
-    },
-    {
-        Name: "Cyprus",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Czech Republic":1, "Denmark":0, "Estonia":0, "Finland":0, "France":0, "Germany":0, "Georgia":0, "Greece":0, "Iceland":0, "Ireland":0, "Israel":0, "Italy":0, "Latvia":0, "Lithuania":0, "Malta":0, "Moldova":0, "Montenegro":0, "The Netherlands":0, "North Macedonia":0, "Norway":0, "Poland":0, "Portugal":0, "Romania":0, "San Marino":0, "Serbia":0, "Slovenia":0, "Spain":0, "Sweden":0, "Switzerland":0, "Ukraine":0, "United Kingdom":0},
-        Alpha2Code: "CY"
-    },
-    {
-        Name: "Czech Republic",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Denmark":0, "Estonia":0, "Finland":0, "France":0, "Germany":0, "Georgia":0, "Greece":0, "Iceland":0, "Ireland":0, "Israel":0, "Italy":0, "Latvia":0, "Lithuania":0, "Malta":0, "Moldova":0, "Montenegro":0, "The Netherlands":0, "North Macedonia":0, "Norway":0, "Poland":0, "Portugal":0, "Romania":0, "San Marino":0, "Serbia":0, "Slovenia":0, "Spain":0, "Sweden":0, "Switzerland":0, "Ukraine":0, "United Kingdom":0},
-        Alpha2Code: "CZ"
-    },
-    {
-        Name: "Denmark",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
-        Alpha2Code: "DK"
-    },
-    {
-        Name: "Estonia",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
-        Alpha2Code: "EE"
-    },
-    {
-        Name: "Finland",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
-        Alpha2Code: "FI"
-    },
-    {
-        Name: "France",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
-        Alpha2Code: "FR"
-    },
-    {
-        Name: "Germany",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
-        Alpha2Code: "DE"
-    },
-    {
-        Name: "Georgia",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
-        Alpha2Code: "GE"
-    },
-    {
-        Name: "Greece",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
-        Alpha2Code: "GR"
-    },
-    {
-        Name: "Iceland",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
-        Alpha2Code: "IS"
-    },
-    {
-        Name: "Ireland",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
-        Alpha2Code: "IE"
-    },
-    {
-        Name: "Israel",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
-        Alpha2Code: "IL"
-    },
-    {
-        Name: "Italy",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
-        Alpha2Code: "IT"
-    },
-    {
-        Name: "Latvia",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
-        Alpha2Code: "LV"
-    },
-    {
-        Name: "Lithuania",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
-        Alpha2Code: "LT"
-    },
-    {
-        Name: "Malta",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
-        Alpha2Code: "MT"
-    },
-    {
-        Name: "Moldova",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1,  "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
-        Alpha2Code: "MD"
-    },
-    {
-        Name: "Montenegro",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1,"The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
-        Alpha2Code: "ME"
-    },
-    {
-        Name: "The Netherlands",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
-        Alpha2Code: "NL"
-    },
-    {
-        Name: "North Macedonia",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
-        Alpha2Code: "MK"
-    },
-    {
-        Name: "Norway",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
-        Alpha2Code: "NO"
-    },
-    {
-        Name: "Poland",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
-        Alpha2Code: "PL"
-    },
-    {
-        Name: "Portugal",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
-        Alpha2Code: "PT"
-    },
-    {
-        Name: "Romania",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
-        Alpha2Code: "RO"
-    },
-    {
-        Name: "San Marino",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
-        Alpha2Code: "SM"
-    },
-    {
-        Name: "Serbia",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
-        Alpha2Code: "RS"
-    },
-    {
-        Name: "Slovenia",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
-        Alpha2Code: "SI"
-    },
-    {
-        Name: "Spain",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1,"Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
-        Alpha2Code: "ES"
-    },
-    {
-        Name: "Sweden",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
-        Alpha2Code: "SE"
-    },
-    {
-        Name: "Switzerland",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Ukraine":1, "United Kingdom":1},
-        Alpha2Code: "CH"
-    },
-    {
-        Name: "Ukraine",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "United Kingdom":1},
-        Alpha2Code: "UA"
-    },
-    {
-        Name: "United Kingdom",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1},
-        Alpha2Code: "GB"
-    }
-    ]
-
-      );
-
     /* src/Navbar.svelte generated by Svelte v3.48.0 */
 
     const file$3 = "src/Navbar.svelte";
@@ -3175,6 +2719,257 @@ var app = (function () {
         return Array(end - start).fill().map((_, idx) => start + idx)
       }
 
+    const subscriber_queue = [];
+    /**
+     * Create a `Writable` store that allows both updating and reading by subscription.
+     * @param {*=}value initial value
+     * @param {StartStopNotifier=}start start and stop notifications for subscriptions
+     */
+    function writable(value, start = noop) {
+        let stop;
+        const subscribers = new Set();
+        function set(new_value) {
+            if (safe_not_equal(value, new_value)) {
+                value = new_value;
+                if (stop) { // store is ready
+                    const run_queue = !subscriber_queue.length;
+                    for (const subscriber of subscribers) {
+                        subscriber[1]();
+                        subscriber_queue.push(subscriber, value);
+                    }
+                    if (run_queue) {
+                        for (let i = 0; i < subscriber_queue.length; i += 2) {
+                            subscriber_queue[i][0](subscriber_queue[i + 1]);
+                        }
+                        subscriber_queue.length = 0;
+                    }
+                }
+            }
+        }
+        function update(fn) {
+            set(fn(value));
+        }
+        function subscribe(run, invalidate = noop) {
+            const subscriber = [run, invalidate];
+            subscribers.add(subscriber);
+            if (subscribers.size === 1) {
+                stop = start(set) || noop;
+            }
+            run(value);
+            return () => {
+                subscribers.delete(subscriber);
+                if (subscribers.size === 0) {
+                    stop();
+                    stop = null;
+                }
+            };
+        }
+        return { set, update, subscribe };
+    }
+
+    let participantsArray = writable([
+        {
+            Name : "Albania",
+            Alpha2Code: "AL",
+            Points: 0
+        },
+        {
+            Name: "Armenia",
+            Alpha2Code: "AM",
+            Points: 0
+        },
+        {
+            Name: "Australia",
+            Alpha2Code: "AU",
+            Points: 0
+        },
+        {
+            Name: "Austria",
+            Alpha2Code: "AT",
+            Points: 0
+        },
+        {
+            Name: "Azerbaijan",
+            Alpha2Code: "AZ",
+            Points: 0
+        },
+        {
+            Name: "Belgium",
+            Alpha2Code: "BE",
+            Points: 0
+        },
+        {
+            Name: "Bulgaria",
+            Alpha2Code: "BG",
+            Points: 0
+        },
+        {
+            Name: "Croatia",
+            Alpha2Code: "HR",
+            Points: 0
+        },
+        {
+            Name: "Cyprus",
+            Alpha2Code: "CY",
+            Points: 0
+        },
+        {
+            Name: "Czech Republic",
+            Alpha2Code: "CZ",
+            Points: 0
+        },
+        {
+            Name: "Denmark",
+            Alpha2Code: "DK",
+            Points: 0
+        },
+        {
+            Name: "Estonia",
+            Alpha2Code: "EE",
+            Points: 0
+        },
+        {
+            Name: "Finland",
+            Alpha2Code: "FI",
+            Points: 0
+        },
+        {
+            Name: "France",
+            Alpha2Code: "FR",
+            Points: 0
+        },
+        {
+            Name: "Germany",
+            Alpha2Code: "DE",
+            Points: 0
+        },
+        {
+            Name: "Georgia",
+            Alpha2Code: "GE",
+            Points: 0
+        },
+        {
+            Name: "Greece",
+            Alpha2Code: "GR",
+            Points: 0
+        },
+        {
+            Name: "Iceland",
+            Alpha2Code: "IS",
+            Points: 0
+        },
+        {
+            Name: "Ireland",
+            Alpha2Code: "IE",
+            Points: 0
+        },
+        {
+            Name: "Israel",
+            Alpha2Code: "IL",
+            Points: 0
+        },
+        {
+            Name: "Italy",
+            Alpha2Code: "IT",
+            Points: 0
+        },
+        {
+            Name: "Latvia",
+            Alpha2Code: "LV",
+            Points: 0
+        },
+        {
+            Name: "Lithuania",
+            Alpha2Code: "LT",
+            Points: 0
+        },
+        {
+            Name: "Malta",
+            Alpha2Code: "MT",
+            Points: 0
+        },
+        {
+            Name: "Moldova",
+            Alpha2Code: "MD",
+            Points: 0
+        },
+        {
+            Name: "Montenegro",
+            Alpha2Code: "ME",
+            Points: 0
+        },
+        {
+            Name: "The Netherlands",
+            Alpha2Code: "NL",
+            Points: 0
+        },
+        {
+            Name: "North Macedonia",
+            Alpha2Code: "MK",
+            Points: 0
+        },
+        {
+            Name: "Norway",
+            Alpha2Code: "NO",
+            Points: 0
+        },
+        {
+            Name: "Poland",
+            Alpha2Code: "PL",
+            Points: 0
+        },
+        {
+            Name: "Portugal",
+            Alpha2Code: "PT",
+            Points: 0
+        },
+        {
+            Name: "Romania",
+            Alpha2Code: "RO",
+            Points: 0
+        },
+        {
+            Name: "San Marino",
+            Alpha2Code: "SM",
+            Points: 0
+        },
+        {
+            Name: "Serbia",
+            Alpha2Code: "RS",
+            Points: 0
+        },
+        {
+            Name: "Slovenia",
+            Alpha2Code: "SI",
+            Points: 0
+        },
+        {
+            Name: "Spain",
+            Alpha2Code: "ES",
+            Points: 0
+        },
+        {
+            Name: "Sweden",
+            Alpha2Code: "SE",
+            Points: 0
+        },
+        {
+            Name: "Switzerland",
+            Alpha2Code: "CH",
+            Points: 0
+        },
+        {
+            Name: "Ukraine",
+            Alpha2Code: "UA",
+            Points: 0
+        },
+        {
+            Name: "United Kingdom",
+            Alpha2Code: "GB",
+            Points: 0
+        },
+      ]);
+
     /* src/Table.svelte generated by Svelte v3.48.0 */
     const file$2 = "src/Table.svelte";
 
@@ -3780,85 +3575,210 @@ var app = (function () {
     	}
     }
 
-    /* src/PointsButton.svelte generated by Svelte v3.48.0 */
-
-    const file$1 = "src/PointsButton.svelte";
-
-    function create_fragment$1(ctx) {
-    	let div;
-    	let button;
-    	let mounted;
-    	let dispose;
-
-    	const block = {
-    		c: function create() {
-    			div = element("div");
-    			button = element("button");
-    			button.textContent = "Give points";
-    			attr_dev(button, "class", "button-2 svelte-ueirbm");
-    			add_location(button, file$1, 1, 4, 32);
-    			attr_dev(div, "class", "points-button svelte-ueirbm");
-    			add_location(div, file$1, 0, 0, 0);
-    		},
-    		l: function claim(nodes) {
-    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, div, anchor);
-    			append_dev(div, button);
-
-    			if (!mounted) {
-    				dispose = listen_dev(button, "click", /*click_handler*/ ctx[0], false, false, false);
-    				mounted = true;
-    			}
-    		},
-    		p: noop,
-    		i: noop,
-    		o: noop,
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div);
-    			mounted = false;
-    			dispose();
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_fragment$1.name,
-    		type: "component",
-    		source: "",
-    		ctx
-    	});
-
-    	return block;
+    const pointFromArray = writable([
+      {
+        Name : "Albania",
+        Points : {"Armenia":1, "Australia":2, "Austria":3, "Azerbaijan":4, "Belgium":5, "Bulgaria":6, "Croatia":7, "Cyprus":8, "Czech Republic":10, "Denmark":0, "Estonia":0, "Finland":0, "France":0, "Germany":0, "Georgia":0, "Greece":0, "Iceland":0, "Ireland":0, "Israel":0, "Italy":0, "Latvia":0, "Lithuania":0, "Malta":0, "Moldova":0, "Montenegro":0, "The Netherlands":0, "North Macedonia":0, "Norway":0, "Poland":0, "Portugal":0, "Romania":0, "San Marino":0, "Serbia":0, "Slovenia":0, "Spain":0, "Sweden":0, "Switzerland":0, "Ukraine":0, "United Kingdom":0},
+        Alpha2Code: "AL"
+    },
+    {
+        Name: "Armenia",
+        Points : {"Albania":1, "Australia":2, "Austria":3, "Azerbaijan":4, "Belgium":5, "Bulgaria":6, "Croatia":7, "Cyprus":8, "Czech Republic":10, "Denmark":0, "Estonia":0, "Finland":0, "France":0, "Germany":0, "Georgia":0, "Greece":0, "Iceland":0, "Ireland":0, "Israel":0, "Italy":0, "Latvia":0, "Lithuania":0, "Malta":0, "Moldova":0, "Montenegro":0, "The Netherlands":0, "North Macedonia":0, "Norway":0, "Poland":0, "Portugal":0, "Romania":0, "San Marino":0, "Serbia":0, "Slovenia":0, "Spain":0, "Sweden":0, "Switzerland":0, "Ukraine":0, "United Kingdom":0},
+        Alpha2Code: "AM"
+    },
+    {
+        Name: "Australia",
+        Points : {"Albania":1,"Armenia":2, "Austria":3, "Azerbaijan":4, "Belgium":5, "Bulgaria":6, "Croatia":7, "Cyprus":8, "Czech Republic":10, "Denmark":0, "Estonia":0, "Finland":0, "France":0, "Germany":0, "Georgia":0, "Greece":0, "Iceland":0, "Ireland":0, "Israel":0, "Italy":0, "Latvia":0, "Lithuania":0, "Malta":0, "Moldova":0, "Montenegro":0, "The Netherlands":0, "North Macedonia":0, "Norway":0, "Poland":0, "Portugal":0, "Romania":0, "San Marino":0, "Serbia":0, "Slovenia":0, "Spain":0, "Sweden":0, "Switzerland":0, "Ukraine":0, "United Kingdom":0},
+        Alpha2Code: "AU"
+    },
+    {
+        Name: "Austria",
+        Points : {"Albania":1,"Armenia":2, "Australia":3, "Azerbaijan":4, "Belgium":5, "Bulgaria":6, "Croatia":7, "Cyprus":8, "Czech Republic":10, "Denmark":0, "Estonia":0, "Finland":0, "France":0, "Germany":0, "Georgia":0, "Greece":0, "Iceland":0, "Ireland":0, "Israel":0, "Italy":0, "Latvia":0, "Lithuania":0, "Malta":0, "Moldova":0, "Montenegro":0, "The Netherlands":0, "North Macedonia":0, "Norway":0, "Poland":0, "Portugal":0, "Romania":0, "San Marino":0, "Serbia":0, "Slovenia":0, "Spain":0, "Sweden":0, "Switzerland":0, "Ukraine":0, "United Kingdom":0},
+        Alpha2Code: "AT"
+    },
+    {
+        Name: "Azerbaijan",
+        Points : {"Albania":1,"Armenia":2, "Australia":3, "Austria":4, "Belgium":5, "Bulgaria":6, "Croatia":7, "Cyprus":8, "Czech Republic":10, "Denmark":0, "Estonia":0, "Finland":0, "France":0, "Germany":0, "Georgia":0, "Greece":0, "Iceland":0, "Ireland":0, "Israel":0, "Italy":0, "Latvia":0, "Lithuania":0, "Malta":0, "Moldova":0, "Montenegro":0, "The Netherlands":0, "North Macedonia":0, "Norway":0, "Poland":0, "Portugal":0, "Romania":0, "San Marino":0, "Serbia":0, "Slovenia":0, "Spain":0, "Sweden":0, "Switzerland":0, "Ukraine":0, "United Kingdom":0},
+        Alpha2Code: "AZ"
+    },
+    {
+        Name: "Belgium",
+        Points : {"Albania":1,"Armenia":2, "Australia":3, "Austria":4, "Azerbaijan":5,"Bulgaria":6, "Croatia":7, "Cyprus":8, "Czech Republic":10, "Denmark":0, "Estonia":0, "Finland":0, "France":0, "Germany":0, "Georgia":0, "Greece":0, "Iceland":0, "Ireland":0, "Israel":0, "Italy":0, "Latvia":0, "Lithuania":0, "Malta":0, "Moldova":0, "Montenegro":0, "The Netherlands":0, "North Macedonia":0, "Norway":0, "Poland":0, "Portugal":0, "Romania":0, "San Marino":0, "Serbia":0, "Slovenia":0, "Spain":0, "Sweden":0, "Switzerland":0, "Ukraine":0, "United Kingdom":0},
+        Alpha2Code: "BE"
+    },
+    {
+        Name: "Bulgaria",
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1,"Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":0, "Estonia":0, "Finland":0, "France":0, "Germany":0, "Georgia":0, "Greece":0, "Iceland":0, "Ireland":0, "Israel":0, "Italy":0, "Latvia":0, "Lithuania":0, "Malta":0, "Moldova":0, "Montenegro":0, "The Netherlands":0, "North Macedonia":0, "Norway":0, "Poland":0, "Portugal":0, "Romania":0, "San Marino":0, "Serbia":0, "Slovenia":0, "Spain":0, "Sweden":0, "Switzerland":0, "Ukraine":0, "United Kingdom":0},
+        Alpha2Code: "BG"
+    },
+    {
+        Name: "Croatia",
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Cyprus":1, "Czech Republic":1, "Denmark":0, "Estonia":0, "Finland":0, "France":0, "Germany":0, "Georgia":0, "Greece":0, "Iceland":0, "Ireland":0, "Israel":0, "Italy":0, "Latvia":0, "Lithuania":0, "Malta":0, "Moldova":0, "Montenegro":0, "The Netherlands":0, "North Macedonia":0, "Norway":0, "Poland":0, "Portugal":0, "Romania":0, "San Marino":0, "Serbia":0, "Slovenia":0, "Spain":0, "Sweden":0, "Switzerland":0, "Ukraine":0, "United Kingdom":0},
+        Alpha2Code: "HR"
+    },
+    {
+        Name: "Cyprus",
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Czech Republic":1, "Denmark":0, "Estonia":0, "Finland":0, "France":0, "Germany":0, "Georgia":0, "Greece":0, "Iceland":0, "Ireland":0, "Israel":0, "Italy":0, "Latvia":0, "Lithuania":0, "Malta":0, "Moldova":0, "Montenegro":0, "The Netherlands":0, "North Macedonia":0, "Norway":0, "Poland":0, "Portugal":0, "Romania":0, "San Marino":0, "Serbia":0, "Slovenia":0, "Spain":0, "Sweden":0, "Switzerland":0, "Ukraine":0, "United Kingdom":0},
+        Alpha2Code: "CY"
+    },
+    {
+        Name: "Czech Republic",
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Denmark":0, "Estonia":0, "Finland":0, "France":0, "Germany":0, "Georgia":0, "Greece":0, "Iceland":0, "Ireland":0, "Israel":0, "Italy":0, "Latvia":0, "Lithuania":0, "Malta":0, "Moldova":0, "Montenegro":0, "The Netherlands":0, "North Macedonia":0, "Norway":0, "Poland":0, "Portugal":0, "Romania":0, "San Marino":0, "Serbia":0, "Slovenia":0, "Spain":0, "Sweden":0, "Switzerland":0, "Ukraine":0, "United Kingdom":0},
+        Alpha2Code: "CZ"
+    },
+    {
+        Name: "Denmark",
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Alpha2Code: "DK"
+    },
+    {
+        Name: "Estonia",
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Alpha2Code: "EE"
+    },
+    {
+        Name: "Finland",
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Alpha2Code: "FI"
+    },
+    {
+        Name: "France",
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Alpha2Code: "FR"
+    },
+    {
+        Name: "Germany",
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Alpha2Code: "DE"
+    },
+    {
+        Name: "Georgia",
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Alpha2Code: "GE"
+    },
+    {
+        Name: "Greece",
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Alpha2Code: "GR"
+    },
+    {
+        Name: "Iceland",
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Alpha2Code: "IS"
+    },
+    {
+        Name: "Ireland",
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Alpha2Code: "IE"
+    },
+    {
+        Name: "Israel",
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Alpha2Code: "IL"
+    },
+    {
+        Name: "Italy",
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Alpha2Code: "IT"
+    },
+    {
+        Name: "Latvia",
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Alpha2Code: "LV"
+    },
+    {
+        Name: "Lithuania",
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Alpha2Code: "LT"
+    },
+    {
+        Name: "Malta",
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Alpha2Code: "MT"
+    },
+    {
+        Name: "Moldova",
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1,  "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Alpha2Code: "MD"
+    },
+    {
+        Name: "Montenegro",
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1,"The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Alpha2Code: "ME"
+    },
+    {
+        Name: "The Netherlands",
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Alpha2Code: "NL"
+    },
+    {
+        Name: "North Macedonia",
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Alpha2Code: "MK"
+    },
+    {
+        Name: "Norway",
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Alpha2Code: "NO"
+    },
+    {
+        Name: "Poland",
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Alpha2Code: "PL"
+    },
+    {
+        Name: "Portugal",
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Alpha2Code: "PT"
+    },
+    {
+        Name: "Romania",
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Alpha2Code: "RO"
+    },
+    {
+        Name: "San Marino",
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Alpha2Code: "SM"
+    },
+    {
+        Name: "Serbia",
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Alpha2Code: "RS"
+    },
+    {
+        Name: "Slovenia",
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Alpha2Code: "SI"
+    },
+    {
+        Name: "Spain",
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1,"Sweden":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Alpha2Code: "ES"
+    },
+    {
+        Name: "Sweden",
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Switzerland":1, "Ukraine":1, "United Kingdom":1},
+        Alpha2Code: "SE"
+    },
+    {
+        Name: "Switzerland",
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Ukraine":1, "United Kingdom":1},
+        Alpha2Code: "CH"
+    },
+    {
+        Name: "Ukraine",
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "United Kingdom":1},
+        Alpha2Code: "UA"
+    },
+    {
+        Name: "United Kingdom",
+        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1},
+        Alpha2Code: "GB"
     }
+    ]
 
-    function instance$1($$self, $$props) {
-    	let { $$slots: slots = {}, $$scope } = $$props;
-    	validate_slots('PointsButton', slots, []);
-    	const writable_props = [];
-
-    	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<PointsButton> was created with unknown prop '${key}'`);
-    	});
-
-    	const click_handler = () => onClick();
-    	return [click_handler];
-    }
-
-    class PointsButton extends SvelteComponentDev {
-    	constructor(options) {
-    		super(options);
-    		init(this, options, instance$1, create_fragment$1, safe_not_equal, {});
-
-    		dispatch_dev("SvelteRegisterComponent", {
-    			component: this,
-    			tagName: "PointsButton",
-    			options,
-    			id: create_fragment$1.name
-    		});
-    	}
-    }
+      );
 
     function addPoints(pointsTo, pointsValue){
         participantsArray.update(currentData => {
@@ -3894,80 +3814,50 @@ var app = (function () {
         return 0;
       }
 
-    /* src/App.svelte generated by Svelte v3.48.0 */
-    const file = "src/App.svelte";
+    /* src/PointsButton.svelte generated by Svelte v3.48.0 */
+    const file$1 = "src/PointsButton.svelte";
 
-    function create_fragment(ctx) {
-    	let navbar;
-    	let t0;
-    	let table;
-    	let t1;
-    	let pointsbutton;
-    	let t2;
+    function create_fragment$1(ctx) {
     	let div;
-    	let p;
-    	let current;
-    	navbar = new Navbar({ $$inline: true });
-    	table = new Table({ $$inline: true });
-    	pointsbutton = new PointsButton({ $$inline: true });
+    	let button;
+    	let mounted;
+    	let dispose;
 
     	const block = {
     		c: function create() {
-    			create_component(navbar.$$.fragment);
-    			t0 = space();
-    			create_component(table.$$.fragment);
-    			t1 = space();
-    			create_component(pointsbutton.$$.fragment);
-    			t2 = space();
     			div = element("div");
-    			p = element("p");
-    			p.textContent = `${"later"}`;
-    			add_location(p, file, 38, 2, 916);
-    			attr_dev(div, "class", "points-text svelte-hbky0y");
-    			add_location(div, file, 37, 0, 888);
+    			button = element("button");
+    			button.textContent = "Give points";
+    			attr_dev(button, "class", "button-2 svelte-1w06efb");
+    			add_location(button, file$1, 31, 4, 758);
+    			attr_dev(div, "class", "points-button svelte-1w06efb");
+    			add_location(div, file$1, 30, 0, 726);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			mount_component(navbar, target, anchor);
-    			insert_dev(target, t0, anchor);
-    			mount_component(table, target, anchor);
-    			insert_dev(target, t1, anchor);
-    			mount_component(pointsbutton, target, anchor);
-    			insert_dev(target, t2, anchor);
     			insert_dev(target, div, anchor);
-    			append_dev(div, p);
-    			current = true;
+    			append_dev(div, button);
+
+    			if (!mounted) {
+    				dispose = listen_dev(button, "click", /*click_handler*/ ctx[1], false, false, false);
+    				mounted = true;
+    			}
     		},
     		p: noop,
-    		i: function intro(local) {
-    			if (current) return;
-    			transition_in(navbar.$$.fragment, local);
-    			transition_in(table.$$.fragment, local);
-    			transition_in(pointsbutton.$$.fragment, local);
-    			current = true;
-    		},
-    		o: function outro(local) {
-    			transition_out(navbar.$$.fragment, local);
-    			transition_out(table.$$.fragment, local);
-    			transition_out(pointsbutton.$$.fragment, local);
-    			current = false;
-    		},
+    		i: noop,
+    		o: noop,
     		d: function destroy(detaching) {
-    			destroy_component(navbar, detaching);
-    			if (detaching) detach_dev(t0);
-    			destroy_component(table, detaching);
-    			if (detaching) detach_dev(t1);
-    			destroy_component(pointsbutton, detaching);
-    			if (detaching) detach_dev(t2);
     			if (detaching) detach_dev(div);
+    			mounted = false;
+    			dispose();
     		}
     	};
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_fragment.name,
+    		id: create_fragment$1.name,
     		type: "component",
     		source: "",
     		ctx
@@ -3976,9 +3866,9 @@ var app = (function () {
     	return block;
     }
 
-    function instance($$self, $$props, $$invalidate) {
+    function instance$1($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
-    	validate_slots('App', slots, []);
+    	validate_slots('PointsButton', slots, []);
     	const pointFrom = get_store_value(pointFromArray);
     	const votingLength = [...Array(pointFrom.length).keys()];
     	let participantsStore = [];
@@ -4001,16 +3891,15 @@ var app = (function () {
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
-    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<App> was created with unknown prop '${key}'`);
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<PointsButton> was created with unknown prop '${key}'`);
     	});
+
+    	const click_handler = () => onClick();
 
     	$$self.$capture_state = () => ({
     		participantsArray,
     		pointFromArray,
     		get: get_store_value,
-    		Navbar,
-    		Table,
-    		PointsButton,
     		andThePointsGoTo,
     		compare,
     		pointFrom,
@@ -4028,6 +3917,116 @@ var app = (function () {
     		$$self.$inject_state($$props.$$inject);
     	}
 
+    	return [onClick, click_handler];
+    }
+
+    class PointsButton extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance$1, create_fragment$1, safe_not_equal, {});
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "PointsButton",
+    			options,
+    			id: create_fragment$1.name
+    		});
+    	}
+    }
+
+    /* src/App.svelte generated by Svelte v3.48.0 */
+    const file = "src/App.svelte";
+
+    function create_fragment(ctx) {
+    	let main;
+    	let navbar;
+    	let t0;
+    	let table;
+    	let t1;
+    	let pointsbutton;
+    	let t2;
+    	let div;
+    	let p;
+    	let current;
+    	navbar = new Navbar({ $$inline: true });
+    	table = new Table({ $$inline: true });
+    	pointsbutton = new PointsButton({ $$inline: true });
+
+    	const block = {
+    		c: function create() {
+    			main = element("main");
+    			create_component(navbar.$$.fragment);
+    			t0 = space();
+    			create_component(table.$$.fragment);
+    			t1 = space();
+    			create_component(pointsbutton.$$.fragment);
+    			t2 = space();
+    			div = element("div");
+    			p = element("p");
+    			p.textContent = `${"later"}`;
+    			add_location(p, file, 13, 2, 225);
+    			attr_dev(div, "class", "points-text svelte-hbky0y");
+    			add_location(div, file, 12, 0, 197);
+    			add_location(main, file, 7, 0, 152);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, main, anchor);
+    			mount_component(navbar, main, null);
+    			append_dev(main, t0);
+    			mount_component(table, main, null);
+    			append_dev(main, t1);
+    			mount_component(pointsbutton, main, null);
+    			append_dev(main, t2);
+    			append_dev(main, div);
+    			append_dev(div, p);
+    			current = true;
+    		},
+    		p: noop,
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(navbar.$$.fragment, local);
+    			transition_in(table.$$.fragment, local);
+    			transition_in(pointsbutton.$$.fragment, local);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(navbar.$$.fragment, local);
+    			transition_out(table.$$.fragment, local);
+    			transition_out(pointsbutton.$$.fragment, local);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(main);
+    			destroy_component(navbar);
+    			destroy_component(table);
+    			destroy_component(pointsbutton);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function instance($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots('App', slots, []);
+    	const writable_props = [];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<App> was created with unknown prop '${key}'`);
+    	});
+
+    	$$self.$capture_state = () => ({ Navbar, Table, PointsButton });
     	return [];
     }
 
