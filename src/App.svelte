@@ -83,7 +83,7 @@
 }
 
 .button-2:hover {
-  background-color: yellow; /* Green */
+  background-color: yellow;
   color: black;
 }
                 
