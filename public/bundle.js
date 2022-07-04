@@ -2910,11 +2910,11 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "Give points";
     			add_location(p, file$2, 36, 2, 848);
-    			div0.className = "points-text svelte-k3bvqk";
+    			div0.className = "points-text svelte-1bdv0a1";
     			add_location(div0, file$2, 35, 0, 820);
-    			button.className = "button-2 svelte-k3bvqk";
+    			button.className = "button-2 svelte-1bdv0a1";
     			add_location(button, file$2, 40, 2, 903);
-    			div1.className = "points-button svelte-k3bvqk";
+    			div1.className = "points-button svelte-1bdv0a1";
     			add_location(div1, file$2, 39, 0, 873);
     			dispose = listen(button, "click", ctx.click_handler);
     		},

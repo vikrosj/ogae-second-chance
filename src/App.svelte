@@ -4,6 +4,7 @@
 	import { get } from 'svelte/store';
 	import Navbar from "./Navbar.svelte";
   import Table from "./Table.svelte";
+  import PointsButton from "./PointsButton.svelte";
   import { andThePointsGoTo } from "../utils/pointsHandler"
   import compare from "../utils/compare"
 
@@ -32,18 +33,16 @@
 
 <Navbar />
 <Table />
+<PointsButton/>
 
 <div class="points-text">
   <p>{"later"}</p>
 </div>
 
-<div class="points-button">
-  <button class="button-2" on:click={() => onClick()}>Give points</button>
-</div>
+
 
 
 <style>
-
   :global(body){
     background: rgb(63,94,251);
     background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%); 
@@ -54,37 +53,5 @@
   position: absolute;
   right: 200px;
   bottom: 50px;;
-}
-
-.points-button {
-  position: absolute;
-  right: 100px;
-  bottom: 50px;
-}
-
-.button-2 {
-
-  display: inline-block;
-                outline: 0;
-                border:0;
-                cursor: pointer;
-                text-decoration: none;
-                position: relative;
-                color: #000;
-                background: rgb(238,174,202);;
-                line-height: 30px;
-                border-radius: 40px;
-                padding: 20px;
-                font-size: 30px;
-                font-weight: 600;
-                box-shadow: rgb(255, 198, 0) -2px -2px 0px 2px, rgb(246, 84, 174) 0px 0px 0px 4px, rgba(0, 0, 0, 0.05) 0px 0px 2px 7px;
-                transition: all 0.2s;
-                
-}
-
-.button-2:hover {
-  background-color: yellow;
-  color: black;
-}
-                
+}                
 </style>
