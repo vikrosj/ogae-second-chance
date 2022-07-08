@@ -4091,15 +4091,10 @@ var app = (function () {
     	let video_animationframe;
     	let t0;
     	let p;
-    	let t1_value = (/*currentTime*/ ctx[3] / 60).toFixed(2) + "";
     	let t1;
-    	let t2;
-    	let t3_value = (/*duration*/ ctx[2] / 60).toFixed(2) + "";
-    	let t3;
-    	let t4;
     	let button;
-    	let t5_value = (/*paused*/ ctx[0] ? "12 points" : "Pause") + "";
-    	let t5;
+    	let t2_value = (/*paused*/ ctx[0] ? "12 points" : "Pause") + "";
+    	let t2;
     	let mounted;
     	let dispose;
 
@@ -4121,12 +4116,9 @@ var app = (function () {
     			track = element("track");
     			t0 = space();
     			p = element("p");
-    			t1 = text(t1_value);
-    			t2 = text(" /\n\t");
-    			t3 = text(t3_value);
-    			t4 = space();
+    			t1 = space();
     			button = element("button");
-    			t5 = text(t5_value);
+    			t2 = text(t2_value);
     			attr_dev(track, "kind", "captions");
     			add_location(track, file, 18, 1, 282);
     			attr_dev(video, "poster", "static/esc_norway.jpg");
@@ -4136,7 +4128,7 @@ var app = (function () {
     			add_location(video, file, 8, 0, 100);
     			add_location(p, file, 20, 0, 315);
     			attr_dev(button, "class", "button-2 svelte-1bfu0tu");
-    			add_location(button, file, 24, 0, 388);
+    			add_location(button, file, 24, 0, 405);
     			attr_dev(div, "class", "svelte-1bfu0tu");
     			add_location(div, file, 6, 0, 93);
     		},
@@ -4154,12 +4146,9 @@ var app = (function () {
 
     			append_dev(div, t0);
     			append_dev(div, p);
-    			append_dev(p, t1);
-    			append_dev(p, t2);
-    			append_dev(p, t3);
-    			append_dev(div, t4);
+    			append_dev(div, t1);
     			append_dev(div, button);
-    			append_dev(button, t5);
+    			append_dev(button, t2);
 
     			if (!mounted) {
     				dispose = [
@@ -4188,9 +4177,7 @@ var app = (function () {
     			}
 
     			video_updating = false;
-    			if (dirty & /*currentTime*/ 8 && t1_value !== (t1_value = (/*currentTime*/ ctx[3] / 60).toFixed(2) + "")) set_data_dev(t1, t1_value);
-    			if (dirty & /*duration*/ 4 && t3_value !== (t3_value = (/*duration*/ ctx[2] / 60).toFixed(2) + "")) set_data_dev(t3, t3_value);
-    			if (dirty & /*paused*/ 1 && t5_value !== (t5_value = (/*paused*/ ctx[0] ? "12 points" : "Pause") + "")) set_data_dev(t5, t5_value);
+    			if (dirty & /*paused*/ 1 && t2_value !== (t2_value = (/*paused*/ ctx[0] ? "12 points" : "Pause") + "")) set_data_dev(t2, t2_value);
     		},
     		i: noop,
     		o: noop,
