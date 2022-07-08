@@ -38,10 +38,8 @@ export default {
 	},
 	plugins: [
 		svelte({
-			compilerOptions: {
 				// enable run-time checks when not in production
 				dev: !production
-			}
 		}),
 		// we'll extract any component CSS out into
 		// a separate file - better for performance
@@ -52,10 +50,7 @@ export default {
 		// some cases you'll need additional configuration -
 		// consult the documentation for details:
 		// https://github.com/rollup/plugins/tree/master/packages/commonjs
-		resolve({
-			browser: true,
-			dedupe: ['svelte']
-		}),
+		resolve(),
 		commonjs(),
 
 		// In dev mode, call `npm run start` once
@@ -69,9 +64,6 @@ export default {
 		// If we're building for production (npm run build
 		// instead of npm run dev), minify
 		production && terser()
-	],
-	watch: {
-		clearScreen: false
-	}
+	]
 };
 
