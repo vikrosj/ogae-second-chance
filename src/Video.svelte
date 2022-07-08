@@ -19,9 +19,9 @@ bind:currentTime={currentTime}
 	<track kind="captions">
 </video>
 <p>
-	{(currentTime/60).toFixed(2)} /
-	{(duration / 60).toFixed(2)}
-	</p>
+	<!-- {(currentTime/60).toFixed(2)} / -->
+	<!-- {(duration / 60).toFixed(2)} -->
+</p>
 <button class="button-2" on:click={() => paused = !paused}>
 	{paused ? "12 points" : "Pause"}
 </button>
