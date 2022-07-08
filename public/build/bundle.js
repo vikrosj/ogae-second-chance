@@ -3837,17 +3837,17 @@ var app = (function () {
     		c: function create() {
     			div0 = element("div");
     			button = element("button");
-    			button.textContent = "Give points";
+    			button.textContent = "1-10 points";
     			t1 = space();
     			div1 = element("div");
     			p = element("p");
     			t2 = text(/*fromCountry*/ ctx[0]);
-    			attr_dev(button, "class", "button-2 svelte-hbp1ki");
+    			attr_dev(button, "class", "button-2 svelte-1m23vrx");
     			add_location(button, file$1, 35, 4, 865);
-    			attr_dev(div0, "class", "points-button svelte-hbp1ki");
+    			attr_dev(div0, "class", "points-button svelte-1m23vrx");
     			add_location(div0, file$1, 34, 0, 833);
     			add_location(p, file$1, 39, 2, 974);
-    			attr_dev(div1, "class", "points-text svelte-hbp1ki");
+    			attr_dev(div1, "class", "points-text svelte-1m23vrx");
     			add_location(div1, file$1, 38, 0, 946);
     		},
     		l: function claim(nodes) {
@@ -3985,7 +3985,7 @@ var app = (function () {
     	let t3;
     	let t4;
     	let button;
-    	let t5_value = (/*paused*/ ctx[0] ? "Play" : "Pause") + "";
+    	let t5_value = (/*paused*/ ctx[0] ? "12 points" : "Pause") + "";
     	let t5;
     	let mounted;
     	let dispose;
@@ -4018,12 +4018,13 @@ var app = (function () {
     			add_location(track, file, 18, 1, 282);
     			attr_dev(video, "poster", "static/esc_norway.jpg");
     			if (!src_url_equal(video.src, video_src_value = "static/12_points_from/germany.mp4")) attr_dev(video, "src", video_src_value);
-    			attr_dev(video, "class", "svelte-1kxjptx");
+    			attr_dev(video, "class", "svelte-1bfu0tu");
     			if (/*duration*/ ctx[2] === void 0) add_render_callback(() => /*video_durationchange_handler*/ ctx[6].call(video));
     			add_location(video, file, 8, 0, 100);
     			add_location(p, file, 20, 0, 315);
+    			attr_dev(button, "class", "button-2 svelte-1bfu0tu");
     			add_location(button, file, 24, 0, 388);
-    			attr_dev(div, "class", "svelte-1kxjptx");
+    			attr_dev(div, "class", "svelte-1bfu0tu");
     			add_location(div, file, 6, 0, 93);
     		},
     		l: function claim(nodes) {
@@ -4076,7 +4077,7 @@ var app = (function () {
     			video_updating = false;
     			if (dirty & /*currentTime*/ 8 && t1_value !== (t1_value = (/*currentTime*/ ctx[3] / 60).toFixed(2) + "")) set_data_dev(t1, t1_value);
     			if (dirty & /*duration*/ 4 && t3_value !== (t3_value = (/*duration*/ ctx[2] / 60).toFixed(2) + "")) set_data_dev(t3, t3_value);
-    			if (dirty & /*paused*/ 1 && t5_value !== (t5_value = (/*paused*/ ctx[0] ? "Play" : "Pause") + "")) set_data_dev(t5, t5_value);
+    			if (dirty & /*paused*/ 1 && t5_value !== (t5_value = (/*paused*/ ctx[0] ? "12 points" : "Pause") + "")) set_data_dev(t5, t5_value);
     		},
     		i: noop,
     		o: noop,
