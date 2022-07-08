@@ -3,14 +3,17 @@
   import { participantsArray } from './../voting/participants';
   import { pointFromArray } from './../voting/points-from';
 	import { get } from 'svelte/store';
-  import { andThePointsGoTo } from "../utils/pointsHandler"
-  import compare from "../utils/compare"
+  import { andThePointsGoTo } from "../utils/pointsHandler";
+  import compare from "../utils/compare";
+  import countryFlagEmoji from "country-flag-emoji";
 
   const pointFrom = get(pointFromArray);
   const votingLength = [...Array(pointFrom.length).keys()];
 
   let participantsStore = [];
-  let fromCountry = ""
+  let fromCountry = "";
+  let visible = false;
+  let alpha2Code = "GB";
 
   participantsArray.subscribe((data) => {
 
@@ -26,7 +29,9 @@
     let idx = votingLength.pop()
     andThePointsGoTo(pointFrom, idx);
     
-    fromCountry = "Points from".concat(pointFrom[idx].Name);
+    fromCountry = pointFrom[idx].Name;
+    alpha2Code = pointFrom[idx].Alpha2Code;
+    visible = true;
     // setTimeout(() => console.log("Waiting..."), 3000);
     sortUpdate();
   }
@@ -36,17 +41,35 @@
     <button class="button-2" on:click={() => onClick()}>1-10 points</button>
 </div>
 
-<div class="points-text">
-  <p>{fromCountry}</p>
+<div class="points-text-1">
+  {#if visible}
+  <p>Points from: </p>
+  {/if}
+</div>
+
+<div class="points-text-2">
+  {#if visible}
+  <p>{fromCountry} {countryFlagEmoji.get(alpha2Code).emoji}</p>
+  {/if}
 </div>
 
 <style>
 
-.points-text {
+.points-text-1 {
   position: absolute;
-  right: 400px;
-  bottom: 50px;;
-}  
+  right: 950px;
+  bottom: 50px;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.points-text-2 {
+  position: absolute;
+  right: 660px;
+  bottom: 50px;
+  font-size: 30px;
+  font-weight: 600;
+} 
 
 .points-button {
   position: absolute;
