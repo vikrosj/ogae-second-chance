@@ -10,6 +10,7 @@
   const votingLength = [...Array(pointFrom.length).keys()];
 
   let participantsStore = [];
+  let fromCountry = ""
 
   participantsArray.subscribe((data) => {
 
@@ -22,7 +23,10 @@
   }
 
   function onClick(){
-    andThePointsGoTo(pointFrom, votingLength.pop());
+    let idx = votingLength.pop()
+    andThePointsGoTo(pointFrom, idx);
+    
+    fromCountry = "Points from".concat(pointFrom[idx].Name);
     // setTimeout(() => console.log("Waiting..."), 3000);
     sortUpdate();
   }
