@@ -3031,11 +3031,11 @@ var app = (function () {
     			td2 = element("td");
     			t4 = text(t4_value);
     			t5 = space();
-    			attr_dev(td0, "class", "svelte-fynzz5");
+    			attr_dev(td0, "class", "svelte-1xuq1ca");
     			add_location(td0, file$2, 20, 12, 424);
-    			attr_dev(td1, "class", "svelte-fynzz5");
+    			attr_dev(td1, "class", "svelte-1xuq1ca");
     			add_location(td1, file$2, 21, 12, 508);
-    			attr_dev(td2, "class", "svelte-fynzz5");
+    			attr_dev(td2, "class", "svelte-1xuq1ca");
     			add_location(td2, file$2, 22, 12, 557);
     			add_location(tr, file$2, 19, 10, 407);
     		},
@@ -3100,11 +3100,11 @@ var app = (function () {
     			td2 = element("td");
     			t4 = text(t4_value);
     			t5 = space();
-    			attr_dev(td0, "class", "svelte-fynzz5");
+    			attr_dev(td0, "class", "svelte-1xuq1ca");
     			add_location(td0, file$2, 31, 12, 759);
-    			attr_dev(td1, "class", "svelte-fynzz5");
+    			attr_dev(td1, "class", "svelte-1xuq1ca");
     			add_location(td1, file$2, 32, 12, 843);
-    			attr_dev(td2, "class", "svelte-fynzz5");
+    			attr_dev(td2, "class", "svelte-1xuq1ca");
     			add_location(td2, file$2, 33, 12, 892);
     			add_location(tr, file$2, 30, 10, 742);
     		},
@@ -3169,11 +3169,11 @@ var app = (function () {
     			td2 = element("td");
     			t4 = text(t4_value);
     			t5 = space();
-    			attr_dev(td0, "class", "svelte-fynzz5");
+    			attr_dev(td0, "class", "svelte-1xuq1ca");
     			add_location(td0, file$2, 42, 12, 1094);
-    			attr_dev(td1, "class", "svelte-fynzz5");
+    			attr_dev(td1, "class", "svelte-1xuq1ca");
     			add_location(td1, file$2, 43, 12, 1178);
-    			attr_dev(td2, "class", "svelte-fynzz5");
+    			attr_dev(td2, "class", "svelte-1xuq1ca");
     			add_location(td2, file$2, 44, 12, 1227);
     			add_location(tr, file$2, 41, 10, 1077);
     		},
@@ -3238,11 +3238,11 @@ var app = (function () {
     			td2 = element("td");
     			t4 = text(t4_value);
     			t5 = space();
-    			attr_dev(td0, "class", "svelte-fynzz5");
+    			attr_dev(td0, "class", "svelte-1xuq1ca");
     			add_location(td0, file$2, 53, 12, 1429);
-    			attr_dev(td1, "class", "svelte-fynzz5");
+    			attr_dev(td1, "class", "svelte-1xuq1ca");
     			add_location(td1, file$2, 54, 12, 1513);
-    			attr_dev(td2, "class", "svelte-fynzz5");
+    			attr_dev(td2, "class", "svelte-1xuq1ca");
     			add_location(td2, file$2, 55, 12, 1562);
     			add_location(tr, file$2, 52, 10, 1412);
     		},
@@ -3358,23 +3358,23 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			attr_dev(table0, "class", "svelte-fynzz5");
+    			attr_dev(table0, "class", "svelte-1xuq1ca");
     			add_location(table0, file$2, 17, 6, 323);
-    			attr_dev(div0, "class", "column svelte-fynzz5");
+    			attr_dev(div0, "class", "column svelte-1xuq1ca");
     			add_location(div0, file$2, 16, 4, 296);
-    			attr_dev(table1, "class", "svelte-fynzz5");
+    			attr_dev(table1, "class", "svelte-1xuq1ca");
     			add_location(table1, file$2, 28, 6, 687);
-    			attr_dev(div1, "class", "column svelte-fynzz5");
+    			attr_dev(div1, "class", "column svelte-1xuq1ca");
     			add_location(div1, file$2, 27, 4, 660);
-    			attr_dev(table2, "class", "svelte-fynzz5");
+    			attr_dev(table2, "class", "svelte-1xuq1ca");
     			add_location(table2, file$2, 39, 6, 1022);
-    			attr_dev(div2, "class", "column svelte-fynzz5");
+    			attr_dev(div2, "class", "column svelte-1xuq1ca");
     			add_location(div2, file$2, 38, 4, 995);
-    			attr_dev(table3, "class", "svelte-fynzz5");
+    			attr_dev(table3, "class", "svelte-1xuq1ca");
     			add_location(table3, file$2, 50, 6, 1357);
-    			attr_dev(div3, "class", "column svelte-fynzz5");
+    			attr_dev(div3, "class", "column svelte-1xuq1ca");
     			add_location(div3, file$2, 49, 4, 1330);
-    			attr_dev(div4, "class", "row svelte-fynzz5");
+    			attr_dev(div4, "class", "row svelte-1xuq1ca");
     			add_location(div4, file$2, 15, 0, 274);
     		},
     		l: function claim(nodes) {
@@ -3842,12 +3842,12 @@ var app = (function () {
     			div1 = element("div");
     			p = element("p");
     			t2 = text(/*fromCountry*/ ctx[0]);
-    			attr_dev(button, "class", "button-2 svelte-jp4z3f");
+    			attr_dev(button, "class", "button-2 svelte-hbp1ki");
     			add_location(button, file$1, 35, 4, 865);
-    			attr_dev(div0, "class", "points-button svelte-jp4z3f");
+    			attr_dev(div0, "class", "points-button svelte-hbp1ki");
     			add_location(div0, file$1, 34, 0, 833);
     			add_location(p, file$1, 39, 2, 974);
-    			attr_dev(div1, "class", "points-text svelte-jp4z3f");
+    			attr_dev(div1, "class", "points-text svelte-hbp1ki");
     			add_location(div1, file$1, 38, 0, 946);
     		},
     		l: function claim(nodes) {
@@ -4018,12 +4018,12 @@ var app = (function () {
     			add_location(track, file, 18, 1, 282);
     			attr_dev(video, "poster", "static/esc_norway.jpg");
     			if (!src_url_equal(video.src, video_src_value = "static/12_points_from/germany.mp4")) attr_dev(video, "src", video_src_value);
-    			attr_dev(video, "class", "svelte-111y9xw");
+    			attr_dev(video, "class", "svelte-1kxjptx");
     			if (/*duration*/ ctx[2] === void 0) add_render_callback(() => /*video_durationchange_handler*/ ctx[6].call(video));
     			add_location(video, file, 8, 0, 100);
     			add_location(p, file, 20, 0, 315);
     			add_location(button, file, 24, 0, 388);
-    			attr_dev(div, "class", "svelte-111y9xw");
+    			attr_dev(div, "class", "svelte-1kxjptx");
     			add_location(div, file, 6, 0, 93);
     		},
     		l: function claim(nodes) {

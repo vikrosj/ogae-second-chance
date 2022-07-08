@@ -91,7 +91,7 @@ table {
 td {
   text-align: left;
   border: 3px solid black;
-  padding: 10px;
+  padding: 8px;
   background: rgb(238,174,202);
   font-size: large;
   font-weight: bold;

@@ -50,7 +50,7 @@
 
 .points-button {
   position: absolute;
-  right: 100px;
+  right: 75px;
   bottom: 50px;
 }
 

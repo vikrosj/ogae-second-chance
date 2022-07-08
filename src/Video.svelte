@@ -30,10 +30,10 @@ bind:currentTime={currentTime}
 <style>
 	div {
 		position: absolute;
-		right: 200px;
-		bottom: 300px;
+		right: 0px;
+		bottom: 200px;
 	}
 	video {
-		max-width: 400px;
+		max-width: 600px;
 	}
 </style>
