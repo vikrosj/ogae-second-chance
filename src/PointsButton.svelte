@@ -75,7 +75,7 @@
 }
 
 .button-2:hover {
-  background-color: green;
+  background-color: yellow;
   color: black;
 }
 </style>
