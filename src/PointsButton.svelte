@@ -36,7 +36,17 @@
     <button class="button-2" on:click={() => onClick()}>Give points</button>
 </div>
 
+<div class="points-text">
+  <p>{fromCountry}</p>
+</div>
+
 <style>
+
+.points-text {
+  position: absolute;
+  right: 400px;
+  bottom: 50px;;
+}  
 
 .points-button {
   position: absolute;
