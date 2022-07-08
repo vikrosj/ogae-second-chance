@@ -1,14 +1,14 @@
 <script>
 	let paused = true;
-	let volume = 0;
+	let volume = 1;
 	let duration;
 	let currentTime = 0;
 </script>
 <div>
 
 <video
-poster="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg"
-src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+poster="static/esc_norway.jpg"
+src="static/12_points_from/germany.mp4"
 
 bind:volume={volume}
 bind:paused={paused}

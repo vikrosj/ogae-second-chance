@@ -4015,14 +4015,14 @@ var app = (function () {
     			button = element("button");
     			t5 = text(t5_value);
     			attr_dev(track, "kind", "captions");
-    			add_location(track, file, 18, 1, 397);
-    			attr_dev(video, "poster", "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg");
-    			if (!src_url_equal(video.src, video_src_value = "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")) attr_dev(video, "src", video_src_value);
+    			add_location(track, file, 18, 1, 282);
+    			attr_dev(video, "poster", "static/esc_norway.jpg");
+    			if (!src_url_equal(video.src, video_src_value = "static/12_points_from/germany.mp4")) attr_dev(video, "src", video_src_value);
     			attr_dev(video, "class", "svelte-111y9xw");
     			if (/*duration*/ ctx[2] === void 0) add_render_callback(() => /*video_durationchange_handler*/ ctx[6].call(video));
     			add_location(video, file, 8, 0, 100);
-    			add_location(p, file, 20, 0, 430);
-    			add_location(button, file, 24, 0, 503);
+    			add_location(p, file, 20, 0, 315);
+    			add_location(button, file, 24, 0, 388);
     			attr_dev(div, "class", "svelte-111y9xw");
     			add_location(div, file, 6, 0, 93);
     		},
@@ -4102,7 +4102,7 @@ var app = (function () {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('Video', slots, []);
     	let paused = true;
-    	let volume = 0;
+    	let volume = 1;
     	let duration;
     	let currentTime = 0;
     	const writable_props = [];
