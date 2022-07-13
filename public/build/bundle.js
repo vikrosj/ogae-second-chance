@@ -3584,7 +3584,7 @@ var app = (function () {
     const pointFromArray = writable([
       {
         Name : "Albania",
-        Points : {"Armenia":1, "Australia":2, "Austria":3, "Azerbaijan":4, "Belgium":5, "Bulgaria":6, "Croatia":7, "Cyprus":8, "Czech Republic":10, "Denmark":0, "Estonia":0, "Finland":0, "France":0, "Germany":0, "Georgia":0, "Greece":0, "Iceland":0, "Ireland":0, "Israel":0, "Italy":0, "Latvia":0, "Lithuania":0, "Malta":0, "Moldova":0, "Montenegro":0, "The Netherlands":0, "North Macedonia":0, "Norway":0, "Poland":0, "Portugal":0, "Romania":0, "San Marino":0, "Serbia":0, "Slovenia":0, "Spain":0, "Sweden":0, "Switzerland":0, "Ukraine":0, "United Kingdom":0},
+        Points : {"Armenia":0, "Australia":2, "Austria":3, "Azerbaijan":4, "Belgium":5, "Bulgaria":6, "Croatia":7, "Cyprus":8, "Czech Republic":10, "Denmark":0, "Estonia":0, "Finland":0, "France":0, "Germany":0, "Georgia":0, "Greece":0, "Iceland":0, "Ireland":0, "Israel":0, "Italy":0, "Latvia":0, "Lithuania":0, "Malta":0, "Moldova":0, "Montenegro":0, "The Netherlands":0, "North Macedonia":0, "Norway":0, "Poland":0, "Portugal":0, "Romania":0, "San Marino":0, "Serbia":0, "Slovenia":0, "Spain":0, "Sweden":0, "Switzerland":0, "Ukraine":0, "United Kingdom":0},
         Alpha2Code: "AL"
     },
     {
@@ -3774,12 +3774,12 @@ var app = (function () {
     },
     {
         Name: "Ukraine",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "United Kingdom":1},
+        Points : {"Albania":1,"Armenia":2, "Australia":3, "Austria":4, "Azerbaijan":5, "Belgium":6, "Bulgaria":7, "Croatia":8, "Cyprus":9, "Czech Republic":10, "Denmark":0, "Estonia":0, "Finland":0, "France":0, "Germany":0, "Georgia":0, "Greece":0, "Iceland":0, "Ireland":0, "Israel":0, "Italy":0, "Latvia":0, "Lithuania":0, "Malta":0, "Moldova":0, "Montenegro":0, "The Netherlands":0, "North Macedonia":0, "Norway":0, "Poland":0, "Portugal":0, "Romania":0, "San Marino":0, "Serbia":0, "Slovenia":0, "Spain":0, "Sweden":0, "Switzerland":0, "United Kingdom":0},
         Alpha2Code: "UA"
     },
     {
         Name: "United Kingdom",
-        Points : {"Albania":1,"Armenia":1, "Australia":1, "Austria":1, "Azerbaijan":1, "Belgium":1, "Bulgaria":1, "Croatia":1, "Cyprus":1, "Czech Republic":1, "Denmark":1, "Estonia":1, "Finland":1, "France":1, "Germany":1, "Georgia":1, "Greece":1, "Iceland":1, "Ireland":1, "Israel":1, "Italy":1, "Latvia":1, "Lithuania":1, "Malta":1, "Moldova":1, "Montenegro":1, "The Netherlands":1, "North Macedonia":1, "Norway":1, "Poland":1, "Portugal":1, "Romania":1, "San Marino":1, "Serbia":1, "Slovenia":1, "Spain":1, "Sweden":1, "Switzerland":1, "Ukraine":1},
+        Points : {"Albania":1,"Armenia":2, "Australia":3, "Austria":4, "Azerbaijan":5, "Belgium":6, "Bulgaria":7, "Croatia":8, "Cyprus":9, "Czech Republic":10, "Denmark":0, "Estonia":0, "Finland":0, "France":0, "Germany":0, "Georgia":0, "Greece":0, "Iceland":0, "Ireland":0, "Israel":0, "Italy":0, "Latvia":0, "Lithuania":0, "Malta":0, "Moldova":0, "Montenegro":0, "The Netherlands":0, "North Macedonia":0, "Norway":0, "Poland":0, "Portugal":0, "Romania":0, "San Marino":0, "Serbia":0, "Slovenia":0, "Spain":0, "Sweden":0, "Switzerland":0, "Ukraine":0},
         Alpha2Code: "GB"
     }
     ]
