@@ -1,7 +1,10 @@
 import { participantsArray } from './../voting/participants';
 
 function addPoints(pointsTo, pointsValue){
-    participantsArray.update(currentData => {
+
+  
+  participantsArray.update(currentData => {
+  
       let cp = [...currentData];
       let specific = cp.find((row) => row.Name == pointsTo);
 
@@ -10,17 +13,10 @@ function addPoints(pointsTo, pointsValue){
       });
   };
 
-export function andThePointsGoTo(array, index){
-    const row = array[index];
-    const object = row.Points;
-  
-    // givesPoints = "Points from ".concat(row.Name);
+export function andThePointsGoTo(pointsTo){
+    for (const country in pointsTo) {
 
-    for (const property in object) {
-      
-      console.log(`${object[property]} points go to ${property}`);
-
-      addPoints(property, object[property]);
+      addPoints(country, pointsTo[country]);
 
     }
 };
