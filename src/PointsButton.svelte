@@ -24,14 +24,18 @@
   }
 
   function onClick(){
-    let idx = votingLength.pop()
-    andThePointsGoTo(pointFrom, idx);
-    
-    fromCountry = pointFrom[idx].Name;
-    alpha2Code = pointFrom[idx].Alpha2Code;
-    visible = true;
-    // setTimeout(() => console.log("Waiting..."), 3000);
-    sortUpdate();
+       
+    pointFrom.forEach((country,i) => {
+      setTimeout(() => {
+      andThePointsGoTo(country.Points);
+
+      fromCountry = country.Name;
+      alpha2Code = country.Alpha2Code;
+      visible = true;
+
+      sortUpdate();
+    }, i*1000);
+  });
   }
 </script>
 
