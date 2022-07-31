@@ -8,15 +8,13 @@
   import countryFlagEmoji from "country-flag-emoji";
 
   const pointFrom = get(pointFromArray);
-  const votingLength = [...Array(pointFrom.length).keys()];
-
+  
   let participantsStore = [];
   let fromCountry = "";
   let visible = false;
   let alpha2Code = "GB";
 
   participantsArray.subscribe((data) => {
-
     participantsStore = data;
 
   });
