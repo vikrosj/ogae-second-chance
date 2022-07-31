@@ -4,7 +4,6 @@
 	let duration;
 	let currentTime = 0;
 </script>
-<div>
 
 <video
 poster="static/esc_norway.jpg"
@@ -22,19 +21,23 @@ bind:currentTime={currentTime}
 	<!-- {(currentTime/60).toFixed(2)} / -->
 	<!-- {(duration / 60).toFixed(2)} -->
 </p>
+
 <button class="button-2" on:click={() => paused = !paused}>
 	{paused ? "12 points" : "Pause"}
 </button>
-</div>
+
 
 <style>
-	div {
+	/* div {
 		position: absolute;
 		right: 75px;
-		bottom: 200px;
-	}
+		bottom: 350px;
+		/* margin-top: -100px; */
 	video {
 		max-width: 500px;
+		position: absolute;
+		right: 75px;
+		bottom: 450px;
 	}
 
 	.button-2 {
@@ -44,7 +47,7 @@ bind:currentTime={currentTime}
 		border:0;
 		cursor: pointer;
 		text-decoration: none;
-		position: relative;
+		position: absolute;
 		color: #000;
 		background: rgb(238,174,202);;
 		line-height: 30px;
@@ -54,6 +57,8 @@ bind:currentTime={currentTime}
 		font-weight: 600;
 		box-shadow: rgb(255, 198, 0) -2px -2px 0px 2px, rgb(246, 84, 174) 0px 0px 0px 4px, rgba(0, 0, 0, 0.05) 0px 0px 2px 7px;
 		transition: all 0.2s;
+		right: 120px;
+  		bottom: 50px;
 	}
 
 	.button-2:hover {

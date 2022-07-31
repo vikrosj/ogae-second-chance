@@ -3917,13 +3917,13 @@ var app = (function () {
     			t2 = space();
     			div2 = element("div");
     			if (if_block1) if_block1.c();
-    			attr_dev(button, "class", "button-2 svelte-agwv2l");
+    			attr_dev(button, "class", "button-2 svelte-mj5js0");
     			add_location(button, file$1, 40, 4, 1011);
-    			attr_dev(div0, "class", "points-button svelte-agwv2l");
+    			attr_dev(div0, "class", "points-button svelte-mj5js0");
     			add_location(div0, file$1, 39, 0, 979);
-    			attr_dev(div1, "class", "points-text-1 svelte-agwv2l");
+    			attr_dev(div1, "class", "points-text-1 svelte-mj5js0");
     			add_location(div1, file$1, 43, 0, 1092);
-    			attr_dev(div2, "class", "points-text-2 svelte-agwv2l");
+    			attr_dev(div2, "class", "points-text-2 svelte-mj5js0");
     			add_location(div2, file$1, 49, 0, 1175);
     		},
     		l: function claim(nodes) {
@@ -4082,7 +4082,6 @@ var app = (function () {
     const file = "src/Video.svelte";
 
     function create_fragment$1(ctx) {
-    	let div;
     	let video;
     	let track;
     	let video_src_value;
@@ -4111,7 +4110,6 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
-    			div = element("div");
     			video = element("video");
     			track = element("track");
     			t0 = space();
@@ -4120,34 +4118,31 @@ var app = (function () {
     			button = element("button");
     			t2 = text(t2_value);
     			attr_dev(track, "kind", "captions");
-    			add_location(track, file, 18, 1, 282);
+    			add_location(track, file, 17, 1, 276);
     			attr_dev(video, "poster", "static/esc_norway.jpg");
     			if (!src_url_equal(video.src, video_src_value = "static/12_points_from/germany.mp4")) attr_dev(video, "src", video_src_value);
-    			attr_dev(video, "class", "svelte-1bfu0tu");
+    			attr_dev(video, "class", "svelte-soll4h");
     			if (/*duration*/ ctx[2] === void 0) add_render_callback(() => /*video_durationchange_handler*/ ctx[6].call(video));
-    			add_location(video, file, 8, 0, 100);
-    			add_location(p, file, 20, 0, 315);
-    			attr_dev(button, "class", "button-2 svelte-1bfu0tu");
-    			add_location(button, file, 24, 0, 405);
-    			attr_dev(div, "class", "svelte-1bfu0tu");
-    			add_location(div, file, 6, 0, 93);
+    			add_location(video, file, 7, 0, 94);
+    			add_location(p, file, 19, 0, 309);
+    			attr_dev(button, "class", "button-2 svelte-soll4h");
+    			add_location(button, file, 24, 0, 400);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div, anchor);
-    			append_dev(div, video);
+    			insert_dev(target, video, anchor);
     			append_dev(video, track);
 
     			if (!isNaN(/*volume*/ ctx[1])) {
     				video.volume = /*volume*/ ctx[1];
     			}
 
-    			append_dev(div, t0);
-    			append_dev(div, p);
-    			append_dev(div, t1);
-    			append_dev(div, button);
+    			insert_dev(target, t0, anchor);
+    			insert_dev(target, p, anchor);
+    			insert_dev(target, t1, anchor);
+    			insert_dev(target, button, anchor);
     			append_dev(button, t2);
 
     			if (!mounted) {
@@ -4182,7 +4177,11 @@ var app = (function () {
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div);
+    			if (detaching) detach_dev(video);
+    			if (detaching) detach_dev(t0);
+    			if (detaching) detach_dev(p);
+    			if (detaching) detach_dev(t1);
+    			if (detaching) detach_dev(button);
     			mounted = false;
     			run_all(dispose);
     		}

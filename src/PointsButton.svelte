@@ -73,7 +73,7 @@
 
 .points-button {
   position: absolute;
-  right: 300px;
+  right: 310px;
   bottom: 50px;
 }
 
