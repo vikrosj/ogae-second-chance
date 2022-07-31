@@ -28,7 +28,7 @@ export default twelvePointsFromArray = writable([
 {
     Name: "Azerbaijan",
     Points : 12,
-    PointsTo: "",
+    PointsTo: "United Kingdom",
     Alpha2Code: "AZ"
 },
 {
@@ -88,7 +88,7 @@ export default twelvePointsFromArray = writable([
 {
     Name: "Germany",
     Points : 12,
-    PointsTo: "",
+    PointsTo: "United Kingdom",
     Alpha2Code: "DE"
 },
 {
@@ -232,7 +232,7 @@ export default twelvePointsFromArray = writable([
 {
     Name: "Ukraine",
     Points : 12,
-    PointsTo: "",
+    PointsTo: "United Kingdom",
     Alpha2Code: "UA"
 },
 {
