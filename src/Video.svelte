@@ -28,11 +28,6 @@ bind:currentTime={currentTime}
 
 
 <style>
-	/* div {
-		position: absolute;
-		right: 75px;
-		bottom: 350px;
-		/* margin-top: -100px; */
 	video {
 		max-width: 500px;
 		position: absolute;

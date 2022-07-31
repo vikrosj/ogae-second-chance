@@ -4121,11 +4121,11 @@ var app = (function () {
     			add_location(track, file, 17, 1, 276);
     			attr_dev(video, "poster", "static/esc_norway.jpg");
     			if (!src_url_equal(video.src, video_src_value = "static/12_points_from/germany.mp4")) attr_dev(video, "src", video_src_value);
-    			attr_dev(video, "class", "svelte-soll4h");
+    			attr_dev(video, "class", "svelte-ot1s2m");
     			if (/*duration*/ ctx[2] === void 0) add_render_callback(() => /*video_durationchange_handler*/ ctx[6].call(video));
     			add_location(video, file, 7, 0, 94);
     			add_location(p, file, 19, 0, 309);
-    			attr_dev(button, "class", "button-2 svelte-soll4h");
+    			attr_dev(button, "class", "button-2 svelte-ot1s2m");
     			add_location(button, file, 24, 0, 400);
     		},
     		l: function claim(nodes) {
