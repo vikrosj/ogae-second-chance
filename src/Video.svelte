@@ -3,26 +3,52 @@
 	let volume = 1;
 	let duration;
 	let currentTime = 0;
+	let ended;
+
+	const countries = ["Ukraine", "Azerbaijan", "Germany"];
+	const videos = ["static/12_points_from/germany.mp4", "static/12_points_from/ukraine.mp4"];
+	let videoSrc = "";
+
+	function changeSrc(){
+		paused = !paused
+
+		videos.forEach((video,i) => {
+			videoSrc = video;
+			setTimeout(() => {
+				console.log("Next video")
+			}, i*(duration / 60).toFixed(3)*10000)
+		}) 
+      		
+    
+		ended = true;
+
+		if (ended == true){
+			videoSrc = videos.pop(),
+			console.log(videoSrc);
+		}
+	}
+
 </script>
 
-<video
-poster="static/esc_norway.jpg"
-src="static/12_points_from/germany.mp4"
+<video poster="static/esc_norway.jpg" src={videoSrc}
+	bind:volume={volume}
+	bind:paused={paused}
+	bind:duration={duration}
+	bind:currentTime={currentTime}
+	bind:ended={ended}>
 
-bind:volume={volume}
-bind:paused={paused}
-bind:duration={duration}
-bind:currentTime={currentTime}
->
 	
 	<track kind="captions">
 </video>
+
 <p>
-	<!-- {(currentTime/60).toFixed(2)} / -->
-	<!-- {(duration / 60).toFixed(2)} -->
+	{(currentTime/60).toFixed(2)} /
+	{(duration / 60).toFixed(2)}
+	{ended}
+	{console.log((duration / 60).toFixed(3)*10000)}
 </p>
 
-<button class="button-2" on:click={() => paused = !paused}>
+<button class="button-2" on:click={() => changeSrc()}>
 	{paused ? "12 points" : "Pause"}
 </button>
 
