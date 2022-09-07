@@ -62,7 +62,7 @@ participantsArray.subscribe((data) => {
 
 <style>
     .row {
-  margin-left:10px;
+  margin-left:20px;
   margin-right:-20px;
   margin-top: -100px;
 }
