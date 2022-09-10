@@ -1,25 +1,35 @@
 <script>
-	import {twelvePointsFromArray} from "./../voting/12-points-mini";
+	import { twelvePointsFromArray } from "./../voting/12-points-mini";
+	import { participantsArray } from './../voting/participants';
+	import { andThePointsGoTo } from "../utils/pointsHandler";
+
 	$: pauseVideo = true;
 	let volume = 1;
+	let countryGivingPoints;
 	let twelvePoints = [];
+	let participantsStore = [];
 
+	participantsArray.subscribe((data) => {
+    participantsStore = data;
+
+  });
 	twelvePointsFromArray.subscribe((data) => {
 		twelvePoints = data;
 	});
 
-	const twelvePointsPath = "static/12_points_from/";
-	const videos = [twelvePointsPath+"germany.mp4", twelvePointsPath+"ukraine.mp4", twelvePointsPath+"azerbaijan.mp4"];
+	const videoPath = "static/12_points_from/";
+	const videos = [videoPath+"germany.mp4", videoPath+"ukraine.mp4", videoPath+"azerbaijan.mp4"];
 	$: videoSrc = "";
 
 	function changeSrc(){
-		if (videos.length == 0){
+		if (twelvePoints.length == 0){
 			pauseVideo = true;
 		}
 
 		else {
 			pauseVideo = false;
-			videoSrc = videos.pop();
+			countryGivingPoints = twelvePoints.pop();
+			videoSrc = videoPath + countryGivingPoints.Name.toLowerCase() + ".mp4";
 		}
 	}
 
