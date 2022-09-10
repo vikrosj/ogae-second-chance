@@ -8,6 +8,7 @@
 	let countryGivingPoints;
 	let twelvePoints = [];
 	let participantsStore = [];
+	const videoPath = "static/12_points_from/";
 
 	participantsArray.subscribe((data) => {
     participantsStore = data;
@@ -17,8 +18,6 @@
 		twelvePoints = data;
 	});
 
-	const videoPath = "static/12_points_from/";
-	const videos = [videoPath+"germany.mp4", videoPath+"ukraine.mp4", videoPath+"azerbaijan.mp4"];
 	$: videoSrc = "";
 
 	function changeSrc(){
@@ -30,6 +29,7 @@
 			pauseVideo = false;
 			countryGivingPoints = twelvePoints.pop();
 			videoSrc = videoPath + countryGivingPoints.Name.toLowerCase() + ".mp4";
+			andThePointsGoTo([{"United Kingdom" : 12}])
 		}
 	}
 
