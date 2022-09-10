@@ -1,64 +1,63 @@
 <script>
-	let paused = true;
+import { writable } from "svelte/store";
+
+	import {twelvePointsFromArray} from "./../voting/12-points-mini";
+	$: pauseVideo = true;
+	let played;
 	let volume = 1;
 	let duration;
 	let currentTime = 0;
-	let ended;
+	let ended = false;
+	let twelvePoints = [];
 
-	const countries = ["Ukraine", "Azerbaijan", "Germany"];
-	const videos = ["static/12_points_from/germany.mp4", "static/12_points_from/ukraine.mp4"];
-	let videoSrc = "";
+	twelvePointsFromArray.subscribe((data) => {
+		twelvePoints = data;
+	});
+
+	const twelvePointsPath = "static/12_points_from/";
+	const videos = [twelvePointsPath+"germany.mp4", twelvePointsPath+"ukraine.mp4", twelvePointsPath+"azerbaijan.mp4"];
+	$: videoSrc = "";
 
 	function changeSrc(){
-		paused = !paused
+		if (videos.length == 0){
+			pauseVideo = true;
+		}
 
-		videos.forEach((video,i) => {
-			videoSrc = video;
-			setTimeout(() => {
-				console.log("Next video")
-			}, i*(duration / 60).toFixed(3)*10000)
-		}) 
-      		
-    
-		ended = true;
-
-		if (ended == true){
-			videoSrc = videos.pop(),
-			console.log(videoSrc);
+		else {
+			pauseVideo = false;
+			videoSrc = videos.pop();
 		}
 	}
 
+	document.addEventListener("ended", function() {
+		console.log("The video has just ended!");
+		changeSrc();
+	}, true);
+
 </script>
+
+<button class="button-2" on:click={() => changeSrc()}>
+	{pauseVideo ? "12 points" : "Pause"}
+</button>
 
 <video poster="static/esc_norway.jpg" src={videoSrc}
 	bind:volume={volume}
-	bind:paused={paused}
+	bind:paused={pauseVideo}
 	bind:duration={duration}
 	bind:currentTime={currentTime}
-	bind:ended={ended}>
-
-	
+	bind:ended={ended}
+	bind:played={played}
+	autoplay>
 	<track kind="captions">
 </video>
-
-<p>
-	{(currentTime/60).toFixed(2)} /
-	{(duration / 60).toFixed(2)}
-	{ended}
-	{console.log((duration / 60).toFixed(3)*10000)}
-</p>
-
-<button class="button-2" on:click={() => changeSrc()}>
-	{paused ? "12 points" : "Pause"}
-</button>
-
 
 <style>
 	video {
 		max-width: 500px;
-		position: absolute;
-		right: 75px;
-		bottom: 450px;
+		margin-top: -400px;
+		float: left;
+    	position: relative;
+    	left: 70%;
 	}
 
 	.button-2 {
