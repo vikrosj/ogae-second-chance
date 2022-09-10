@@ -6,11 +6,7 @@
   import countryFlagEmoji from "country-flag-emoji";
   import { fromCountry, visible, alpha2Code } from "./variables" ;
 
-  const localFromCountry = $fromCountry;
-  const localAlpha2Code = $alpha2Code;
-  const localVisible = $visible;
-
-  console.log(localAlpha2Code,localFromCountry,localVisible)
+  console.log($visible);
 </script>
 
 <Navbar />
@@ -19,14 +15,14 @@
 <Video/>
 
 <div class="points-text-1">
-  {#if localVisible}
+  {#if $visible}
   <p>Points from: </p>
   {/if}
 </div>
 
 <div class="points-text-2">
-  {#if localVisible}
-  <p>{localFromCountry} {countryFlagEmoji.get(localAlpha2Code).emoji}</p>
+  {#if $visible}
+  <p>{$fromCountry} {countryFlagEmoji.get($alpha2Code).emoji}</p>
   {/if}
 </div>
 
