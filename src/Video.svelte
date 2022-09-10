@@ -1,13 +1,7 @@
 <script>
-import { writable } from "svelte/store";
-
 	import {twelvePointsFromArray} from "./../voting/12-points-mini";
 	$: pauseVideo = true;
-	let played;
 	let volume = 1;
-	let duration;
-	let currentTime = 0;
-	let ended = false;
 	let twelvePoints = [];
 
 	twelvePointsFromArray.subscribe((data) => {
@@ -43,10 +37,6 @@ import { writable } from "svelte/store";
 <video poster="static/esc_norway.jpg" src={videoSrc}
 	bind:volume={volume}
 	bind:paused={pauseVideo}
-	bind:duration={duration}
-	bind:currentTime={currentTime}
-	bind:ended={ended}
-	bind:played={played}
 	autoplay>
 	<track kind="captions">
 </video>
