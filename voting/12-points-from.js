@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store';
 
-export default twelvePointsFromArray = writable([
+export const twelvePointsFromArray = writable([
   {
     Name : "Albania",
     Points : 12,
