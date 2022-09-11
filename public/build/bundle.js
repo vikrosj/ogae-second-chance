@@ -3797,11 +3797,27 @@ var app = (function () {
 
       );
 
+    function compare( a, b ) {
+        if ( a.Points < b.Points ){
+          return 1;
+        }
+        if ( a.Points > b.Points ){
+          return -1;
+        }
+        return 0;
+      }
+
+    let participantsStore = [];
+
+    participantsArray.subscribe((data) => {
+      participantsStore = data;
+
+    });
+
     function addPoints(pointsTo, pointsValue){
 
       
       participantsArray.update(currentData => {
-      
           let cp = [...currentData];
           let specific = cp.find((row) => row.Name == pointsTo);
 
@@ -3816,16 +3832,9 @@ var app = (function () {
 
         }
     }
-
-    function compare( a, b ) {
-        if ( a.Points < b.Points ){
-          return 1;
-        }
-        if ( a.Points > b.Points ){
-          return -1;
-        }
-        return 0;
-      }
+    function sortUpdate(){
+      participantsStore.sort(compare);
+    }
 
     const fromCountry = writable("");
     const visible = writable(false);
@@ -3846,9 +3855,9 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "1-10 points";
     			attr_dev(button, "class", "button-2 svelte-1qmat7j");
-    			add_location(button, file$2, 43, 4, 1027);
+    			add_location(button, file$2, 26, 4, 624);
     			attr_dev(div, "class", "points-button svelte-1qmat7j");
-    			add_location(div, file$2, 42, 0, 995);
+    			add_location(div, file$2, 25, 0, 592);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -3884,39 +3893,18 @@ var app = (function () {
     }
 
     function instance$2($$self, $$props, $$invalidate) {
-    	let $visible;
-    	let $alpha2Code;
-    	let $fromCountry;
-    	validate_store(visible, 'visible');
-    	component_subscribe($$self, visible, $$value => $$invalidate(3, $visible = $$value));
-    	validate_store(alpha2Code, 'alpha2Code');
-    	component_subscribe($$self, alpha2Code, $$value => $$invalidate(4, $alpha2Code = $$value));
-    	validate_store(fromCountry, 'fromCountry');
-    	component_subscribe($$self, fromCountry, $$value => $$invalidate(5, $fromCountry = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('PointsButton', slots, []);
-    	const localFromCountry = $fromCountry;
-    	const localAlpha2Code = $alpha2Code;
-    	const localVisible = $visible;
     	const pointFrom = get_store_value(pointFromArray);
-    	let participantsStore = [];
-
-    	participantsArray.subscribe(data => {
-    		participantsStore = data;
-    	});
-
-    	function sortUpdate() {
-    		participantsStore.sort(compare);
-    	}
 
     	function onClick() {
     		pointFrom.forEach((country, i) => {
     			setTimeout(
     				() => {
     					andThePointsGoTo(country.Points);
-    					localFromCountry.set(country.Name);
-    					localAlpha2Code.set(country.Alpha2Code);
-    					LocalVisible.set(true);
+    					fromCountry.set(country.Name);
+    					alpha2Code.set(country.Alpha2Code);
+    					visible.set(true);
     					sortUpdate();
     				},
     				i * 1000
@@ -3933,33 +3921,16 @@ var app = (function () {
     	const click_handler = () => onClick();
 
     	$$self.$capture_state = () => ({
-    		participantsArray,
     		pointFromArray,
     		get: get_store_value,
     		andThePointsGoTo,
-    		compare,
+    		sortUpdate,
     		fromCountry,
     		visible,
     		alpha2Code,
-    		localFromCountry,
-    		localAlpha2Code,
-    		localVisible,
     		pointFrom,
-    		participantsStore,
-    		sortUpdate,
-    		onClick,
-    		$visible,
-    		$alpha2Code,
-    		$fromCountry
+    		onClick
     	});
-
-    	$$self.$inject_state = $$props => {
-    		if ('participantsStore' in $$props) participantsStore = $$props.participantsStore;
-    	};
-
-    	if ($$props && "$$inject" in $$props) {
-    		$$self.$inject_state($$props.$$inject);
-    	}
 
     	return [onClick, click_handler];
     }
@@ -3981,17 +3952,17 @@ var app = (function () {
     const twelvePointsFromArray = writable([
       {
         Name : "Azerbaijan",
-        PointsTo: "United Kingdom",
+        PointsTo: {"United Kingdom": 12},
         Alpha2Code: "AL"
     },
     {
         Name : "Ukraine",
-        PointsTo: "United Kingdom",
+        PointsTo: {"United Kingdom": 12},
         Alpha2Code: "UA"
     },
     {
         Name : "Germany",
-        PointsTo: "United Kingdom",
+        PointsTo: {"United Kingdom": 12},
         Alpha2Code: "AZ"
     }
 
@@ -4022,14 +3993,14 @@ var app = (function () {
     			video = element("video");
     			track = element("track");
     			attr_dev(button, "class", "button-2 svelte-sg4jpf");
-    			add_location(button, file$1, 42, 0, 960);
+    			add_location(button, file$1, 40, 0, 995);
     			attr_dev(track, "kind", "captions");
-    			add_location(track, file$1, 50, 1, 1177);
+    			add_location(track, file$1, 48, 1, 1212);
     			attr_dev(video, "poster", "static/esc_norway.jpg");
     			if (!src_url_equal(video.src, video_src_value = /*videoSrc*/ ctx[1])) attr_dev(video, "src", video_src_value);
     			video.autoplay = true;
     			attr_dev(video, "class", "svelte-sg4jpf");
-    			add_location(video, file$1, 46, 0, 1064);
+    			add_location(video, file$1, 44, 0, 1099);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -4098,29 +4069,28 @@ var app = (function () {
     function instance$1($$self, $$props, $$invalidate) {
     	let pauseVideo;
     	let videoSrc;
+    	let $twelvePointsFromArray;
+    	validate_store(twelvePointsFromArray, 'twelvePointsFromArray');
+    	component_subscribe($$self, twelvePointsFromArray, $$value => $$invalidate(8, $twelvePointsFromArray = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('Video', slots, []);
     	let volume = 1;
     	let countryGivingPoints;
-    	let twelvePoints = [];
-    	let participantsStore = [];
-
-    	participantsArray.subscribe(data => {
-    		participantsStore = data;
-    	});
-
-    	twelvePointsFromArray.subscribe(data => {
-    		twelvePoints = data;
-    	});
+    	let twelvePoints = $twelvePointsFromArray;
 
     	function changeSrc() {
     		if (twelvePoints.length == 0) {
     			$$invalidate(2, pauseVideo = true);
+    			visible.set(false);
+    			sortUpdate();
     		} else {
     			$$invalidate(2, pauseVideo = false);
     			countryGivingPoints = twelvePoints.pop();
+    			fromCountry.set(countryGivingPoints.Name);
+    			alpha2Code.set(countryGivingPoints.Alpha2Code);
+    			visible.set(true);
     			$$invalidate(1, videoSrc = videoPath + countryGivingPoints.Name.toLowerCase() + ".mp4");
-    			andThePointsGoTo([{ "United Kingdom": 12 }]);
+    			sortUpdate();
     		}
     	}
 
@@ -4128,6 +4098,7 @@ var app = (function () {
     		"ended",
     		function () {
     			console.log("The video has just ended!");
+    			andThePointsGoTo(countryGivingPoints.PointsTo);
     			changeSrc();
     		},
     		true
@@ -4153,23 +4124,25 @@ var app = (function () {
 
     	$$self.$capture_state = () => ({
     		twelvePointsFromArray,
-    		participantsArray,
     		andThePointsGoTo,
+    		sortUpdate,
+    		fromCountry,
+    		visible,
+    		alpha2Code,
     		volume,
     		countryGivingPoints,
     		twelvePoints,
-    		participantsStore,
     		videoPath,
     		changeSrc,
     		videoSrc,
-    		pauseVideo
+    		pauseVideo,
+    		$twelvePointsFromArray
     	});
 
     	$$self.$inject_state = $$props => {
     		if ('volume' in $$props) $$invalidate(0, volume = $$props.volume);
     		if ('countryGivingPoints' in $$props) countryGivingPoints = $$props.countryGivingPoints;
     		if ('twelvePoints' in $$props) twelvePoints = $$props.twelvePoints;
-    		if ('participantsStore' in $$props) participantsStore = $$props.participantsStore;
     		if ('videoSrc' in $$props) $$invalidate(1, videoSrc = $$props.videoSrc);
     		if ('pauseVideo' in $$props) $$invalidate(2, pauseVideo = $$props.pauseVideo);
     	};
@@ -4211,7 +4184,7 @@ var app = (function () {
     const { console: console_1 } = globals;
     const file = "src/App.svelte";
 
-    // (22:2) {#if localVisible}
+    // (18:2) {#if $visible}
     function create_if_block_1(ctx) {
     	let p;
 
@@ -4219,7 +4192,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			p.textContent = "Points from:";
-    			add_location(p, file, 22, 2, 581);
+    			add_location(p, file, 18, 2, 427);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -4233,27 +4206,39 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(22:2) {#if localVisible}",
+    		source: "(18:2) {#if $visible}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (28:2) {#if localVisible}
+    // (24:2) {#if $visible}
     function create_if_block(ctx) {
     	let p;
+    	let t0;
+    	let t1;
+    	let t2_value = countryFlagEmoji_umd.get(/*$alpha2Code*/ ctx[2]).emoji + "";
+    	let t2;
 
     	const block = {
     		c: function create() {
     			p = element("p");
-    			p.textContent = `${/*localFromCountry*/ ctx[0]}  ${countryFlagEmoji_umd.get(/*localAlpha2Code*/ ctx[1]).emoji}`;
-    			add_location(p, file, 28, 2, 669);
+    			t0 = text(/*$fromCountry*/ ctx[1]);
+    			t1 = space();
+    			t2 = text(t2_value);
+    			add_location(p, file, 24, 2, 511);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
+    			append_dev(p, t0);
+    			append_dev(p, t1);
+    			append_dev(p, t2);
     		},
-    		p: noop,
+    		p: function update(ctx, dirty) {
+    			if (dirty & /*$fromCountry*/ 2) set_data_dev(t0, /*$fromCountry*/ ctx[1]);
+    			if (dirty & /*$alpha2Code*/ 4 && t2_value !== (t2_value = countryFlagEmoji_umd.get(/*$alpha2Code*/ ctx[2]).emoji + "")) set_data_dev(t2, t2_value);
+    		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(p);
     		}
@@ -4263,7 +4248,7 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(28:2) {#if localVisible}",
+    		source: "(24:2) {#if $visible}",
     		ctx
     	});
 
@@ -4287,8 +4272,8 @@ var app = (function () {
     	table = new Table({ $$inline: true });
     	pointsbutton = new PointsButton({ $$inline: true });
     	video = new Video({ $$inline: true });
-    	let if_block0 = /*localVisible*/ ctx[2] && create_if_block_1(ctx);
-    	let if_block1 = /*localVisible*/ ctx[2] && create_if_block(ctx);
+    	let if_block0 = /*$visible*/ ctx[0] && create_if_block_1(ctx);
+    	let if_block1 = /*$visible*/ ctx[0] && create_if_block(ctx);
 
     	const block = {
     		c: function create() {
@@ -4305,10 +4290,10 @@ var app = (function () {
     			t4 = space();
     			div1 = element("div");
     			if (if_block1) if_block1.c();
-    			attr_dev(div0, "class", "points-text-1 svelte-2paeic");
-    			add_location(div0, file, 20, 0, 530);
-    			attr_dev(div1, "class", "points-text-2 svelte-2paeic");
-    			add_location(div1, file, 26, 0, 618);
+    			attr_dev(div0, "class", "points-text-1 svelte-1b98xcz");
+    			add_location(div0, file, 16, 0, 380);
+    			attr_dev(div1, "class", "points-text-2 svelte-1b98xcz");
+    			add_location(div1, file, 22, 0, 464);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -4330,7 +4315,29 @@ var app = (function () {
     			current = true;
     		},
     		p: function update(ctx, [dirty]) {
-    			if (/*localVisible*/ ctx[2]) if_block1.p(ctx, dirty);
+    			if (/*$visible*/ ctx[0]) {
+    				if (if_block0) ; else {
+    					if_block0 = create_if_block_1(ctx);
+    					if_block0.c();
+    					if_block0.m(div0, null);
+    				}
+    			} else if (if_block0) {
+    				if_block0.d(1);
+    				if_block0 = null;
+    			}
+
+    			if (/*$visible*/ ctx[0]) {
+    				if (if_block1) {
+    					if_block1.p(ctx, dirty);
+    				} else {
+    					if_block1 = create_if_block(ctx);
+    					if_block1.c();
+    					if_block1.m(div1, null);
+    				}
+    			} else if (if_block1) {
+    				if_block1.d(1);
+    				if_block1 = null;
+    			}
     		},
     		i: function intro(local) {
     			if (current) return;
@@ -4377,20 +4384,17 @@ var app = (function () {
 
     function instance($$self, $$props, $$invalidate) {
     	let $visible;
-    	let $alpha2Code;
     	let $fromCountry;
+    	let $alpha2Code;
     	validate_store(visible, 'visible');
-    	component_subscribe($$self, visible, $$value => $$invalidate(3, $visible = $$value));
-    	validate_store(alpha2Code, 'alpha2Code');
-    	component_subscribe($$self, alpha2Code, $$value => $$invalidate(4, $alpha2Code = $$value));
+    	component_subscribe($$self, visible, $$value => $$invalidate(0, $visible = $$value));
     	validate_store(fromCountry, 'fromCountry');
-    	component_subscribe($$self, fromCountry, $$value => $$invalidate(5, $fromCountry = $$value));
+    	component_subscribe($$self, fromCountry, $$value => $$invalidate(1, $fromCountry = $$value));
+    	validate_store(alpha2Code, 'alpha2Code');
+    	component_subscribe($$self, alpha2Code, $$value => $$invalidate(2, $alpha2Code = $$value));
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('App', slots, []);
-    	const localFromCountry = $fromCountry;
-    	const localAlpha2Code = $alpha2Code;
-    	const localVisible = $visible;
-    	console.log(localAlpha2Code, localFromCountry, localVisible);
+    	console.log($visible);
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
@@ -4406,15 +4410,12 @@ var app = (function () {
     		fromCountry,
     		visible,
     		alpha2Code,
-    		localFromCountry,
-    		localAlpha2Code,
-    		localVisible,
     		$visible,
-    		$alpha2Code,
-    		$fromCountry
+    		$fromCountry,
+    		$alpha2Code
     	});
 
-    	return [localFromCountry, localAlpha2Code, localVisible];
+    	return [$visible, $fromCountry, $alpha2Code];
     }
 
     class App extends SvelteComponentDev {
