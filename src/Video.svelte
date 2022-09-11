@@ -1,40 +1,38 @@
 <script>
 	import { twelvePointsFromArray } from "./../voting/12-points-mini";
-	import { participantsArray } from './../voting/participants';
-	import { andThePointsGoTo } from "../utils/pointsHandler";
+	import { andThePointsGoTo, sortUpdate } from "../utils/pointsHandler";
+	import { fromCountry, visible, alpha2Code } from "./variables";
 
 	$: pauseVideo = true;
 	let volume = 1;
 	let countryGivingPoints;
-	let twelvePoints = [];
-	let participantsStore = [];
+	let twelvePoints = $twelvePointsFromArray;
 	const videoPath = "static/12_points_from/";
-
-	participantsArray.subscribe((data) => {
-    participantsStore = data;
-
-  });
-	twelvePointsFromArray.subscribe((data) => {
-		twelvePoints = data;
-	});
 
 	$: videoSrc = "";
 
 	function changeSrc(){
+		
 		if (twelvePoints.length == 0){
 			pauseVideo = true;
+			visible.set(false);
+			sortUpdate();
 		}
 
 		else {
 			pauseVideo = false;
 			countryGivingPoints = twelvePoints.pop();
+			fromCountry.set(countryGivingPoints.Name);
+			alpha2Code.set(countryGivingPoints.Alpha2Code);
+			visible.set(true);
 			videoSrc = videoPath + countryGivingPoints.Name.toLowerCase() + ".mp4";
-			andThePointsGoTo([{"United Kingdom" : 12}])
+			sortUpdate();
 		}
 	}
 
 	document.addEventListener("ended", function() {
 		console.log("The video has just ended!");
+		andThePointsGoTo(countryGivingPoints.PointsTo);
 		changeSrc();
 	}, true);
 
