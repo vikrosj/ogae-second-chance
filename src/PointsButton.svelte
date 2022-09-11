@@ -1,38 +1,21 @@
   
 <script>  
-  import { participantsArray } from './../voting/participants';
   import { pointFromArray } from './../voting/points-from';
 	import { get } from 'svelte/store';
-  import { andThePointsGoTo } from "../utils/pointsHandler";
-  import compare from "../utils/compare";
+  import { andThePointsGoTo, sortUpdate } from "../utils/pointsHandler";
   import { fromCountry, visible, alpha2Code } from "./variables";
-
-  const localFromCountry = $fromCountry;
-  const localAlpha2Code = $alpha2Code;
-  const localVisible = $visible;
 
   const pointFrom = get(pointFromArray);
   
-  let participantsStore = [];
-
-  participantsArray.subscribe((data) => {
-    participantsStore = data;
-
-  });
-  
-  function sortUpdate(){
-    participantsStore.sort(compare);
-  }
-
   function onClick(){
        
     pointFrom.forEach((country,i) => {
       setTimeout(() => {
       andThePointsGoTo(country.Points);
 
-      localFromCountry.set(country.Name);
-      localAlpha2Code.set(country.Alpha2Code);
-      LocalVisible.set(true);
+      fromCountry.set(country.Name);
+      alpha2Code.set(country.Alpha2Code);
+      visible.set(true);
 
       sortUpdate();
     }, i*1000);
