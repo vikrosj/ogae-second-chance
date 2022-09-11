@@ -4,7 +4,6 @@ function addPoints(pointsTo, pointsValue){
 
   
   participantsArray.update(currentData => {
-  
       let cp = [...currentData];
       let specific = cp.find((row) => row.Name == pointsTo);
 
