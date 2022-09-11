@@ -15,4 +15,6 @@ The web app separates the voting into two sections:
 2. Then all fan clubs have sent a video, announcing who gets their 12 points. The video is shown and then the points are sorted for each run.
 
 The app looks like this:
-<img src="./demo.png" width=500px>
+
+
+<img src="./demo.png" width=800px>
