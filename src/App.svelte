@@ -37,18 +37,18 @@
 
   .points-text-1 {
   position: absolute;
-  right: 950px;
-  bottom: 50px;
+  right: 21%;
+  bottom: 300px;
   font-size: 30px;
   font-weight: 600;
 }
 
-.points-text-2 {
-  position: absolute;
-  right: 660px;
-  bottom: 50px;
-  font-size: 30px;
-  font-weight: 600;
-} 
+  .points-text-2 {
+    position: absolute;
+    right: 6%;
+    bottom: 300px;
+    font-size: 30px;
+    font-weight: 600;
+  } 
               
 </style>
