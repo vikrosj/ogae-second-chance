@@ -6,6 +6,16 @@ import { participantsArray } from './../voting/participants';
 
 let participantsStore = [];
 
+function emoji(i){
+  console.log(i);
+  if (participantsStore[i].Name == "ROW"){
+    return "😎"
+  }
+  else {
+    return countryFlagEmoji.get(participantsStore[i].Alpha2Code).emoji;
+  }
+}
+
 participantsArray.subscribe((data) => {
 
   participantsStore = data;
@@ -18,7 +28,7 @@ participantsArray.subscribe((data) => {
       <table>
           {#each Array.from({length: 10}, (_, i) => i + 1)  as i}
           <tr>
-            <td> {countryFlagEmoji.get(participantsStore[i].Alpha2Code).emoji}</td>
+            <td> {emoji(i)}</td>
             <td>{participantsStore[i].Name}</td>
             <td>{participantsStore[i].Points}</td>
           </tr>
@@ -27,9 +37,9 @@ participantsArray.subscribe((data) => {
     </div>
     <div class="column">
       <table>
-          {#each range(11, 20) as i}
+          {#each range(11, 21) as i}
           <tr>
-            <td> {countryFlagEmoji.get(participantsStore[i].Alpha2Code).emoji}</td>
+            <td> {emoji(i)}</td>
             <td>{participantsStore[i].Name}</td>
             <td>{participantsStore[i].Points}</td>
           </tr>
@@ -38,9 +48,9 @@ participantsArray.subscribe((data) => {
     </div>
     <div class="column">
       <table>
-          {#each range(21, 30) as i}
+          {#each range(22, 32) as i}
           <tr>
-            <td> {countryFlagEmoji.get(participantsStore[i].Alpha2Code).emoji}</td>
+            <td> {emoji(i)}</td>
             <td>{participantsStore[i].Name}</td>
             <td>{participantsStore[i].Points}</td>
           </tr>
