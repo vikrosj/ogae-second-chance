@@ -7,7 +7,6 @@ import { participantsArray } from './../voting/participants';
 let participantsStore = [];
 
 function emoji(i){
-  console.log(i);
   if (participantsStore[i].Name == "ROW"){
     return "😎"
   }
