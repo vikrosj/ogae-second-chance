@@ -7,13 +7,43 @@ export let participantsArray = writable([
         Points: 0
     },
     {
+        Name: "Armenia",
+        Alpha2Code: "AM",
+        Points: 0
+    },
+    {
         Name: "Australia",
         Alpha2Code: "AU",
         Points: 0
     },
     {
+        Name: "Austria",
+        Alpha2Code: "AT",
+        Points: 0
+    },
+    {
+        Name: "Azerbaijan",
+        Alpha2Code: "AZ",
+        Points: 0
+    },
+    {
+        Name: "Belgium",
+        Alpha2Code: "BE",
+        Points: 0
+    },
+    {
+        Name: "Bulgaria",
+        Alpha2Code: "BG",
+        Points: 0
+    },
+    {
         Name: "Croatia",
         Alpha2Code: "HR",
+        Points: 0
+    },
+    {
+        Name: "Cyprus",
+        Alpha2Code: "CY",
         Points: 0
     },
     {
@@ -49,6 +79,11 @@ export let participantsArray = writable([
     {
         Name: "Georgia",
         Alpha2Code: "GE",
+        Points: 0
+    },
+    {
+        Name: "Greece",
+        Alpha2Code: "GR",
         Points: 0
     },
     {
@@ -94,6 +129,11 @@ export let participantsArray = writable([
     {
         Name: "Montenegro",
         Alpha2Code: "ME",
+        Points: 0
+    },
+    {
+        Name: "The Netherlands",
+        Alpha2Code: "NL",
         Points: 0
     },
     {
@@ -155,5 +195,10 @@ export let participantsArray = writable([
         Name: "Ukraine",
         Alpha2Code: "UA",
         Points: 0
-    }
+    },
+    {
+        Name: "United Kingdom",
+        Alpha2Code: "GB",
+        Points: 0
+    },
   ]);
