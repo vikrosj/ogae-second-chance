@@ -155,5 +155,10 @@ export let participantsArray = writable([
         Name: "Ukraine",
         Alpha2Code: "UA",
         Points: 0
+    },
+    {
+        Name: "ROW",
+        Alpha2Code: "UA",
+        Points: 0
     }
   ]);
