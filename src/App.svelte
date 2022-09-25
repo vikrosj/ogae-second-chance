@@ -7,6 +7,20 @@
   import { fromCountry, visible, alpha2Code } from "./variables" ;
 
   console.log($visible);
+
+  function emoji(fromCountry){
+    console.log(fromCountry)
+
+    if (fromCountry == "ROW"){
+      return "😎"
+    }
+    else if (fromCountry == "Guest-jury"){
+      return "✨"
+    }
+    else {
+      return countryFlagEmoji.get($alpha2Code).emoji
+    }
+  }
 </script>
 
 <Navbar />
@@ -22,7 +36,7 @@
 
 <div class="points-text-2">
   {#if $visible}
-  <p>{$fromCountry} {countryFlagEmoji.get($alpha2Code).emoji}</p>
+  <p>{$fromCountry} {emoji($fromCountry)}</p>
   {/if}
 </div>
 
