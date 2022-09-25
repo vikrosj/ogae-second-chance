@@ -47,17 +47,6 @@ participantsArray.subscribe((data) => {
           {/each}
       </table>
     </div>
-    <div class="column">
-      <table>
-          {#each range(31, 40) as i}
-          <tr>
-            <td> {countryFlagEmoji.get(participantsStore[i].Alpha2Code).emoji}</td>
-            <td>{participantsStore[i].Name}</td>
-            <td>{participantsStore[i].Points}</td>
-          </tr>
-          {/each}
-      </table>
-    </div>
   </div>
 
 <style>
