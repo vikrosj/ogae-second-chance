@@ -3,12 +3,13 @@
 import countryFlagEmoji from "country-flag-emoji";
 import range from "../utils/range";
 import { participantsArray } from './../voting/participants';
+import { rowEmoji } from "../utils/variables";
 
 let participantsStore = [];
 
 function emoji(i){
   if (participantsStore[i].Name == "ROW"){
-    return "😎"
+    return rowEmoji;
   }
   else {
     return countryFlagEmoji.get(participantsStore[i].Alpha2Code).emoji;
