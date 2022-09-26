@@ -4,7 +4,7 @@
   import PointsButton from "./PointsButton.svelte";
   import Video from "./Video.svelte";
   import countryFlagEmoji from "country-flag-emoji";
-  import { fromCountry, visible, alpha2Code } from "../utils/variables" ;
+  import { fromCountry, visible, alpha2Code, guestEmoji, rowEmoji } from "../utils/variables" ;
 
   console.log($visible);
 
@@ -12,10 +12,10 @@
     console.log(fromCountry)
 
     if (fromCountry == "ROW"){
-      return "😎"
+      return rowEmoji;
     }
     else if (fromCountry == "Guest-jury"){
-      return "✨"
+      return guestEmoji;
     }
     else {
       return countryFlagEmoji.get($alpha2Code).emoji
