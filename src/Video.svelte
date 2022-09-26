@@ -1,7 +1,7 @@
 <script>
 	import { twelvePointsFromArray } from "./../voting/12-points-mini";
 	import { andThePointsGoTo, sortUpdate } from "../utils/pointsHandler";
-	import { fromCountry, visible, alpha2Code } from "./variables";
+	import { fromCountry, visible, alpha2Code } from "../utils/variables";
 
 	$: pauseVideo = true;
 	let volume = 1;

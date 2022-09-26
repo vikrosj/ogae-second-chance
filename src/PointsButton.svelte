@@ -3,7 +3,7 @@
   import { pointFromArray } from './../voting/points-from';
 	import { get } from 'svelte/store';
   import { andThePointsGoTo, sortUpdate } from "../utils/pointsHandler";
-  import { fromCountry, visible, alpha2Code } from "./variables";
+  import { fromCountry, visible, alpha2Code } from "../utils/variables";
 
   const pointFrom = get(pointFromArray);
   

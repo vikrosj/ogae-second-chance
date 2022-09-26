@@ -4,7 +4,7 @@
   import PointsButton from "./PointsButton.svelte";
   import Video from "./Video.svelte";
   import countryFlagEmoji from "country-flag-emoji";
-  import { fromCountry, visible, alpha2Code } from "./variables" ;
+  import { fromCountry, visible, alpha2Code } from "../utils/variables" ;
 
   console.log($visible);
 
