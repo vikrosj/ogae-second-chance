@@ -19,6 +19,8 @@
   },
   "dependencies": {
     "country-flag-emoji": "^1.0.3",
+    "globby": "^13.1.2",
     "sirv-cli": "^2.0.0"
-  }
+  },
+  "type": "module"
 }
