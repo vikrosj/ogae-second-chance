@@ -50,17 +50,17 @@
   }
 
   .points-text-1 {
-  position: absolute;
-  right: 21%;
-  bottom: 250px;
+  position: left;
+  margin-left: 2%;
+  bottom: 200px;
   font-size: 30px;
   font-weight: 600;
 }
 
   .points-text-2 {
     position: absolute;
-    right: 6%;
-    bottom: 250px;
+    margin-left: 300px;
+    bottom: 200px;
     font-size: 30px;
     font-weight: 600;
   } 
