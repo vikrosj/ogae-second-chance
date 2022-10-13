@@ -50,7 +50,7 @@
 <style>
 	video {
 		max-width: 500px;
-		max-height: 300px;
+		max-height: 400px;
 		margin-top: -400px;
 		float: left;
     	position: relative;
