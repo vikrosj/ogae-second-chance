@@ -26,7 +26,7 @@ participantsArray.subscribe((data) => {
 <div class="row">
     <div class="column">
       <table>
-          {#each Array.from({length: 10}, (_, i) => i + 1)  as i}
+        {#each range(0, 10) as i}
           <tr>
             <td> {emoji(i)}</td>
             <td>{participantsStore[i].Name}</td>
