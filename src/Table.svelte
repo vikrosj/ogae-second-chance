@@ -7,7 +7,8 @@ import { rowEmoji } from "../utils/variables";
 
 let participantsStore = [];
 
-function emoji(i){
+function emoji(name, i){
+  console.log(name);
   if (participantsStore[i].Name == "ROW"){
     return rowEmoji;
   }
@@ -28,7 +29,7 @@ participantsArray.subscribe((data) => {
       <table>
         {#each range(0, 10) as i}
           <tr>
-            <td> {emoji(i)}</td>
+            <td> {emoji(participantsStore[i].Name, i)}</td>
             <td>{participantsStore[i].Name}</td>
             <td>{participantsStore[i].Points}</td>
           </tr>
@@ -39,7 +40,7 @@ participantsArray.subscribe((data) => {
       <table>
           {#each range(11, 21) as i}
           <tr>
-            <td> {emoji(i)}</td>
+            <td> {emoji(participantsStore[i].Name, i)}</td>
             <td>{participantsStore[i].Name}</td>
             <td>{participantsStore[i].Points}</td>
           </tr>
@@ -50,7 +51,7 @@ participantsArray.subscribe((data) => {
       <table>
           {#each range(22, 32) as i}
           <tr>
-            <td> {emoji(i)}</td>
+            <td> {emoji(participantsStore[i].Name, i)}</td>
             <td>{participantsStore[i].Name}</td>
             <td>{participantsStore[i].Points}</td>
           </tr>
