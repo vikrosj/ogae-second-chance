@@ -25,13 +25,12 @@
 			alpha2Code.set(countryGivingPoints.Alpha2Code);
 			visible.set(true);
 			videoSrc = videoPath + countryGivingPoints.Video;
-			sortUpdate();
 		}
 	}
 
 	document.addEventListener("ended", function() {
-		console.log("The video has just ended!");
 		andThePointsGoTo(countryGivingPoints.PointsTo);
+		sortUpdate();
 		changeSrc();
 	}, true);
 
