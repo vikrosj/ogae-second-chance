@@ -1,0 +1,1 @@
+public/static/12_points_from/*.mov filter=lfs diff=lfs merge=lfs -text
