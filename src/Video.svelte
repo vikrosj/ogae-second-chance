@@ -1,5 +1,5 @@
 <script>
-	import { twelvePointsFromArray } from "./../voting/12-points-mini";
+	import { twelvePointsFromArray } from "./../voting/12-points-from";
 	import { andThePointsGoTo, sortUpdate } from "../utils/pointsHandler";
 	import { fromCountry, visible, alpha2Code } from "../utils/variables";
 
@@ -25,7 +25,7 @@
 			fromCountry.set(countryGivingPoints.Name);
 			alpha2Code.set(countryGivingPoints.Alpha2Code);
 			visible.set(true);
-			videoSrc = videoPath + countryGivingPoints.Name.toLowerCase() + ".mp4";
+			videoSrc = videoPath + countryGivingPoints.Video;
 			sortUpdate();
 		}
 	}
