@@ -71,7 +71,7 @@ participantsArray.subscribe((data) => {
   float: left;
   width: 20%;
   margin-top: 100px;
-  margin-right: -75px;
+  margin-right: -70px;
 }
 
 /* Clearfix (clear floats) */
