@@ -16,7 +16,6 @@
 		if (twelvePoints.length == 0){
 			pauseVideo = true;
 			visible.set(false);
-			sortUpdate();
 		}
 
 		else {
