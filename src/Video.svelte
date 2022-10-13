@@ -6,7 +6,7 @@
 	$: pauseVideo = true;
 	let volume = 1;
 	let countryGivingPoints;
-	let twelvePoints = $twelvePointsFromArray;
+	let twelvePoints = $twelvePointsFromArray.reverse();
 	const videoPath = "static/12_points_from/";
 
 	$: videoSrc = "";
@@ -50,6 +50,7 @@
 <style>
 	video {
 		max-width: 500px;
+		max-height: 300px;
 		margin-top: -400px;
 		float: left;
     	position: relative;
