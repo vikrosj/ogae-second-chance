@@ -52,7 +52,7 @@
   .points-text-1 {
   position: absolute;
   right: 21%;
-  bottom: 300px;
+  bottom: 250px;
   font-size: 30px;
   font-weight: 600;
 }
@@ -60,7 +60,7 @@
   .points-text-2 {
     position: absolute;
     right: 6%;
-    bottom: 300px;
+    bottom: 250px;
     font-size: 30px;
     font-weight: 600;
   } 
