@@ -28,13 +28,7 @@
 <PointsButton/>
 <Video/>
 
-<div class="points-text-1">
-  {#if $visible}
-  <p>Points from: </p>
-  {/if}
-</div>
-
-<div class="points-text-2">
+<div class="points-text">
   {#if $visible}
   <p>{$fromCountry} {emoji($fromCountry)}</p>
   {/if}
@@ -49,19 +43,11 @@
     background-size: auto;
   }
 
-  .points-text-1 {
-  position: left;
-  margin-left: 2%;
-  bottom: 200px;
-  font-size: 30px;
-  font-weight: 600;
-}
-
-  .points-text-2 {
+  .points-text{
     position: absolute;
-    margin-left: 300px;
-    bottom: 200px;
-    font-size: 30px;
+    margin-left: 1%;
+    bottom: 20px;
+    font-size: 60px;
     font-weight: 600;
   } 
               
