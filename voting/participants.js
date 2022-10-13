@@ -2,7 +2,7 @@ import { writable } from 'svelte/store';
 
 export let participantsArray = writable([
     {
-        Name : "Albania",
+        Name: "Albania",
         Alpha2Code: "AL",
         Points: 0
     },
