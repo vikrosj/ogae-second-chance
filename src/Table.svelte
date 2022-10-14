@@ -27,7 +27,7 @@ participantsArray.subscribe((data) => {
 <div class="row">
     <div class="column">
       <table>
-        {#each range(0, 10) as i}
+        {#each range(0, 9) as i}
           <tr>
             <td> {emoji(participantsStore[i].Name, i)}</td>
             <td>{participantsStore[i].Name}</td>
@@ -38,7 +38,7 @@ participantsArray.subscribe((data) => {
     </div>
     <div class="column">
       <table>
-          {#each range(11, 21) as i}
+          {#each range(9, 18) as i}
           <tr>
             <td> {emoji(participantsStore[i].Name, i)}</td>
             <td>{participantsStore[i].Name}</td>
@@ -49,7 +49,7 @@ participantsArray.subscribe((data) => {
     </div>
     <div class="column">
       <table>
-          {#each range(22, 32) as i}
+          {#each range(18, 27) as i}
           <tr>
             <td> {emoji(participantsStore[i].Name, i)}</td>
             <td>{participantsStore[i].Name}</td>
