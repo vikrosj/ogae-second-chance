@@ -51,7 +51,7 @@
 	video {
 		max-width: 500px;
 		max-height: 400px;
-		margin-top: -400px;
+		margin-top: -365px;
 		float: left;
     	position: relative;
     	left: 70%;
