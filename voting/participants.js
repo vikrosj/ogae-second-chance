@@ -1,6 +1,8 @@
 import { writable } from 'svelte/store';
+import { shuffle } from 'lodash';
 
-export let participantsArray = writable([
+export let participantsArray = writable(
+    shuffle([
     {
         Name: "Sweden",
         Alpha2Code: "SE",
@@ -136,4 +138,4 @@ export let participantsArray = writable([
         Alpha2Code: "RO",
         Points: 0
     }
-]);
+])); 
