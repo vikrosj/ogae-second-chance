@@ -22,6 +22,7 @@ participantsArray.subscribe((data) => {
   participantsStore = data;
 
 });
+
 </script>
 
 <div class="row">
